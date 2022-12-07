@@ -2,19 +2,17 @@
 <search>
   <entry>
     <title>test2</title>
-    <url>/2022/12/06/test2-1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>test1</title>
-    <url>/2022/12/06/test1/</url>
-    <content><![CDATA[<h1 id="正文标题"><a href="#正文标题" class="headerlink" title="正文标题"></a>正文标题</h1><p>正文</p>
+    <url>/2022/12/06/test2/</url>
+    <content><![CDATA[<p>这是一段描述</p>
+<span id="more"></span>
+
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>噜啦噜啦嘞绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿</p>
 ]]></content>
       <categories>
-        <category>1</category>
+        <category>2</category>
       </categories>
       <tags>
-        <tag>1</tag>
+        <tag>2</tag>
       </tags>
   </entry>
   <entry>
@@ -36,18 +34,20 @@
 ]]></content>
   </entry>
   <entry>
-    <title>test2</title>
-    <url>/2022/12/06/test2/</url>
-    <content><![CDATA[<p>这是一段描述</p>
-<span id="more"></span>
-
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>噜啦噜啦嘞绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿</p>
+    <title>test1</title>
+    <url>/2022/12/06/test1/</url>
+    <content><![CDATA[<h1 id="正文标题"><a href="#正文标题" class="headerlink" title="正文标题"></a>正文标题</h1><p>正文</p>
 ]]></content>
       <categories>
-        <category>2</category>
+        <category>1</category>
       </categories>
       <tags>
-        <tag>2</tag>
+        <tag>1</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>test2</title>
+    <url>/2022/12/06/test2-1/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
