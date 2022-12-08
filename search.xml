@@ -98,121 +98,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Shell编程入门</title>
-    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
-<ul>
-<li>脚本以<code> #!/bin/bash</code> 开头</li>
-<li>脚本通常以.sh结尾</li>
-<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
-<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
-<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
-</ul>
-<p>一个HelloWorld示例程序</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
-<li>定义变量 ： 变量名=值</li>
-<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
-<li>声明静态变量 ：readonly 变量 （无法unset）</li>
-</ul>
-<p>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
-<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
-<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
-<li>==set==显示系统所有的环境变量</li>
-</ul>
-<p><strong>设置环境变量</strong></p>
-<ol>
-<li>修改/etc/profile 文件（比如用vim打开）</li>
-<li>在文件中加入 ==export 变量名=变量值==语句</li>
-<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
-<li>新加入的环境变量可以全局使用了</li>
-</ol>
-<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
-<ul>
-<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
-<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
-<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
-<li><code>$*</code> 代表所有参数，看做一个整体</li>
-<li><code>$@</code> 代表所有参数，每个区分对待</li>
-<li><code>$#</code> 代表所有参数的个数</li>
-</ul>
-<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
-<li><code>$$</code> 当前进程的进程号</li>
-<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
-<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
-</ul>
-<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
-<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
-<li><code>$((运算式))</code></li>
-<li><code>$[运算式]</code>  （推荐）</li>
-<li><code>expr m - n</code> 中间有空格</li>
-<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
-</ol>
-<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
-<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li>判断目录是否存在，用 <code>-f</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多分支语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>case语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
-<thead>
-<tr>
-<th>语句</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“” = “”</td>
-<td>字符串比较</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>小于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>-eq</td>
-<td>等于</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>大于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>不等于</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Git常用命令</title>
     <url>/2022/12/08/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h1 id="CSS常见布局"><a href="#CSS常见布局" class="headerlink" title="CSS常见布局"></a>CSS常见布局</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
@@ -500,6 +385,121 @@
         <tag>网页布局</tag>
         <tag>CSS</tag>
         <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell编程入门</title>
+    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
+<ul>
+<li>脚本以<code> #!/bin/bash</code> 开头</li>
+<li>脚本通常以.sh结尾</li>
+<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
+<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
+<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
+</ul>
+<p>一个HelloWorld示例程序</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
+<li>定义变量 ： 变量名=值</li>
+<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
+<li>声明静态变量 ：readonly 变量 （无法unset）</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
+<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
+<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
+<li>==set==显示系统所有的环境变量</li>
+</ul>
+<p><strong>设置环境变量</strong></p>
+<ol>
+<li>修改/etc/profile 文件（比如用vim打开）</li>
+<li>在文件中加入 ==export 变量名=变量值==语句</li>
+<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
+<li>新加入的环境变量可以全局使用了</li>
+</ol>
+<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
+<ul>
+<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
+<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
+<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
+<li><code>$*</code> 代表所有参数，看做一个整体</li>
+<li><code>$@</code> 代表所有参数，每个区分对待</li>
+<li><code>$#</code> 代表所有参数的个数</li>
+</ul>
+<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
+<li><code>$$</code> 当前进程的进程号</li>
+<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
+<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
+</ul>
+<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
+<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
+<li><code>$((运算式))</code></li>
+<li><code>$[运算式]</code>  （推荐）</li>
+<li><code>expr m - n</code> 中间有空格</li>
+<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
+</ol>
+<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
+<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li>判断目录是否存在，用 <code>-f</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多分支语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>case语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
+<thead>
+<tr>
+<th>语句</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“” = “”</td>
+<td>字符串比较</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>实用工具</tag>
+        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
