@@ -7,16 +7,21 @@ const pjax = new Pjax({
     '.main-inner',
     '.post-toc-wrap',
     '.languages',
-    '.pjax'
+    '.pjax',
   ],
   analytics: false,
   cacheBust: false,
   scrollTo : !CONFIG.bookmark.enable
 });
 
+var newContent = document.querySelector(".charts");
+
 document.addEventListener('pjax:success', () => {
   pjax.executeScripts(document.querySelectorAll('script[data-pjax]'));
   NexT.boot.refresh();
+
+  NexT.boot.refresh(newContent);
+
   // Define Motion Sequence & Bootstrap Motion.
   if (CONFIG.motion.enable) {
     NexT.motion.integrator

@@ -219,7 +219,7 @@
             calculable: true,
             inRange: {
                 symbol: 'rect',
-                color: ['#ebedf0', '#c6e48b', '#7bc96f', '#239a3b', '#196127']
+                color: ['#ebedf0', '#FFCCCC', '#FF7777', '#DD0000', '#330000']
             },
             itemWidth: 12,
             itemHeight: 12,
@@ -236,7 +236,7 @@
                 show: false
             },
             itemStyle: {
-                color: '#196127',
+                color: '#330000',
                 borderColor: '#fff',
                 borderWidth: 2
             },
@@ -268,8 +268,6 @@
     </div>
 
     
-        <div class="pjax">
-        </div>
   </aside>
 
 
@@ -299,8 +297,9 @@
   </div>
   <div class="category-all">
     <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/">实用工具</a><span class="category-list-count">3</span></li></ul>
+
     
-  <div id="categories-chart" style="opacity: 0.99;"></div>
+    <div id="categories-chart" style="opacity: 0.99;" class="charts"></div>
   <script id="categoriesChart">
     let categoriesChart = echarts.init(document.getElementById('categories-chart'));
     let categoriesOption = {
@@ -319,7 +318,7 @@
                 name: '# Category articles',
                 type: 'pie',
                 radius: '75%',
-                color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
+                color: ['#BBBBBB', '#3E1717', '#999999', '#7D2D2D', '#666666', '#BB4444', '#333333', '#CD7676', '#111111'],
                 data: [{"name":"前端","value":2},{"name":"实用工具","value":3}],
                 itemStyle: {
                     emphasis: {
@@ -333,6 +332,7 @@
     };
     categoriesChart.setOption(categoriesOption);
     </script>
+    
   </div>
   
 </div>
@@ -401,11 +401,10 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.0.8/medium-zoom.min.js" integrity="sha256-7PhEpEWEW0XXQ0k6kQrPKwuoIomz8R8IYyuU1Qew4P8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
