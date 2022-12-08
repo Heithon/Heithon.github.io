@@ -1,909 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>CSS常见布局</title>
-    <url>/2022/12/08/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/</url>
-    <content><![CDATA[<h1 id="CSS常见布局"><a href="#CSS常见布局" class="headerlink" title="CSS常见布局"></a>CSS常见布局</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
-<li>flex弹性布局</li>
-<li>grid网格布局</li>
-<li>移动端适配布局</li>
-<li>响应式布局</li>
-</ol>
-<h2 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h2><p> 适合单列的布局</p>
-<h3 id="1-设置flex容器"><a href="#1-设置flex容器" class="headerlink" title="1.设置flex容器"></a>1.设置flex容器</h3><h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><ul>
-<li> <code>display:flex</code>声明<strong>父容器</strong>是弹性盒子,扩展至所有有效宽度</li>
-<li> <code>display:inline-flex</code> 收缩至内容宽度</li>
-</ul>
-<h4 id="设置排列方向"><a href="#设置排列方向" class="headerlink" title="设置排列方向"></a>设置排列方向</h4><ul>
-<li> <code>flex-direction</code> 设置排列方向：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>row</td>
-<td>从左到右水平排列子元素（默认值）</td>
-</tr>
-<tr>
-<td>column</td>
-<td>从上到下垂直排列子元素</td>
-</tr>
-<tr>
-<td>row-reverse</td>
-<td>从右向左排列子元素</td>
-</tr>
-<tr>
-<td>column-reverse</td>
-<td>从下到上垂直排列子元素</td>
-</tr>
-</tbody></table>
-<h4 id="溢出处理"><a href="#溢出处理" class="headerlink" title="溢出处理"></a>溢出处理</h4><ul>
-<li><code>flex-wrap</code> 进行溢出处理，是否换行</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>nowrap</td>
-<td>弹性容器为单行，会溢出（默认值）</td>
-</tr>
-<tr>
-<td>wrap</td>
-<td>弹性容器为多行，会自动换行</td>
-</tr>
-<tr>
-<td>wrap-reverse</td>
-<td>反转 wrap 排列。</td>
-</tr>
-</tbody></table>
-<h4 id="设置主轴方向上的对齐方式。"><a href="#设置主轴方向上的对齐方式。" class="headerlink" title="设置主轴方向上的对齐方式。"></a>设置主轴方向上的对齐方式。</h4><p><code>justify-content</code> 属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>flex-start</td>
-<td>弹性项目向行头紧挨着填充。（默认值）</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>弹性项目向行尾紧挨着填充。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>弹性项目居中紧挨着填充。</td>
-</tr>
-<tr>
-<td>space-between</td>
-<td>弹性项目平均分布在该行上,两边顶满。</td>
-</tr>
-<tr>
-<td>space-around</td>
-<td>弹性项目平均分布在该行上，两边留有一半的间隔空间。</td>
-</tr>
-<tr>
-<td>space-evenly</td>
-<td>弹性项目平均分布在该行上，两边留有相等的间隔空间。</td>
-</tr>
-<tr>
-<td><img data-src="https://s2.loli.net/2022/05/10/ZmcCQTLWJbeHzR3.png"></td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="设置子元素在侧轴上的对齐方式"><a href="#设置子元素在侧轴上的对齐方式" class="headerlink" title="设置子元素在侧轴上的对齐方式"></a>设置子元素在侧轴上的对齐方式</h4><p><code>align-items</code> 属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>stretch</td>
-<td>使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照’min/max-width/height’属性的限制（默认值）</td>
-</tr>
-<tr>
-<td>flex-start</td>
-<td>子元素的侧轴起始位置的边界紧靠住该行的侧轴起始边界。</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>子元素的侧轴起始位置的边界紧靠住该行的侧轴结束边界。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>弹性盒子元素在该行的侧轴上居中放置</td>
-</tr>
-<tr>
-<td>baseline</td>
-<td>如弹性盒子元素的行内轴与侧轴为同一条，则该值与’flex-start’等效。其它情况下，该值将参与基线对齐。</td>
-</tr>
-</tbody></table>
-<p><img data-src="https://s2.loli.net/2022/05/10/4GfilmZ1uIXpFKb.png"></p>
-<h4 id="设置各个行的对齐"><a href="#设置各个行的对齐" class="headerlink" title="设置各个行的对齐"></a>设置各个行的对齐</h4><p><code>align-content</code> 属性</p>
-<table>
-<thead>
-<tr>
-<th>属性值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>stretch</td>
-<td>各行将会伸展以占用剩余的空间。（默认值）</td>
-</tr>
-<tr>
-<td>flex-start</td>
-<td>各行向弹性盒容器的起始位置堆叠。</td>
-</tr>
-<tr>
-<td>flex-end</td>
-<td>各行向弹性盒容器的结束位置堆叠。</td>
-</tr>
-<tr>
-<td>center</td>
-<td>各行向弹性盒容器的中间位置堆叠。</td>
-</tr>
-<tr>
-<td>space-between</td>
-<td>各行在弹性盒容器中平均分布，两端顶满。</td>
-</tr>
-<tr>
-<td>space-around</td>
-<td>各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。</td>
-</tr>
-<tr>
-<td><img data-src="https://s2.loli.net/2022/05/10/OA4x3rnb8TIK1J7.png"></td>
-<td></td>
-</tr>
-</tbody></table>
-<h4 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h4><p><code>flex-flow</code> 属性：flex-direction 和 flex-wrap 属性的缩写形式，默认是 row nowrap。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex-flow</span>: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-设置flex子项"><a href="#2-设置flex子项" class="headerlink" title="2.设置flex子项"></a>2.设置flex子项</h3><h4 id="设置顺序"><a href="#设置顺序" class="headerlink" title="设置顺序"></a>设置顺序</h4><p><code>order</code> 属性，值为数字，数字越小排越前面，允许负值</p>
-<h4 id="单个子项居中"><a href="#单个子项居中" class="headerlink" title="单个子项居中"></a>单个子项居中</h4><p>设置<code>margin: auto</code></p>
-<h4 id="单独某个子项垂直对齐方式"><a href="#单独某个子项垂直对齐方式" class="headerlink" title="单独某个子项垂直对齐方式"></a>单独某个子项垂直对齐方式</h4><p><code>align-self</code> </p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch</span><br></pre></td></tr></table></figure>
-
-<h4 id="可用剩余空间时拉伸比例"><a href="#可用剩余空间时拉伸比例" class="headerlink" title="可用剩余空间时拉伸比例"></a>可用剩余空间时拉伸比例</h4><p><code>flex-grow</code> ,默认值为0。将剩余空间，按每个子项的比例分配给子项。</p>
-<h4 id="定义了子项的收缩的能力"><a href="#定义了子项的收缩的能力" class="headerlink" title="定义了子项的收缩的能力"></a>定义了子项的收缩的能力</h4><p><code>flex-shrink</code>,默认值为1，决定 flex 项允许收缩多少比例。</p>
-<h4 id="设置子项在主轴方向的默认大小"><a href="#设置子项在主轴方向的默认大小" class="headerlink" title="设置子项在主轴方向的默认大小"></a>设置子项在主轴方向的默认大小</h4><p><code>flex-basis</code> ,默认值auto</p>
-<h4 id="简写-1"><a href="#简写-1" class="headerlink" title="简写"></a>简写</h4><p><code>flex</code> 用法：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flex: none | [ &lt; &#x27;flex-grow&#x27;&gt; &lt; &#x27;flex-shrink&#x27;&gt;? || &lt; &#x27;flex-basis&#x27;&gt; ]</span><br><span class="line">//第二三个参数可选</span><br></pre></td></tr></table></figure>
-<h3 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h3><ul>
-<li>两列等高布局：两列元素，一列内容变多，另一列跟着拉伸。父盒子为flex，左右列的盒子默认stretch，因此会自动拉伸。</li>
-<li>不定项居中：设置<code>justify-content: center;  align-items: flex-end;</code>,比如轮播图下面的小圆点。</li>
-<li>两列或三列布局：其中一列会自己调整宽度，父盒子为flex，然后要自适应的一列设置grow为1，就会自动填充剩余空间。</li>
-<li>溢出项布局：如轮播图，直接设置flex盒子，默认一行会溢出</li>
-<li>子项分组布局：当子元素总宽度不及父盒子时，为其中一个子元素设置margin为auto，可以将剩余空间自动分配为外边距。</li>
-</ul>
-<h2 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h2><p>适合多列网格布局<br><img data-src="https://s2.loli.net/2022/05/11/dsMUiJkq29IPxYQ.png"></p>
-<h3 id="1-设置grid容器"><a href="#1-设置grid容器" class="headerlink" title="1.设置grid容器"></a>1.设置grid容器</h3><h4 id="声明-1"><a href="#声明-1" class="headerlink" title="声明"></a>声明</h4><p><code>display:grid</code>  只创建了一个只有一列的网格,网页并不会马上发生变化,需要设置</p>
-<h4 id="fr单位"><a href="#fr单位" class="headerlink" title="fr单位"></a>fr单位</h4><p>fr单位规定了可用空间的分配比例</p>
-<h4 id="定义网格"><a href="#定义网格" class="headerlink" title="定义网格"></a>定义网格</h4><ul>
-<li><code>grid-template-columns: 1fr 1fr 1fr</code> 设置列数和大小</li>
-<li><code>grid-template-rows: 1fr 1fr 1fr</code> 设置行数和大小</li>
-<li><code>grid-template-areas</code> 合并单元格，使用如下</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//在父盒子中设置区域</span><br><span class="line">.grid-father&#123;</span><br><span class="line">    grid-template-areas:&quot;a1,a1,a2&quot;</span><br><span class="line">                        &quot;a1,a1,a2&quot;</span><br><span class="line">                        &quot;a3,a3,a2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">.child&#123;</span><br><span class="line">    grid-area: a1;  //在子盒子中生效 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>grid盒子里的子盒子会按上面的设置自动填充进盒子里去，相当于设置了一个模板，往里面填盒子</p>
-<p><strong>简写</strong></p>
-<p>使用<code>grid-template:</code> 进行简写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grid-template: </span><br><span class="line">            &quot;a1 a1 a2&quot; 1fr   //每一行后面跟着的是行rows的单位</span><br><span class="line">            &quot;a1 a1 a2&quot; 1fr</span><br><span class="line">            &quot;a3 a3 a3&quot; 1fr</span><br><span class="line">            / 100px 100px 100px;  //最后一行是列columns的单位（记得斜线）</span><br></pre></td></tr></table></figure>
-<h4 id="网格间隙"><a href="#网格间隙" class="headerlink" title="网格间隙"></a>网格间隙</h4><ul>
-<li><code>grid-column-gap</code> 列间隙</li>
-<li><code>grid-row-gap</code>  行间隙</li>
-<li><code>grid-gap</code>  复合写法，先写行row，再写列column</li>
-</ul>
-<p>现在更推荐</p>
-<ul>
-<li><code>column-gap</code></li>
-<li><code>row-gap</code></li>
-<li><code>gap</code></li>
-</ul>
-<h4 id="网格对齐方式"><a href="#网格对齐方式" class="headerlink" title="网格对齐方式"></a>网格对齐方式</h4><ul>
-<li><code>justify-items</code> 水平方向，子项在自己单元格里的对齐方式</li>
-<li><code>align-items</code>  垂直方向，子项在自己单元格里的对齐方式</li>
-<li>参数有 start/end/center 默认stret</li>
-<li><code>place-items</code> 复合写法 垂直 水平</li>
-</ul>
-<ul>
-<li><code>justify-content</code> 水平方向</li>
-<li><code>align-content</code>  垂直方向</li>
-<li>上述两个属性，设置网格整体（模板），相对父盒子的位置</li>
-<li>属性有start/end/center/space-between/space-around/space-evenly 默认stretch</li>
-<li><code>place-content</code>  复合写法  垂直 水平</li>
-</ul>
-<p>以上设置==网格小于容器==才能看到效果</p>
-<h4 id="隐式网格的设置"><a href="#隐式网格的设置" class="headerlink" title="隐式网格的设置"></a>隐式网格的设置</h4><p>当子项溢出时，会自动布局新网格，就是隐式网格</p>
-<ul>
-<li><code>grid-auto-flow</code>  属性控制着自动布局算法怎样运作</li>
-<li><code>grid-auto-columns</code>  指定了隐式创建的网格纵向轨道（track）的宽度</li>
-<li><code>grid-auto-rows</code>   设置网格中行的默认尺寸</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grid-auto-flow: row;    //在必要时增加新行(默认)</span><br><span class="line">grid-auto-flow: column;     //在必要时增加新列</span><br><span class="line">grid-auto-flow: dense;  //如果后面出现了稍小的元素，则会试图去填充网格中前面留下的空白。可能导致原来出现的次序被打乱</span><br><span class="line">grid-auto-flow: row dense;</span><br><span class="line">grid-auto-flow: column dense;</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="2-设置grid子项"><a href="#2-设置grid子项" class="headerlink" title="2.设置grid子项"></a>2.设置grid子项</h3><h4 id="基于线的元素放置"><a href="#基于线的元素放置" class="headerlink" title="基于线的元素放置"></a>基于线的元素放置</h4><p><strong>线</strong>：即开篇图片中编了序号123…的线（间隙所在的位置），从1开始编号命名，n行就n+1条线</p>
-<p>用以下几个属性可以设置子项的起始位置(基于线)</p>
-<ul>
-<li><code>grid-column-start</code> 属性：单元格左边框所在的垂直网格线</li>
-<li><code>grid-column-end</code> 属性：单元格右边框所在的垂直网格线</li>
-<li><code>grid-row-start</code> 属性：单元格上边框所在的水平网格线</li>
-<li><code>grid-row-end</code> 属性：单元格下边框所在的水平网格线</li>
-</ul>
-<p>后面跟线的编号数字</p>
-<p>==注意==：只设置前一个盒子的grid-column，后面的盒子会放入前一个盒子后面的格子，因为grid-row默认是auto。如果设定了grid-row，就明确了位置，其他盒子会自动从第一个格子开始排列。</p>
-<p>grid-template还可以给线<strong>命名</strong>：</p>
-<ul>
-<li><code>grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr [col4]</code> 用中括号设置线的名称。命名就可以代替上面四个属性的数字参数</li>
-</ul>
-<p><strong>简写</strong>：</p>
-<ul>
-<li><code>grid-column: 2/4</code> <code>grid-row: 2/3;</code>用斜线分割  起始/结束</li>
-<li><code>grid-column: span 2/span 2;</code> 表示行列占据两格</li>
-<li><code>grid-area: 2/2/4/3;</code> grid-column-start/rid-row-start/grid-column-end/grid-row-end</li>
-<li><code>grid-area: 1/1/span 2/span 2;</code> 表示行列从基线1开始，上下占据两格</li>
-</ul>
-<p>grid-area既可以用命名设置子项，也可以用基线设置</p>
-<h4 id="子项对齐方式"><a href="#子项对齐方式" class="headerlink" title="子项对齐方式"></a>子项对齐方式</h4><p>操作某一个子项</p>
-<ul>
-<li><code>justify-self</code></li>
-<li><code>align-self</code></li>
-</ul>
-<h3 id="3-网格相关方法"><a href="#3-网格相关方法" class="headerlink" title="3.网格相关方法"></a>3.网格相关方法</h3><p>repeat(number,size)</p>
-<ul>
-<li> <code>grid-template-columns:repeat(5,100px);</code> 设置五个重复的列，每个100px</li>
-<li> <code>grid-template-columns:repeat(auto-fill,100px);</code> 根据父容器大小，自动设置列数</li>
-</ul>
-<p>minmax(min,max)</p>
-<ul>
-<li><code>grid-template-columns:100px minmax(100px,1fr) 100px;</code> 设定最小值为100px，最大值自适应。</li>
-<li>复合用法<code>grid-template-column:repeat(auto-fill,minmax(200px,1fr));</code></li>
-</ul>
-<h3 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h3><ol>
-<li>==叠加布局==：用<code>grid-area</code>将几个盒子装进同一个格子，再用<code>align-self</code>和<code>justif-self</code>对每个盒子单独定位。</li>
-<li>==多组合布局==：直接利用盒子的特性即可。</li>
-<li>==栅格布局==：父容器设置<code>grid-template-columns:repeat(12,1fr)</code> 即划分12个栅格，子容器用<code>grid-area: auto/auto/auto/1</code> 控制跨越几个栅格（最后数字是几就跨过几个栅格）</li>
-<li>==容器行列自适应布局==: 利用子项溢出会自动产生隐式网格折行，控制<code>grid-auto-flow</code> 就可以控制行(默认row)还是列(column)的自适应</li>
-</ol>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>网页布局</tag>
-        <tag>CSS</tag>
-        <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git常用命令</title>
-    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
-<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
-<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
-<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
-<p>shift + ins ： 同上</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git init</code></td>
-<td>初始化工作区</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>查看工作区状态</td>
-</tr>
-<tr>
-<td><code>git add 文件名</code></td>
-<td>将文件加入暂存区</td>
-</tr>
-<tr>
-<td><code>git rm --cached 文件名</code></td>
-<td>将文件从暂存区移除</td>
-</tr>
-<tr>
-<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
-<td>将文件提交到本地库</td>
-</tr>
-<tr>
-<td><code>git reflog</code></td>
-<td>查看简化版本信息</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>查看完整版本信息</td>
-</tr>
-<tr>
-<td><code>git reset --hard 版本号</code></td>
-<td>穿梭到哪个版本</td>
-</tr>
-</tbody></table>
-<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git branch -v</code></td>
-<td>插看分支</td>
-</tr>
-<tr>
-<td><code>git branch 分支名</code></td>
-<td>创建分支</td>
-</tr>
-<tr>
-<td><code>git checkout 分支名</code></td>
-<td>切换到指定分支</td>
-</tr>
-<tr>
-<td><code>git merge 分支名</code></td>
-<td>将指定分支合并到当前分支</td>
-</tr>
-</tbody></table>
-<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
-<p>文件中会出现冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
-
-<p>重新add 和commit</p>
-<p>==注意：commit 不能后不能带文件名否则会报错==</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
-<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
-<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>git remote -v</code>  查看远程连接的库</p>
-<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
-<p><code>git push 名字/链接 分支名</code> 推送分支</p>
-<p><code>git pull 名字/链接 分支名</code>  拉取分支</p>
-<p><code>git clone 链接</code>  克隆仓库</p>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>gitHub</tag>
-        <tag>实用工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/12/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Shell编程入门</title>
-    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
-<ul>
-<li>脚本以<code> #!/bin/bash</code> 开头</li>
-<li>脚本通常以.sh结尾</li>
-<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
-<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
-<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
-</ul>
-<p>一个HelloWorld示例程序</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
-<li>定义变量 ： 变量名=值</li>
-<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
-<li>声明静态变量 ：readonly 变量 （无法unset）</li>
-</ul>
-<p>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
-<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
-<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
-<li>==set==显示系统所有的环境变量</li>
-</ul>
-<p><strong>设置环境变量</strong></p>
-<ol>
-<li>修改/etc/profile 文件（比如用vim打开）</li>
-<li>在文件中加入 ==export 变量名=变量值==语句</li>
-<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
-<li>新加入的环境变量可以全局使用了</li>
-</ol>
-<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
-<ul>
-<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
-<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
-<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
-<li><code>$*</code> 代表所有参数，看做一个整体</li>
-<li><code>$@</code> 代表所有参数，每个区分对待</li>
-<li><code>$#</code> 代表所有参数的个数</li>
-</ul>
-<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
-<li><code>$$</code> 当前进程的进程号</li>
-<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
-<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
-</ul>
-<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
-<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
-<li><code>$((运算式))</code></li>
-<li><code>$[运算式]</code>  （推荐）</li>
-<li><code>expr m - n</code> 中间有空格</li>
-<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
-</ol>
-<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
-<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li>判断目录是否存在，用 <code>-f</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多分支语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>case语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
-<thead>
-<tr>
-<th>语句</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“” = “”</td>
-<td>字符串比较</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>小于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>-eq</td>
-<td>等于</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>大于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>不等于</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>html常用标签及属性</title>
-    <url>/2022/12/08/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%B1%9E%E6%80%A7%E5%BD%92%E7%BA%B3/</url>
-    <content><![CDATA[<p>…</p>
-<span id="more"></span>
-
-<h2 id="开头区域"><a href="#开头区域" class="headerlink" title="开头区域"></a>开头区域</h2><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;!DOCTYPE ...&gt;</code></td>
-<td>html5直接<code>&lt;!DOCTYPE html&gt; </code></td>
-<td>告知浏览器文档使用哪种 HTML 或 XHTML 规范 <strong>“单标签”</strong></td>
-</tr>
-<tr>
-<td><code>&lt;html lang=&quot;en&quot;&gt;</code></td>
-<td>en：定义页面语言为英语。zh-CN：定义页面语言为中文。</td>
-<td>用于指定页面的语言类型 <strong>“单标签”</strong></td>
-</tr>
-</tbody></table>
-<h2 id="head区域"><a href="#head区域" class="headerlink" title="head区域"></a>head区域</h2><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>meta</td>
-<td>charset；name；http-equiv；content</td>
-<td>基本的配置项目：字符集 charset，视口 viewport，定义“关键词”，定义“页面描述”等等 <strong>“单标签”</strong></td>
-</tr>
-<tr>
-<td>title</td>
-<td></td>
-<td>设置网页标题 <strong>“双标签”</strong></td>
-</tr>
-<tr>
-<td>base</td>
-<td>href</td>
-<td>指定基础的路径</td>
-</tr>
-<tr>
-<td>style</td>
-<td></td>
-<td>写css</td>
-</tr>
-<tr>
-<td>link</td>
-<td>rel；type；href</td>
-<td>定义文档与外部资源的关系</td>
-</tr>
-<tr>
-<td>script</td>
-<td></td>
-<td>写js</td>
-</tr>
-</tbody></table>
-<h2 id="body区域"><a href="#body区域" class="headerlink" title="body区域"></a>body区域</h2><h3 id="排版标签"><a href="#排版标签" class="headerlink" title="排版标签"></a>排版标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;h1&gt;-&lt;h6&gt;</code></td>
-<td></td>
-<td><strong>块级</strong></td>
-</tr>
-<tr>
-<td><code>&lt;p&gt;</code></td>
-<td>align</td>
-<td><strong>块级</strong></td>
-</tr>
-<tr>
-<td><code>&lt;hr /&gt;</code></td>
-<td>align；size；width；color；noshade</td>
-<td>水平线</td>
-</tr>
-<tr>
-<td><code>&lt;br /&gt;</code></td>
-<td></td>
-<td>换行</td>
-</tr>
-<tr>
-<td><code>&lt;div&gt;</code></td>
-<td>align</td>
-<td><strong>块级</strong></td>
-</tr>
-<tr>
-<td><code>&lt;span&gt;</code></td>
-<td></td>
-<td><strong>内联</strong></td>
-</tr>
-<tr>
-<td><code>&lt;center&gt;</code></td>
-<td></td>
-<td>内容居中（已废弃）</td>
-</tr>
-<tr>
-<td><code>&lt;pre&gt;</code></td>
-<td></td>
-<td>预定义（几乎不用）</td>
-</tr>
-</tbody></table>
-<h3 id="字体标签"><a href="#字体标签" class="headerlink" title="字体标签"></a>字体标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;u&gt;</code></td>
-<td></td>
-<td>下划线标记</td>
-</tr>
-<tr>
-<td><code>&lt;s&gt;或&lt;del&gt;</code></td>
-<td></td>
-<td>中划线标记（删除线）</td>
-</tr>
-<tr>
-<td><code>&lt;i&gt;或&lt;em&gt;</code></td>
-<td></td>
-<td>斜体标记</td>
-</tr>
-<tr>
-<td><code>&lt;b&gt;或&lt;strong&gt;</code></td>
-<td></td>
-<td>粗体标签(已废弃)</td>
-</tr>
-<tr>
-<td><code>&lt;font&gt;</code></td>
-<td></td>
-<td>字体标签（已废弃）</td>
-</tr>
-<tr>
-<td><code>&lt;sup&gt;和&lt;sub&gt;</code></td>
-<td></td>
-<td>上标和下标</td>
-</tr>
-<tr>
-<td><code>&lt;a&gt;</code></td>
-<td>href；target；name；title</td>
-<td><strong>内联</strong></td>
-</tr>
-</tbody></table>
-<h3 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;img /&gt;</code></td>
-<td>src；alt；width；height；title；align</td>
-<td><strong>行内块</strong></td>
-</tr>
-</tbody></table>
-<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;ul&gt;</code></td>
-<td>type</td>
-<td>无序列表</td>
-</tr>
-<tr>
-<td><code>&lt;ol&gt;</code></td>
-<td>type</td>
-<td>有序列表</td>
-</tr>
-<tr>
-<td><code>&lt;li&gt;</code></td>
-<td></td>
-<td>列表项</td>
-</tr>
-<tr>
-<td><code>&lt;dl&gt;</code></td>
-<td></td>
-<td>定义列表</td>
-</tr>
-<tr>
-<td><code>&lt;dt&gt;</code></td>
-<td></td>
-<td>定义列表标题</td>
-</tr>
-<tr>
-<td><code>&lt;dd&gt;</code></td>
-<td></td>
-<td>定义列表项</td>
-</tr>
-</tbody></table>
-<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;table&gt;</code></td>
-<td>border；style=”border-collapse:collapse;”；width；height；bordercolor；align；cellpadding；cellspacing；bgcolor；background；bordercolorlight；bordercolordark；dir（ltr，rtl）</td>
-<td>表格</td>
-</tr>
-<tr>
-<td><code>&lt;tr&gt;</code></td>
-<td>dir；bgcolor；height；align；valign</td>
-<td>行</td>
-</tr>
-<tr>
-<td><code>&lt;td&gt;</code></td>
-<td>colspan；rowspan；align；valign；width；height；bgcolor；background</td>
-<td>列（单元格）<strong>行内块</strong></td>
-</tr>
-<tr>
-<td><code>&lt;th&gt;</code></td>
-<td></td>
-<td>加粗单元格即td+b</td>
-</tr>
-<tr>
-<td><code>&lt;caption&gt;</code></td>
-<td>align</td>
-<td>表格标题，与tr并列</td>
-</tr>
-<tr>
-<td><code>&lt;thead&gt;</code></td>
-<td></td>
-<td>按照thead、tbody、tfoot的顺序依次来显示内容</td>
-</tr>
-<tr>
-<td><code>&lt;tbody&gt;</code></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>&lt;tfoot&gt;</code></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="框架标签"><a href="#框架标签" class="headerlink" title="框架标签"></a>框架标签</h3><p>framset和body只能2选1，iframe是body的子标记</p>
-<table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;frameset&gt;</code></td>
-<td>rows；cols</td>
-<td>框架的集合</td>
-</tr>
-<tr>
-<td><code>&lt;frame&gt;</code></td>
-<td>scrolling；noresize；bordercolor；frameborder（0,1）；name</td>
-<td>框架</td>
-</tr>
-<tr>
-<td><code>&lt;iframe&gt;</code></td>
-<td>src；width；height；scrolling；name</td>
-<td>内嵌框架</td>
-</tr>
-</tbody></table>
-<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;form&gt;</code></td>
-<td>name；id；action；method</td>
-<td>表单标签</td>
-</tr>
-<tr>
-<td><code>&lt;input&gt;</code></td>
-<td>type；value；size；readonly；disabled</td>
-<td>输入标签<strong>行内块</strong></td>
-</tr>
-<tr>
-<td><code>&lt;select&gt;</code></td>
-<td>multiple；size</td>
-<td>下拉列表</td>
-</tr>
-<tr>
-<td><code>&lt;option&gt;</code></td>
-<td>selected</td>
-<td>select里的每一项</td>
-</tr>
-<tr>
-<td><code>&lt;textarea&gt;</code></td>
-<td>rows；col；readonly</td>
-<td>多行文本输入</td>
-</tr>
-<tr>
-<td><code>&lt;label&gt;</code></td>
-<td>for</td>
-<td>关联input元素</td>
-</tr>
-</tbody></table>
-<p>intput的type属性值</p>
-<ol>
-<li>text（默认）</li>
-<li>password：密码类型</li>
-<li>radio：单选按钮</li>
-<li>checkbox：多选按钮</li>
-<li>checked：将单选按钮或多选按钮默认处于选中状态。</li>
-<li>hidden：隐藏框</li>
-<li>button：普通按钮 </li>
-<li>submit：提交按钮</li>
-<li>reset：重置按钮</li>
-<li>image：图片按钮,和提交按钮的功能完全一致</li>
-<li>file：文件选择框</li>
-</ol>
-<h3 id="多媒体标签"><a href="#多媒体标签" class="headerlink" title="多媒体标签"></a>多媒体标签</h3><table>
-<thead>
-<tr>
-<th>标签名称</th>
-<th>常见属性</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>&lt;bgsound&gt;</code></td>
-<td>src；loop</td>
-<td>播放背景音乐</td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p><img data-src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212051158145.png" alt="image"><br><img data-src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212051131565.png" alt="image"></p>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux常用命令</title>
     <url>/2022/12/08/LInux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h3 id="vim常用操作"><a href="#vim常用操作" class="headerlink" title="vim常用操作"></a>vim常用操作</h3><table>
@@ -1967,8 +1064,911 @@
         <category>实用工具</category>
       </categories>
       <tags>
-        <tag>实用工具</tag>
         <tag>Linux</tag>
+        <tag>实用工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git常用命令</title>
+    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
+<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
+<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
+<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
+<p>shift + ins ： 同上</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>初始化工作区</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区状态</td>
+</tr>
+<tr>
+<td><code>git add 文件名</code></td>
+<td>将文件加入暂存区</td>
+</tr>
+<tr>
+<td><code>git rm --cached 文件名</code></td>
+<td>将文件从暂存区移除</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
+<td>将文件提交到本地库</td>
+</tr>
+<tr>
+<td><code>git reflog</code></td>
+<td>查看简化版本信息</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看完整版本信息</td>
+</tr>
+<tr>
+<td><code>git reset --hard 版本号</code></td>
+<td>穿梭到哪个版本</td>
+</tr>
+</tbody></table>
+<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch -v</code></td>
+<td>插看分支</td>
+</tr>
+<tr>
+<td><code>git branch 分支名</code></td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td><code>git checkout 分支名</code></td>
+<td>切换到指定分支</td>
+</tr>
+<tr>
+<td><code>git merge 分支名</code></td>
+<td>将指定分支合并到当前分支</td>
+</tr>
+</tbody></table>
+<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
+<p>文件中会出现冲突信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
+
+<p>重新add 和commit</p>
+<p>==注意：commit 不能后不能带文件名否则会报错==</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
+<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
+<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>git remote -v</code>  查看远程连接的库</p>
+<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
+<p><code>git push 名字/链接 分支名</code> 推送分支</p>
+<p><code>git pull 名字/链接 分支名</code>  拉取分支</p>
+<p><code>git clone 链接</code>  克隆仓库</p>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>实用工具</tag>
+        <tag>git</tag>
+        <tag>gitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell编程入门</title>
+    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
+<ul>
+<li>脚本以<code> #!/bin/bash</code> 开头</li>
+<li>脚本通常以.sh结尾</li>
+<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
+<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
+<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
+</ul>
+<p>一个HelloWorld示例程序</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
+<li>定义变量 ： 变量名=值</li>
+<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
+<li>声明静态变量 ：readonly 变量 （无法unset）</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
+<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
+<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
+<li>==set==显示系统所有的环境变量</li>
+</ul>
+<p><strong>设置环境变量</strong></p>
+<ol>
+<li>修改/etc/profile 文件（比如用vim打开）</li>
+<li>在文件中加入 ==export 变量名=变量值==语句</li>
+<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
+<li>新加入的环境变量可以全局使用了</li>
+</ol>
+<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
+<ul>
+<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
+<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
+<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
+<li><code>$*</code> 代表所有参数，看做一个整体</li>
+<li><code>$@</code> 代表所有参数，每个区分对待</li>
+<li><code>$#</code> 代表所有参数的个数</li>
+</ul>
+<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
+<li><code>$$</code> 当前进程的进程号</li>
+<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
+<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
+</ul>
+<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
+<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
+<li><code>$((运算式))</code></li>
+<li><code>$[运算式]</code>  （推荐）</li>
+<li><code>expr m - n</code> 中间有空格</li>
+<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
+</ol>
+<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
+<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li>判断目录是否存在，用 <code>-f</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多分支语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>case语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
+<thead>
+<tr>
+<th>语句</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“” = “”</td>
+<td>字符串比较</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>实用工具</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/12/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CSS常见布局</title>
+    <url>/2022/12/08/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/</url>
+    <content><![CDATA[<h1 id="CSS常见布局"><a href="#CSS常见布局" class="headerlink" title="CSS常见布局"></a>CSS常见布局</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>flex弹性布局</li>
+<li>grid网格布局</li>
+<li>移动端适配布局</li>
+<li>响应式布局</li>
+</ol>
+<h2 id="flex弹性布局"><a href="#flex弹性布局" class="headerlink" title="flex弹性布局"></a>flex弹性布局</h2><p> 适合单列的布局</p>
+<h3 id="1-设置flex容器"><a href="#1-设置flex容器" class="headerlink" title="1.设置flex容器"></a>1.设置flex容器</h3><h4 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h4><ul>
+<li> <code>display:flex</code>声明<strong>父容器</strong>是弹性盒子,扩展至所有有效宽度</li>
+<li> <code>display:inline-flex</code> 收缩至内容宽度</li>
+</ul>
+<h4 id="设置排列方向"><a href="#设置排列方向" class="headerlink" title="设置排列方向"></a>设置排列方向</h4><ul>
+<li> <code>flex-direction</code> 设置排列方向：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>row</td>
+<td>从左到右水平排列子元素（默认值）</td>
+</tr>
+<tr>
+<td>column</td>
+<td>从上到下垂直排列子元素</td>
+</tr>
+<tr>
+<td>row-reverse</td>
+<td>从右向左排列子元素</td>
+</tr>
+<tr>
+<td>column-reverse</td>
+<td>从下到上垂直排列子元素</td>
+</tr>
+</tbody></table>
+<h4 id="溢出处理"><a href="#溢出处理" class="headerlink" title="溢出处理"></a>溢出处理</h4><ul>
+<li><code>flex-wrap</code> 进行溢出处理，是否换行</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nowrap</td>
+<td>弹性容器为单行，会溢出（默认值）</td>
+</tr>
+<tr>
+<td>wrap</td>
+<td>弹性容器为多行，会自动换行</td>
+</tr>
+<tr>
+<td>wrap-reverse</td>
+<td>反转 wrap 排列。</td>
+</tr>
+</tbody></table>
+<h4 id="设置主轴方向上的对齐方式。"><a href="#设置主轴方向上的对齐方式。" class="headerlink" title="设置主轴方向上的对齐方式。"></a>设置主轴方向上的对齐方式。</h4><p><code>justify-content</code> 属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>flex-start</td>
+<td>弹性项目向行头紧挨着填充。（默认值）</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>弹性项目向行尾紧挨着填充。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>弹性项目居中紧挨着填充。</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>弹性项目平均分布在该行上,两边顶满。</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>弹性项目平均分布在该行上，两边留有一半的间隔空间。</td>
+</tr>
+<tr>
+<td>space-evenly</td>
+<td>弹性项目平均分布在该行上，两边留有相等的间隔空间。</td>
+</tr>
+<tr>
+<td><img data-src="https://s2.loli.net/2022/05/10/ZmcCQTLWJbeHzR3.png"></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="设置子元素在侧轴上的对齐方式"><a href="#设置子元素在侧轴上的对齐方式" class="headerlink" title="设置子元素在侧轴上的对齐方式"></a>设置子元素在侧轴上的对齐方式</h4><p><code>align-items</code> 属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch</td>
+<td>使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照’min/max-width/height’属性的限制（默认值）</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>子元素的侧轴起始位置的边界紧靠住该行的侧轴起始边界。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>子元素的侧轴起始位置的边界紧靠住该行的侧轴结束边界。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>弹性盒子元素在该行的侧轴上居中放置</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>如弹性盒子元素的行内轴与侧轴为同一条，则该值与’flex-start’等效。其它情况下，该值将参与基线对齐。</td>
+</tr>
+</tbody></table>
+<p><img data-src="https://s2.loli.net/2022/05/10/4GfilmZ1uIXpFKb.png"></p>
+<h4 id="设置各个行的对齐"><a href="#设置各个行的对齐" class="headerlink" title="设置各个行的对齐"></a>设置各个行的对齐</h4><p><code>align-content</code> 属性</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>stretch</td>
+<td>各行将会伸展以占用剩余的空间。（默认值）</td>
+</tr>
+<tr>
+<td>flex-start</td>
+<td>各行向弹性盒容器的起始位置堆叠。</td>
+</tr>
+<tr>
+<td>flex-end</td>
+<td>各行向弹性盒容器的结束位置堆叠。</td>
+</tr>
+<tr>
+<td>center</td>
+<td>各行向弹性盒容器的中间位置堆叠。</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>各行在弹性盒容器中平均分布，两端顶满。</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。</td>
+</tr>
+<tr>
+<td><img data-src="https://s2.loli.net/2022/05/10/OA4x3rnb8TIK1J7.png"></td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h4><p><code>flex-flow</code> 属性：flex-direction 和 flex-wrap 属性的缩写形式，默认是 row nowrap。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex-flow</span>: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-设置flex子项"><a href="#2-设置flex子项" class="headerlink" title="2.设置flex子项"></a>2.设置flex子项</h3><h4 id="设置顺序"><a href="#设置顺序" class="headerlink" title="设置顺序"></a>设置顺序</h4><p><code>order</code> 属性，值为数字，数字越小排越前面，允许负值</p>
+<h4 id="单个子项居中"><a href="#单个子项居中" class="headerlink" title="单个子项居中"></a>单个子项居中</h4><p>设置<code>margin: auto</code></p>
+<h4 id="单独某个子项垂直对齐方式"><a href="#单独某个子项垂直对齐方式" class="headerlink" title="单独某个子项垂直对齐方式"></a>单独某个子项垂直对齐方式</h4><p><code>align-self</code> </p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">align-self</span>: auto | flex-start | flex-end | center | baseline | stretch</span><br></pre></td></tr></table></figure>
+
+<h4 id="可用剩余空间时拉伸比例"><a href="#可用剩余空间时拉伸比例" class="headerlink" title="可用剩余空间时拉伸比例"></a>可用剩余空间时拉伸比例</h4><p><code>flex-grow</code> ,默认值为0。将剩余空间，按每个子项的比例分配给子项。</p>
+<h4 id="定义了子项的收缩的能力"><a href="#定义了子项的收缩的能力" class="headerlink" title="定义了子项的收缩的能力"></a>定义了子项的收缩的能力</h4><p><code>flex-shrink</code>,默认值为1，决定 flex 项允许收缩多少比例。</p>
+<h4 id="设置子项在主轴方向的默认大小"><a href="#设置子项在主轴方向的默认大小" class="headerlink" title="设置子项在主轴方向的默认大小"></a>设置子项在主轴方向的默认大小</h4><p><code>flex-basis</code> ,默认值auto</p>
+<h4 id="简写-1"><a href="#简写-1" class="headerlink" title="简写"></a>简写</h4><p><code>flex</code> 用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">flex: none | [ &lt; &#x27;flex-grow&#x27;&gt; &lt; &#x27;flex-shrink&#x27;&gt;? || &lt; &#x27;flex-basis&#x27;&gt; ]</span><br><span class="line">//第二三个参数可选</span><br></pre></td></tr></table></figure>
+<h3 id="3-应用"><a href="#3-应用" class="headerlink" title="3.应用"></a>3.应用</h3><ul>
+<li>两列等高布局：两列元素，一列内容变多，另一列跟着拉伸。父盒子为flex，左右列的盒子默认stretch，因此会自动拉伸。</li>
+<li>不定项居中：设置<code>justify-content: center;  align-items: flex-end;</code>,比如轮播图下面的小圆点。</li>
+<li>两列或三列布局：其中一列会自己调整宽度，父盒子为flex，然后要自适应的一列设置grow为1，就会自动填充剩余空间。</li>
+<li>溢出项布局：如轮播图，直接设置flex盒子，默认一行会溢出</li>
+<li>子项分组布局：当子元素总宽度不及父盒子时，为其中一个子元素设置margin为auto，可以将剩余空间自动分配为外边距。</li>
+</ul>
+<h2 id="grid网格布局"><a href="#grid网格布局" class="headerlink" title="grid网格布局"></a>grid网格布局</h2><p>适合多列网格布局<br><img data-src="https://s2.loli.net/2022/05/11/dsMUiJkq29IPxYQ.png"></p>
+<h3 id="1-设置grid容器"><a href="#1-设置grid容器" class="headerlink" title="1.设置grid容器"></a>1.设置grid容器</h3><h4 id="声明-1"><a href="#声明-1" class="headerlink" title="声明"></a>声明</h4><p><code>display:grid</code>  只创建了一个只有一列的网格,网页并不会马上发生变化,需要设置</p>
+<h4 id="fr单位"><a href="#fr单位" class="headerlink" title="fr单位"></a>fr单位</h4><p>fr单位规定了可用空间的分配比例</p>
+<h4 id="定义网格"><a href="#定义网格" class="headerlink" title="定义网格"></a>定义网格</h4><ul>
+<li><code>grid-template-columns: 1fr 1fr 1fr</code> 设置列数和大小</li>
+<li><code>grid-template-rows: 1fr 1fr 1fr</code> 设置行数和大小</li>
+<li><code>grid-template-areas</code> 合并单元格，使用如下</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//在父盒子中设置区域</span><br><span class="line">.grid-father&#123;</span><br><span class="line">    grid-template-areas:&quot;a1,a1,a2&quot;</span><br><span class="line">                        &quot;a1,a1,a2&quot;</span><br><span class="line">                        &quot;a3,a3,a2&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">.child&#123;</span><br><span class="line">    grid-area: a1;  //在子盒子中生效 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>grid盒子里的子盒子会按上面的设置自动填充进盒子里去，相当于设置了一个模板，往里面填盒子</p>
+<p><strong>简写</strong></p>
+<p>使用<code>grid-template:</code> 进行简写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grid-template: </span><br><span class="line">            &quot;a1 a1 a2&quot; 1fr   //每一行后面跟着的是行rows的单位</span><br><span class="line">            &quot;a1 a1 a2&quot; 1fr</span><br><span class="line">            &quot;a3 a3 a3&quot; 1fr</span><br><span class="line">            / 100px 100px 100px;  //最后一行是列columns的单位（记得斜线）</span><br></pre></td></tr></table></figure>
+<h4 id="网格间隙"><a href="#网格间隙" class="headerlink" title="网格间隙"></a>网格间隙</h4><ul>
+<li><code>grid-column-gap</code> 列间隙</li>
+<li><code>grid-row-gap</code>  行间隙</li>
+<li><code>grid-gap</code>  复合写法，先写行row，再写列column</li>
+</ul>
+<p>现在更推荐</p>
+<ul>
+<li><code>column-gap</code></li>
+<li><code>row-gap</code></li>
+<li><code>gap</code></li>
+</ul>
+<h4 id="网格对齐方式"><a href="#网格对齐方式" class="headerlink" title="网格对齐方式"></a>网格对齐方式</h4><ul>
+<li><code>justify-items</code> 水平方向，子项在自己单元格里的对齐方式</li>
+<li><code>align-items</code>  垂直方向，子项在自己单元格里的对齐方式</li>
+<li>参数有 start/end/center 默认stret</li>
+<li><code>place-items</code> 复合写法 垂直 水平</li>
+</ul>
+<ul>
+<li><code>justify-content</code> 水平方向</li>
+<li><code>align-content</code>  垂直方向</li>
+<li>上述两个属性，设置网格整体（模板），相对父盒子的位置</li>
+<li>属性有start/end/center/space-between/space-around/space-evenly 默认stretch</li>
+<li><code>place-content</code>  复合写法  垂直 水平</li>
+</ul>
+<p>以上设置==网格小于容器==才能看到效果</p>
+<h4 id="隐式网格的设置"><a href="#隐式网格的设置" class="headerlink" title="隐式网格的设置"></a>隐式网格的设置</h4><p>当子项溢出时，会自动布局新网格，就是隐式网格</p>
+<ul>
+<li><code>grid-auto-flow</code>  属性控制着自动布局算法怎样运作</li>
+<li><code>grid-auto-columns</code>  指定了隐式创建的网格纵向轨道（track）的宽度</li>
+<li><code>grid-auto-rows</code>   设置网格中行的默认尺寸</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">grid-auto-flow: row;    //在必要时增加新行(默认)</span><br><span class="line">grid-auto-flow: column;     //在必要时增加新列</span><br><span class="line">grid-auto-flow: dense;  //如果后面出现了稍小的元素，则会试图去填充网格中前面留下的空白。可能导致原来出现的次序被打乱</span><br><span class="line">grid-auto-flow: row dense;</span><br><span class="line">grid-auto-flow: column dense;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="2-设置grid子项"><a href="#2-设置grid子项" class="headerlink" title="2.设置grid子项"></a>2.设置grid子项</h3><h4 id="基于线的元素放置"><a href="#基于线的元素放置" class="headerlink" title="基于线的元素放置"></a>基于线的元素放置</h4><p><strong>线</strong>：即开篇图片中编了序号123…的线（间隙所在的位置），从1开始编号命名，n行就n+1条线</p>
+<p>用以下几个属性可以设置子项的起始位置(基于线)</p>
+<ul>
+<li><code>grid-column-start</code> 属性：单元格左边框所在的垂直网格线</li>
+<li><code>grid-column-end</code> 属性：单元格右边框所在的垂直网格线</li>
+<li><code>grid-row-start</code> 属性：单元格上边框所在的水平网格线</li>
+<li><code>grid-row-end</code> 属性：单元格下边框所在的水平网格线</li>
+</ul>
+<p>后面跟线的编号数字</p>
+<p>==注意==：只设置前一个盒子的grid-column，后面的盒子会放入前一个盒子后面的格子，因为grid-row默认是auto。如果设定了grid-row，就明确了位置，其他盒子会自动从第一个格子开始排列。</p>
+<p>grid-template还可以给线<strong>命名</strong>：</p>
+<ul>
+<li><code>grid-template-columns: [col1] 1fr [col2] 1fr [col3] 1fr [col4]</code> 用中括号设置线的名称。命名就可以代替上面四个属性的数字参数</li>
+</ul>
+<p><strong>简写</strong>：</p>
+<ul>
+<li><code>grid-column: 2/4</code> <code>grid-row: 2/3;</code>用斜线分割  起始/结束</li>
+<li><code>grid-column: span 2/span 2;</code> 表示行列占据两格</li>
+<li><code>grid-area: 2/2/4/3;</code> grid-column-start/rid-row-start/grid-column-end/grid-row-end</li>
+<li><code>grid-area: 1/1/span 2/span 2;</code> 表示行列从基线1开始，上下占据两格</li>
+</ul>
+<p>grid-area既可以用命名设置子项，也可以用基线设置</p>
+<h4 id="子项对齐方式"><a href="#子项对齐方式" class="headerlink" title="子项对齐方式"></a>子项对齐方式</h4><p>操作某一个子项</p>
+<ul>
+<li><code>justify-self</code></li>
+<li><code>align-self</code></li>
+</ul>
+<h3 id="3-网格相关方法"><a href="#3-网格相关方法" class="headerlink" title="3.网格相关方法"></a>3.网格相关方法</h3><p>repeat(number,size)</p>
+<ul>
+<li> <code>grid-template-columns:repeat(5,100px);</code> 设置五个重复的列，每个100px</li>
+<li> <code>grid-template-columns:repeat(auto-fill,100px);</code> 根据父容器大小，自动设置列数</li>
+</ul>
+<p>minmax(min,max)</p>
+<ul>
+<li><code>grid-template-columns:100px minmax(100px,1fr) 100px;</code> 设定最小值为100px，最大值自适应。</li>
+<li>复合用法<code>grid-template-column:repeat(auto-fill,minmax(200px,1fr));</code></li>
+</ul>
+<h3 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h3><ol>
+<li>==叠加布局==：用<code>grid-area</code>将几个盒子装进同一个格子，再用<code>align-self</code>和<code>justif-self</code>对每个盒子单独定位。</li>
+<li>==多组合布局==：直接利用盒子的特性即可。</li>
+<li>==栅格布局==：父容器设置<code>grid-template-columns:repeat(12,1fr)</code> 即划分12个栅格，子容器用<code>grid-area: auto/auto/auto/1</code> 控制跨越几个栅格（最后数字是几就跨过几个栅格）</li>
+<li>==容器行列自适应布局==: 利用子项溢出会自动产生隐式网格折行，控制<code>grid-auto-flow</code> 就可以控制行(默认row)还是列(column)的自适应</li>
+</ol>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>网页布局</tag>
+        <tag>CSS</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html常用标签及属性</title>
+    <url>/2022/12/08/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%B1%9E%E6%80%A7%E5%BD%92%E7%BA%B3/</url>
+    <content><![CDATA[<p>…</p>
+<span id="more"></span>
+
+<h2 id="开头区域"><a href="#开头区域" class="headerlink" title="开头区域"></a>开头区域</h2><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;!DOCTYPE ...&gt;</code></td>
+<td>html5直接<code>&lt;!DOCTYPE html&gt; </code></td>
+<td>告知浏览器文档使用哪种 HTML 或 XHTML 规范 <strong>“单标签”</strong></td>
+</tr>
+<tr>
+<td><code>&lt;html lang=&quot;en&quot;&gt;</code></td>
+<td>en：定义页面语言为英语。zh-CN：定义页面语言为中文。</td>
+<td>用于指定页面的语言类型 <strong>“单标签”</strong></td>
+</tr>
+</tbody></table>
+<h2 id="head区域"><a href="#head区域" class="headerlink" title="head区域"></a>head区域</h2><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>meta</td>
+<td>charset；name；http-equiv；content</td>
+<td>基本的配置项目：字符集 charset，视口 viewport，定义“关键词”，定义“页面描述”等等 <strong>“单标签”</strong></td>
+</tr>
+<tr>
+<td>title</td>
+<td></td>
+<td>设置网页标题 <strong>“双标签”</strong></td>
+</tr>
+<tr>
+<td>base</td>
+<td>href</td>
+<td>指定基础的路径</td>
+</tr>
+<tr>
+<td>style</td>
+<td></td>
+<td>写css</td>
+</tr>
+<tr>
+<td>link</td>
+<td>rel；type；href</td>
+<td>定义文档与外部资源的关系</td>
+</tr>
+<tr>
+<td>script</td>
+<td></td>
+<td>写js</td>
+</tr>
+</tbody></table>
+<h2 id="body区域"><a href="#body区域" class="headerlink" title="body区域"></a>body区域</h2><h3 id="排版标签"><a href="#排版标签" class="headerlink" title="排版标签"></a>排版标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;h1&gt;-&lt;h6&gt;</code></td>
+<td></td>
+<td><strong>块级</strong></td>
+</tr>
+<tr>
+<td><code>&lt;p&gt;</code></td>
+<td>align</td>
+<td><strong>块级</strong></td>
+</tr>
+<tr>
+<td><code>&lt;hr /&gt;</code></td>
+<td>align；size；width；color；noshade</td>
+<td>水平线</td>
+</tr>
+<tr>
+<td><code>&lt;br /&gt;</code></td>
+<td></td>
+<td>换行</td>
+</tr>
+<tr>
+<td><code>&lt;div&gt;</code></td>
+<td>align</td>
+<td><strong>块级</strong></td>
+</tr>
+<tr>
+<td><code>&lt;span&gt;</code></td>
+<td></td>
+<td><strong>内联</strong></td>
+</tr>
+<tr>
+<td><code>&lt;center&gt;</code></td>
+<td></td>
+<td>内容居中（已废弃）</td>
+</tr>
+<tr>
+<td><code>&lt;pre&gt;</code></td>
+<td></td>
+<td>预定义（几乎不用）</td>
+</tr>
+</tbody></table>
+<h3 id="字体标签"><a href="#字体标签" class="headerlink" title="字体标签"></a>字体标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;u&gt;</code></td>
+<td></td>
+<td>下划线标记</td>
+</tr>
+<tr>
+<td><code>&lt;s&gt;或&lt;del&gt;</code></td>
+<td></td>
+<td>中划线标记（删除线）</td>
+</tr>
+<tr>
+<td><code>&lt;i&gt;或&lt;em&gt;</code></td>
+<td></td>
+<td>斜体标记</td>
+</tr>
+<tr>
+<td><code>&lt;b&gt;或&lt;strong&gt;</code></td>
+<td></td>
+<td>粗体标签(已废弃)</td>
+</tr>
+<tr>
+<td><code>&lt;font&gt;</code></td>
+<td></td>
+<td>字体标签（已废弃）</td>
+</tr>
+<tr>
+<td><code>&lt;sup&gt;和&lt;sub&gt;</code></td>
+<td></td>
+<td>上标和下标</td>
+</tr>
+<tr>
+<td><code>&lt;a&gt;</code></td>
+<td>href；target；name；title</td>
+<td><strong>内联</strong></td>
+</tr>
+</tbody></table>
+<h3 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;img /&gt;</code></td>
+<td>src；alt；width；height；title；align</td>
+<td><strong>行内块</strong></td>
+</tr>
+</tbody></table>
+<h3 id="列表标签"><a href="#列表标签" class="headerlink" title="列表标签"></a>列表标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;ul&gt;</code></td>
+<td>type</td>
+<td>无序列表</td>
+</tr>
+<tr>
+<td><code>&lt;ol&gt;</code></td>
+<td>type</td>
+<td>有序列表</td>
+</tr>
+<tr>
+<td><code>&lt;li&gt;</code></td>
+<td></td>
+<td>列表项</td>
+</tr>
+<tr>
+<td><code>&lt;dl&gt;</code></td>
+<td></td>
+<td>定义列表</td>
+</tr>
+<tr>
+<td><code>&lt;dt&gt;</code></td>
+<td></td>
+<td>定义列表标题</td>
+</tr>
+<tr>
+<td><code>&lt;dd&gt;</code></td>
+<td></td>
+<td>定义列表项</td>
+</tr>
+</tbody></table>
+<h3 id="表格标签"><a href="#表格标签" class="headerlink" title="表格标签"></a>表格标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;table&gt;</code></td>
+<td>border；style=”border-collapse:collapse;”；width；height；bordercolor；align；cellpadding；cellspacing；bgcolor；background；bordercolorlight；bordercolordark；dir（ltr，rtl）</td>
+<td>表格</td>
+</tr>
+<tr>
+<td><code>&lt;tr&gt;</code></td>
+<td>dir；bgcolor；height；align；valign</td>
+<td>行</td>
+</tr>
+<tr>
+<td><code>&lt;td&gt;</code></td>
+<td>colspan；rowspan；align；valign；width；height；bgcolor；background</td>
+<td>列（单元格）<strong>行内块</strong></td>
+</tr>
+<tr>
+<td><code>&lt;th&gt;</code></td>
+<td></td>
+<td>加粗单元格即td+b</td>
+</tr>
+<tr>
+<td><code>&lt;caption&gt;</code></td>
+<td>align</td>
+<td>表格标题，与tr并列</td>
+</tr>
+<tr>
+<td><code>&lt;thead&gt;</code></td>
+<td></td>
+<td>按照thead、tbody、tfoot的顺序依次来显示内容</td>
+</tr>
+<tr>
+<td><code>&lt;tbody&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>&lt;tfoot&gt;</code></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="框架标签"><a href="#框架标签" class="headerlink" title="框架标签"></a>框架标签</h3><p>framset和body只能2选1，iframe是body的子标记</p>
+<table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;frameset&gt;</code></td>
+<td>rows；cols</td>
+<td>框架的集合</td>
+</tr>
+<tr>
+<td><code>&lt;frame&gt;</code></td>
+<td>scrolling；noresize；bordercolor；frameborder（0,1）；name</td>
+<td>框架</td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code></td>
+<td>src；width；height；scrolling；name</td>
+<td>内嵌框架</td>
+</tr>
+</tbody></table>
+<h3 id="表单标签"><a href="#表单标签" class="headerlink" title="表单标签"></a>表单标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;form&gt;</code></td>
+<td>name；id；action；method</td>
+<td>表单标签</td>
+</tr>
+<tr>
+<td><code>&lt;input&gt;</code></td>
+<td>type；value；size；readonly；disabled</td>
+<td>输入标签<strong>行内块</strong></td>
+</tr>
+<tr>
+<td><code>&lt;select&gt;</code></td>
+<td>multiple；size</td>
+<td>下拉列表</td>
+</tr>
+<tr>
+<td><code>&lt;option&gt;</code></td>
+<td>selected</td>
+<td>select里的每一项</td>
+</tr>
+<tr>
+<td><code>&lt;textarea&gt;</code></td>
+<td>rows；col；readonly</td>
+<td>多行文本输入</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;</code></td>
+<td>for</td>
+<td>关联input元素</td>
+</tr>
+</tbody></table>
+<p>intput的type属性值</p>
+<ol>
+<li>text（默认）</li>
+<li>password：密码类型</li>
+<li>radio：单选按钮</li>
+<li>checkbox：多选按钮</li>
+<li>checked：将单选按钮或多选按钮默认处于选中状态。</li>
+<li>hidden：隐藏框</li>
+<li>button：普通按钮 </li>
+<li>submit：提交按钮</li>
+<li>reset：重置按钮</li>
+<li>image：图片按钮,和提交按钮的功能完全一致</li>
+<li>file：文件选择框</li>
+</ol>
+<h3 id="多媒体标签"><a href="#多媒体标签" class="headerlink" title="多媒体标签"></a>多媒体标签</h3><table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>常见属性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>&lt;bgsound&gt;</code></td>
+<td>src；loop</td>
+<td>播放背景音乐</td>
+</tr>
+<tr>
+<td>``</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>``</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>``</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>``</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><img data-src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212051158145.png" alt="image"><br><img data-src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212051131565.png" alt="image"></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>html</tag>
       </tags>
   </entry>
 </search>
