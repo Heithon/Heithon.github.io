@@ -2747,3 +2747,14 @@ mark.search-keyword {
   position: fixed;
   top: 0;
 }
+body {
+  background: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-color: #222;
+}
+.post-block {
+  opacity: 0.8;
+}
