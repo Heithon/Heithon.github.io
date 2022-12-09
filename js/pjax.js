@@ -64,10 +64,14 @@ document.addEventListener('pjax:success', () => {
 
   pjax.executeScripts(document.querySelectorAll('script[data-pjax]'));
   NexT.boot.refresh();
+  var newContent = document.querySelector("#tagsChart");
+  pjax.refresh(newContent);
+  console.log("ttttttttt:"+newContent);
 
 
   // Define Motion Sequence & Bootstrap Motion.
   if (CONFIG.motion.enable) {
+    console.log("motion.enable开始")
     NexT.motion.integrator
       .init()
       .add(NexT.motion.middleWares.subMenu)
@@ -77,13 +81,12 @@ document.addEventListener('pjax:success', () => {
       .bootstrap();
   }
   if (CONFIG.sidebar.display !== 'remove') {
+    console.log("display=remove开始")
     const hasTOC = document.querySelector('.post-toc');
     document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
     NexT.utils.activateSidebarPanel(hasTOC ? 0 : 1);
     NexT.utils.updateSidebarPosition();
   }
 
-  var newContent = document.querySelector(".charts.div");
-  console.log("ttt: "+ newContent);
-  pjax.refresh(newContent);
+  
 });
