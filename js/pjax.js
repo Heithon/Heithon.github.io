@@ -148,6 +148,7 @@ document.addEventListener('pjax:success', () => {
     url: "js/chartsData.json",//同文件夹下的json文件路径
     type: "GET",//请求方式为get
     dataType: "json", //返回数据格式为json
+    timeout: 1000*2, //请求超时
     success: function (data) {//请求成功完成后要执行的方法 
         
         console.log("ddddddddddd: ")
