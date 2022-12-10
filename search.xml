@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git常用命令</title>
+    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
+<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
+<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
+<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
+<p>shift + ins ： 同上</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>初始化工作区</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区状态</td>
+</tr>
+<tr>
+<td><code>git add 文件名</code></td>
+<td>将文件加入暂存区</td>
+</tr>
+<tr>
+<td><code>git rm --cached 文件名</code></td>
+<td>将文件从暂存区移除</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
+<td>将文件提交到本地库</td>
+</tr>
+<tr>
+<td><code>git reflog</code></td>
+<td>查看简化版本信息</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看完整版本信息</td>
+</tr>
+<tr>
+<td><code>git reset --hard 版本号</code></td>
+<td>穿梭到哪个版本</td>
+</tr>
+</tbody></table>
+<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch -v</code></td>
+<td>插看分支</td>
+</tr>
+<tr>
+<td><code>git branch 分支名</code></td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td><code>git checkout 分支名</code></td>
+<td>切换到指定分支</td>
+</tr>
+<tr>
+<td><code>git merge 分支名</code></td>
+<td>将指定分支合并到当前分支</td>
+</tr>
+</tbody></table>
+<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
+<p>文件中会出现冲突信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
+
+<p>重新add 和commit</p>
+<p>==注意：commit 不能后不能带文件名否则会报错==</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
+<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
+<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>git remote -v</code>  查看远程连接的库</p>
+<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
+<p><code>git push 名字/链接 分支名</code> 推送分支</p>
+<p><code>git pull 名字/链接 分支名</code>  拉取分支</p>
+<p><code>git clone 链接</code>  克隆仓库</p>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>gitHub</tag>
+        <tag>实用工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS常见布局</title>
     <url>/2022/12/08/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h1 id="CSS常见布局"><a href="#CSS常见布局" class="headerlink" title="CSS常见布局"></a>CSS常见布局</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
@@ -401,125 +498,8 @@
         <category>实用工具</category>
       </categories>
       <tags>
+        <tag>实用工具</tag>
         <tag>Shell</tag>
-        <tag>实用工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/12/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Git常用命令</title>
-    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
-<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
-<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
-<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
-<p>shift + ins ： 同上</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git init</code></td>
-<td>初始化工作区</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>查看工作区状态</td>
-</tr>
-<tr>
-<td><code>git add 文件名</code></td>
-<td>将文件加入暂存区</td>
-</tr>
-<tr>
-<td><code>git rm --cached 文件名</code></td>
-<td>将文件从暂存区移除</td>
-</tr>
-<tr>
-<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
-<td>将文件提交到本地库</td>
-</tr>
-<tr>
-<td><code>git reflog</code></td>
-<td>查看简化版本信息</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>查看完整版本信息</td>
-</tr>
-<tr>
-<td><code>git reset --hard 版本号</code></td>
-<td>穿梭到哪个版本</td>
-</tr>
-</tbody></table>
-<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git branch -v</code></td>
-<td>插看分支</td>
-</tr>
-<tr>
-<td><code>git branch 分支名</code></td>
-<td>创建分支</td>
-</tr>
-<tr>
-<td><code>git checkout 分支名</code></td>
-<td>切换到指定分支</td>
-</tr>
-<tr>
-<td><code>git merge 分支名</code></td>
-<td>将指定分支合并到当前分支</td>
-</tr>
-</tbody></table>
-<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
-<p>文件中会出现冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
-
-<p>重新add 和commit</p>
-<p>==注意：commit 不能后不能带文件名否则会报错==</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
-<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
-<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>git remote -v</code>  查看远程连接的库</p>
-<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
-<p><code>git push 名字/链接 分支名</code> 推送分支</p>
-<p><code>git pull 名字/链接 分支名</code>  拉取分支</p>
-<p><code>git clone 链接</code>  克隆仓库</p>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>git</tag>
-        <tag>gitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -1589,6 +1569,26 @@
         <tag>实用工具</tag>
         <tag>Linux</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/12/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>html常用标签及属性</title>
