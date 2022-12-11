@@ -44,6 +44,7 @@ let Data = {};
 //   Data = JSON.parse(JSON.stringify(data))
 // });
 
+
 $.ajax({
   url: "js/chartsData.json",//同文件夹下的json文件路径
   type: "GET",//请求方式为get
@@ -143,21 +144,25 @@ let categoryFun = function(){
 // 加载表格函数---------------------------------
 
 document.addEventListener('pjax:success', () => {
+    // window.location.pathname == '/tags/'||window.location.pathname == '/categories/'
 
-  $.ajax({
-    url: "js/chartsData.json",//同文件夹下的json文件路径
-    type: "GET",//请求方式为get
-    dataType: "json", //返回数据格式为json
-    timeout: 1000*2, //请求超时
-    success: function (data) {//请求成功完成后要执行的方法 
-        
-        console.log("ddddddddddd: ")
-        console.log(data)
-        Data = data;
-    }
+ if(window.location.pathname == '/'){
+    $.ajax({
+        url: "js/chartsData.json",//同文件夹下的json文件路径
+        type: "GET",//请求方式为get
+        dataType: "json", //返回数据格式为json
+        timeout: 1000*2, //请求超时
+        success: function (data) {//请求成功完成后要执行的方法 
+            
+            console.log("ddddddddddd: ")
+            console.log(data)
+            Data = data;
+        }
+      
+      })
+    
+ }
   
-  })
-
   // (locals)=> {
   //   const $ = cheerio.load(locals)
   //   const post = $('#posts-chart')
