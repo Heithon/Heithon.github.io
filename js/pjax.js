@@ -153,6 +153,8 @@ let valine = function(){
       el: '#vcomments',
       appId: 'x76UamaH1tESBeYk3ltUtgdL-gzGzoHsz',
       appKey: 'oD0YdOe4tENnPdKI4k2kdTzj',
+      avatar: "retro",
+       path: window.location.pathname,
     })
   }
 }
