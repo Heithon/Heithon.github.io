@@ -1,9 +1,10 @@
 /* global NexT, CONFIG */
-
+// pjax:success
 document.addEventListener('page:loaded', () => {
   const { appid, appkey } = CONFIG.changyan;
   const mainJs = 'https://cy-cdn.kuaizhan.com/upload/changyan.js';
   const countJs = `https://cy-cdn.kuaizhan.com/upload/plugins/plugins.list.count.js?clientId=${appid}`;
+
 
   // Get the number of comments
   setTimeout(() => {

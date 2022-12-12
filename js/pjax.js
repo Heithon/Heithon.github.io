@@ -11,6 +11,7 @@ const pjax = new Pjax({
     '.post-toc-wrap',
     '.languages',
     '.pjax',
+    // '.comments',
   ],
   analytics: false,
   cacheBust: false,
@@ -46,7 +47,7 @@ let Data = {};
 
 
 $.ajax({
-  url: "js/chartsData.json",//同文件夹下的json文件路径
+  url: "/js/chartsData.json",//同文件夹下的json文件路径
   type: "GET",//请求方式为get
   dataType: "json", //返回数据格式为json
   success: function (data) {//请求成功完成后要执行的方法 
@@ -142,6 +143,20 @@ let categoryFun = function(){
 
 }
 // 加载表格函数---------------------------------
+
+// 加载评论函数---------------------------------
+let valine = function(){
+  if(!CONFIG.page.isHome){
+    console.log("sssssssssssssssss")
+  
+    new Valine({
+      el: '#vcomments',
+      appId: 'x76UamaH1tESBeYk3ltUtgdL-gzGzoHsz',
+      appKey: 'oD0YdOe4tENnPdKI4k2kdTzj',
+    })
+  }
+}
+// 加载评论函数---------------------------------
 
 document.addEventListener('pjax:success', () => {
     // window.location.pathname == '/tags/'||window.location.pathname == '/categories/'
@@ -245,9 +260,12 @@ document.addEventListener('pjax:success', () => {
         // console.log("tag长度："+tag.length+"表的长度："+$('#tagsChart').length);
       // if (tag.attr('data-encode') === 'true') htmlEncode = true
       // console.log(typeof(window.location.pathname));
-      if(window.location.pathname == '/tags/')   tagFun();
+      if(window.location.pathname == '/tags/')   {tagFun();}
       if(window.location.pathname == '/categories/')   categoryFun();
-     
+
+      valine();
+
+    //   document.dispatchEvent()
     // }
     // if (category.length > 0 && $('#categoriesChart').length === 0) {
     //   if (category.attr('data-encode') === 'true') htmlEncode = true
