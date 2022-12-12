@@ -2753,8 +2753,12 @@ body {
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
-  background-color: #222;
+  background-color: #111;
 }
 .post-block {
   opacity: 0.85;
+}
+.v[data-class="v"] .veditor {
+  max-height: 17em;
+  overflow-y: scroll;
 }
