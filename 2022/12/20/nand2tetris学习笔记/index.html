@@ -29,29 +29,36 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.14.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":true,"color":"#111","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":false,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="计算机/网站/学习/前端/操作系统/CS/博客/技术博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://example.com/about/index.html">
+    <meta name="description" content="徒手搓电脑，并在上面跑俄罗斯方块 更新至第一章：布尔逻辑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nand2tetris学习笔记">
+<meta property="og:url" content="http://example.com/2022/12/20/nand2tetris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Heithon">
-<meta property="og:description" content="计算机/网站/学习/前端/操作系统/CS/博客/技术博客">
+<meta property="og:description" content="徒手搓电脑，并在上面跑俄罗斯方块 更新至第一章：布尔逻辑">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-06T15:14:58.000Z">
-<meta property="article:modified_time" content="2022-12-06T15:14:58.000Z">
+<meta property="og:image" content="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201817519.png">
+<meta property="og:image" content="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201905375.jpeg">
+<meta property="article:published_time" content="2022-12-20T12:47:51.000Z">
+<meta property="article:modified_time" content="2022-12-20T12:47:51.000Z">
 <meta property="article:author" content="Heithon">
+<meta property="article:tag" content="计算体系结构">
+<meta property="article:tag" content="os">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="编译原理">
+<meta property="article:tag" content="手搓电脑">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201817519.png">
 <link rel="publisher" href="%3Cg+:profile_link%3E">
 
 
-<link rel="canonical" href="http://example.com/about/">
+<link rel="canonical" href="http://example.com/2022/12/20/nand2tetris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":true,"permalink":"http://example.com/about/index.html","path":"about/index.html","title":"about"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/12/20/nand2tetris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/","path":"2022/12/20/nand2tetris学习笔记/","title":"nand2tetris学习笔记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>about | Heithon
-</title>
+<title>nand2tetris学习笔记 | Heithon</title>
   
 
 
@@ -149,7 +156,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -162,6 +169,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Week0-%E8%AF%BE%E7%A8%8B%E7%AE%80%E4%BB%8B%E5%92%8C%E4%B8%80%E4%BA%9B%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">Week0:课程简介和一些背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-nand2tetris%E8%AF%BE%E7%A8%8B%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.0.1.</span> <span class="nav-text">一. nand2tetris课程介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="nav-number">1.0.2.</span> <span class="nav-text">二. 计算机的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E5%AD%A6%E4%B9%A0%E7%8E%AF%E5%A2%83%E5%92%8C%E8%B5%84%E6%96%99"><span class="nav-number">1.0.3.</span> <span class="nav-text">三. 学习环境和资料</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Week1-%E5%B8%83%E5%B0%94%E9%80%BB%E8%BE%91"><span class="nav-number">2.</span> <span class="nav-text">Week1:布尔逻辑</span></a></li></div>
         </div>
         <!--/noindex-->
 
@@ -285,34 +293,184 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">about
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope="" itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/20/nand2tetris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden="" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Heithon">
+    </span>
+
+    <span hidden="" itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Heithon">
+      <meta itemprop="description" content="计算机/网站/学习/前端/操作系统/CS/博客/技术博客">
+    </span>
+
+    <span hidden="" itemprop="post" itemscope="" itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="nand2tetris学习笔记 | Heithon">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          nand2tetris学习笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-12-20 20:47:51" itemprop="dateCreated datePublished" datetime="2022-12-20T20:47:51+08:00">2022-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+          <a href="/categories/CS%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">CS基础知识</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 ≈</span>
+      <span>7 分钟</span>
+    </span>
 </div>
 
-</header>
+        </div>
+      </header>
 
-      
-      
-      <div class="post-body">
-          
-      </div>
-      
-      
-      
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201817519.png" alt="image-20221220181728418"></p>
+<p>徒手搓电脑，并在上面跑俄罗斯方块</p>
+<p>更新至第一章：布尔逻辑</p>
+<span id="more"></span>
+
+<h1 id="Week0-课程简介和一些背景知识"><a href="#Week0-课程简介和一些背景知识" class="headerlink" title="Week0:课程简介和一些背景知识"></a>Week0:课程简介和一些背景知识</h1><h3 id="一-nand2tetris课程介绍"><a href="#一-nand2tetris课程介绍" class="headerlink" title="一. nand2tetris课程介绍"></a>一. nand2tetris课程介绍</h3><p>​        nand2tetris即from nand to tetris(to和2的英文读音一致)，翻译过来就是从与非门到俄罗斯方块。这是一门由希伯来大学的两名教授开发的计算机基础知识课程。课程以项目驱动，从最基础的逻辑门开始，一步步构造一个完整的名为Hack的计算机系统，包括基础的硬件结构，还有软件层面的操作系统。我们甚至要构建一个名为jack的编程语言，用它来写操作系统，最后也是用它写一个俄罗斯方块小游戏在我们制造的这个计算机上运行。</p>
+<p>​        通过这门课程，我们可以俯瞰整个计算机，拉通理解整个过程：从里面的每一个零件的协同运作，一直到能在屏幕上运行我们的应用程序。其中包含数字电路，计算机组成原理，操作系统，编译原理等等知识，但是都没有特别深入。这门课最大的价值是为我们展开了一幅计算机知识的地图，我们可以在学完整个课程后，选择自己喜欢的地方深入。另外课程提供的实验是这个课程的最大亮点，可以说这个实验就是课程本身，它提供了一种动手制造整个计算机的途经，让我们在实践中学习知识，尤为可贵。<b style="color:red">因此学习这门课程尽量要动手实践</b></p>
+<p>​        本课程分为大的两部分，第一部分是硬件，第二部分是软件，自底向上的构建计算机系统。</p>
+<h3 id="二-计算机的诞生"><a href="#二-计算机的诞生" class="headerlink" title="二. 计算机的诞生"></a>二. 计算机的诞生</h3><p style="background-color: lightgreen;"> 本小节为本人凭借兴趣了解的题外话，可以跳过 </p>
+
+
+
+<p>​        学习的过程中也在了解一些课余的知识，比如<strong>计算机是怎么诞生的？</strong> <strong>计算机为什么可以是计算机？</strong></p>
+<p>​        计算机发明的最主要目的便如名字所说：计算。为了计算我们向前甚至可以追溯到结绳记数，但这些“古典”的计算方式都和我们现在的通用计算机相去甚远。关于现代计算机的开端，我们可以放眼到1936年由图灵提出的图灵机模型。图灵机是一个抽象的概念，它抽象了人们使用纸笔运算的过程，为自动化的计算提供了可能。</p>
+<p>​        想想我们用纸笔是怎么运算的？首先，我们肯定有解题的思路，或者说叫算法，其次我们的问题有一些初始的值。我们的计算过程就是通过我们的解题思路，不停的对这些值进行修改，直到改成目标答案。而图灵设想了一个自动化的机器来完成上述操作，具体如下：</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201905375.jpeg" alt="什么是图灵机"></p>
+<p>​        如上图，这是一个经典的图灵机模型图。其中包含这几个部分：</p>
+<ul>
+<li><p>一条无限长的纸带，纸带被划分成一个个小格子，每个格子只有三种状态 （空和1）</p>
+</li>
+<li><p>纸带上方的方盒子是一个读写头，可以在纸带上面按照格子移动，它可以做三种操作：</p>
+<ol>
+<li>读取格子数据</li>
+<li>编辑格子里的数据</li>
+<li>向左或向右移动</li>
+</ol>
+</li>
+<li><p>横插在方盒子上的是图灵机当前的状态，图灵机可以有许多不同的状态。</p>
+</li>
+<li><p>方盒子上面的纸张是一些指令（也就是前文纸笔运算时的解题思路）。每条指令分为状态，和操作，控制读写头在指定状态执行指定操作。（状态可以由纸带上的数据和图灵机本身的状态共同决定）</p>
+</li>
+</ul>
+<p>​        图灵机初始的时候，会有一个状态，纸带上也有一些初始值。然后读写头根据当前状态对应的指令，做出编辑数据，移动，改变状态等操作。到了下一个状态，又执行对应的操作。这样一个状态一个状态的迭代，不停的修改纸带上的数据，到最终得到结果时，就让图灵机进入停机状态。</p>
+<p>​        上面的过程描述很抽象，这里推荐个视频可以帮助理解：<b style="color: blue;"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV13v4y1w7yM/?share_source=copy_web&amp;vd_source=c0b7e2971676981be548dbddf193bcc9">图灵机运作原理及示例</a></b></p>
+<p>​        无论是否理解这个机器，至少我们知道，它能通过一些指令，用读写头在纸带上修修改改，而且过程是一步一步的，一条指令一串操作这样修改，最后得出结果。这为现代计算机的实现提供了方向，而且科学家们也证明了这个模型的可行性（具体可以学习计算理论和数理逻辑相关知识）。</p>
+<p>​        我们要造一个计算机，首先得要有个东西装指令吧，还得有个东西能理解指令吧，还要能判断当前的状态；我们还要有个无限长的纸带，虽然不太现实，但至少得足够长吧；还要有个能在纸带上游走，对纸带数据进行增删改查的读写头吧；还有那个标记当前状态的玩意也得有吧。通过后面的学习，我们可以知道，现在目光所及的通用计算机几乎都是按照这个框架制造的。</p>
+<p>​        下一章我们要学习布尔逻辑，这也是个划时代的玩意，它将概念上的形式逻辑落地成了硅片上的电路，用看得见摸得着的东西来呈现只有思维里和纸上符号才能表示的逻辑。计算时我们脑子里的解题思路，就有了一个被实体化的可能，图灵机的指令那块也有了实现的希望。事实上在布尔逻辑和电路的帮助下，我们能把各种信息数字化到芯片里，进行存储，读取和处理等等操作。正是这些伟大的思想和技术的综合作用，才带了如今非凡繁盛的互联网时代。</p>
+<h3 id="三-学习环境和资料"><a href="#三-学习环境和资料" class="headerlink" title="三. 学习环境和资料"></a>三. 学习环境和资料</h3><p>​        学习这一套课程只需要有一台普通的电脑就行，win和linux系统都可。然后需要下载的资料链接放下面：</p>
+<ol>
+<li><p>课程视频教程b站：**<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1KJ411s7QJ/?share_source=copy_web&amp;vd_source=c0b7e2971676981be548dbddf193bcc9">【高清-中字-公开课】依据基本原理构建现代计算机：从与非门到俄罗斯方块(点击观看)</a>** </p>
+</li>
+<li><p>课程官网：**<a target="_blank" rel="noopener" href="https://www.nand2tetris.org/">Nand2Tetris（点击进入）</a>**</p>
+</li>
+<li><p>课程配套软件和练习文件：**<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1oX45mzHeQREl9IGp6YQe6g?pwd=2222">网盘下载（提取码：2222）</a>**</p>
+</li>
+<li><p>课程配套书籍《计算机系统要素：从零开始构建现代计算机》：**<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1yxG3ENOcnZrpe7BNoTsBfA?pwd=2222">网盘下载（提取码：2222）</a>**</p>
+</li>
+</ol>
+<p>​        我自己学习的方式是以看书为主，然后有不懂的地方再去看视频，学完一章就直接动手实验。</p>
+<h1 id="Week1-布尔逻辑"><a href="#Week1-布尔逻辑" class="headerlink" title="Week1:布尔逻辑"></a>Week1:布尔逻辑</h1>
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat_cuted.png" alt="Heithon 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay_cuted.jpg" alt="Heithon 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 计算体系结构</a>
+              <a href="/tags/os/" rel="tag"><i class="fa fa-tag"></i> os</a>
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
+              <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/" rel="tag"><i class="fa fa-tag"></i> 编译原理</a>
+              <a href="/tags/%E6%89%8B%E6%90%93%E7%94%B5%E8%84%91/" rel="tag"><i class="fa fa-tag"></i> 手搓电脑</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/13/Typora%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="Typora使用教程">
+                  <i class="fa fa-chevron-left"></i> Typora使用教程
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 
