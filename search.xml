@@ -1456,6 +1456,121 @@
       </tags>
   </entry>
   <entry>
+    <title>Shell编程入门</title>
+    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
+<ul>
+<li>脚本以<code> #!/bin/bash</code> 开头</li>
+<li>脚本通常以.sh结尾</li>
+<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
+<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
+<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
+</ul>
+<p>一个HelloWorld示例程序</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
+<li>定义变量 ： 变量名=值</li>
+<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
+<li>声明静态变量 ：readonly 变量 （无法unset）</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
+<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
+<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
+<li>==set==显示系统所有的环境变量</li>
+</ul>
+<p><strong>设置环境变量</strong></p>
+<ol>
+<li>修改/etc/profile 文件（比如用vim打开）</li>
+<li>在文件中加入 ==export 变量名=变量值==语句</li>
+<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
+<li>新加入的环境变量可以全局使用了</li>
+</ol>
+<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
+<ul>
+<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
+<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
+<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
+<li><code>$*</code> 代表所有参数，看做一个整体</li>
+<li><code>$@</code> 代表所有参数，每个区分对待</li>
+<li><code>$#</code> 代表所有参数的个数</li>
+</ul>
+<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
+<li><code>$$</code> 当前进程的进程号</li>
+<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
+<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
+</ul>
+<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
+<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
+<li><code>$((运算式))</code></li>
+<li><code>$[运算式]</code>  （推荐）</li>
+<li><code>expr m - n</code> 中间有空格</li>
+<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
+</ol>
+<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
+<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li>判断目录是否存在，用 <code>-f</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多分支语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>case语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
+<thead>
+<tr>
+<th>语句</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“” = “”</td>
+<td>字符串比较</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>实用工具</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Typora使用教程</title>
     <url>/2022/12/13/Typora%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212131702506.png" alt="image-20221213170258465"></p>
@@ -1603,121 +1718,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Shell编程入门</title>
-    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
-<ul>
-<li>脚本以<code> #!/bin/bash</code> 开头</li>
-<li>脚本通常以.sh结尾</li>
-<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
-<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
-<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
-</ul>
-<p>一个HelloWorld示例程序</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
-<li>定义变量 ： 变量名=值</li>
-<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
-<li>声明静态变量 ：readonly 变量 （无法unset）</li>
-</ul>
-<p>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
-<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
-<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
-<li>==set==显示系统所有的环境变量</li>
-</ul>
-<p><strong>设置环境变量</strong></p>
-<ol>
-<li>修改/etc/profile 文件（比如用vim打开）</li>
-<li>在文件中加入 ==export 变量名=变量值==语句</li>
-<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
-<li>新加入的环境变量可以全局使用了</li>
-</ol>
-<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
-<ul>
-<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
-<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
-<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
-<li><code>$*</code> 代表所有参数，看做一个整体</li>
-<li><code>$@</code> 代表所有参数，每个区分对待</li>
-<li><code>$#</code> 代表所有参数的个数</li>
-</ul>
-<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
-<li><code>$$</code> 当前进程的进程号</li>
-<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
-<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
-</ul>
-<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
-<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
-<li><code>$((运算式))</code></li>
-<li><code>$[运算式]</code>  （推荐）</li>
-<li><code>expr m - n</code> 中间有空格</li>
-<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
-</ol>
-<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
-<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li>判断目录是否存在，用 <code>-f</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多分支语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>case语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
-<thead>
-<tr>
-<th>语句</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“” = “”</td>
-<td>字符串比较</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>小于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>-eq</td>
-<td>等于</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>大于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>不等于</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>Shell</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>画板测试楼</title>
     <url>/2022/12/12/%E7%94%BB%E6%9D%BF%E6%B5%8B%E8%AF%95%E6%A5%BC/</url>
     <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212122038998.png" alt="image-20221212203852937"></p>
@@ -1743,12 +1743,12 @@
 <h1 id="Week0-课程简介和一些背景知识"><a href="#Week0-课程简介和一些背景知识" class="headerlink" title="Week0:课程简介和一些背景知识"></a>Week0:课程简介和一些背景知识</h1><h3 id="一-nand2tetris课程介绍"><a href="#一-nand2tetris课程介绍" class="headerlink" title="一. nand2tetris课程介绍"></a>一. nand2tetris课程介绍</h3><p>​        nand2tetris即from nand to tetris(to和2的英文读音一致)，翻译过来就是从与非门到俄罗斯方块。这是一门由希伯来大学的两名教授开发的计算机基础知识课程。课程以项目驱动，从最基础的逻辑门开始，一步步构造一个完整的名为Hack的计算机系统，包括基础的硬件结构，还有软件层面的操作系统。我们甚至要构建一个名为jack的编程语言，用它来写操作系统，最后也是用它写一个俄罗斯方块小游戏在我们制造的这个计算机上运行。</p>
 <p>​        通过这门课程，我们可以俯瞰整个计算机，拉通理解整个过程：从里面的每一个零件的协同运作，一直到能在屏幕上运行我们的应用程序。其中包含数字电路，计算机组成原理，操作系统，编译原理等等知识，但是都没有特别深入。这门课最大的价值是为我们展开了一幅计算机知识的地图，我们可以在学完整个课程后，选择自己喜欢的地方深入。另外课程提供的实验是这个课程的最大亮点，可以说这个实验就是课程本身，它提供了一种动手制造整个计算机的途经，让我们在实践中学习知识，尤为可贵。<b style="color:red">因此学习这门课程尽量要动手实践</b></p>
 <p>​        本课程分为大的两部分，第一部分是硬件，第二部分是软件，自底向上的构建计算机系统。</p>
-<h3 id="二-计算机的诞生"><a href="#二-计算机的诞生" class="headerlink" title="二. 计算机的诞生"></a>二. 计算机的诞生</h3><p style="background-color: lightgreen;"> 本小节为本人凭借兴趣了解的题外话，可以跳过 </p>
+<h3 id="二-计算机的诞生"><a href="#二-计算机的诞生" class="headerlink" title="二. 计算机的诞生"></a>二. 计算机的诞生</h3><p style="background-color: lightgreen;"> <b>|</b> tips: 本小节为本人凭借兴趣了解的题外话，可以跳过 </p>
 
 
 
 <p>​        学习的过程中也在了解一些课余的知识，比如<strong>计算机是怎么诞生的？</strong> <strong>计算机为什么可以是计算机？</strong></p>
-<p>​        计算机发明的最主要目的便如名字所说：计算。为了计算我们向前甚至可以追溯到结绳记数，但这些“古典”的计算方式都和我们现在的通用计算机相去甚远。关于现代计算机的开端，我们可以放眼到1936年由图灵提出的图灵机模型。图灵机是一个抽象的概念，它抽象了人们使用纸笔运算的过程，为自动化的计算提供了可能。</p>
+<p>​        计算机发明的最主要目的便如名字所说：计算。为了计算我们向前甚至可以追溯到结绳记数，但这些“古典”的计算方式都和我们现在的通用计算机相去甚远。关于现代计算机的开端，我们可以放眼到1936年由图灵提出的<strong>图灵机</strong>模型。图灵机是一个抽象的概念，它抽象了人们使用纸笔运算的过程，为自动化的计算提供了可能。</p>
 <p>​        想想我们用纸笔是怎么运算的？首先，我们肯定有解题的思路，或者说叫算法，其次我们的问题有一些初始的值。我们的计算过程就是通过我们的解题思路，不停的对这些值进行修改，直到改成目标答案。而图灵设想了一个自动化的机器来完成上述操作，具体如下：</p>
 <p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201905375.jpeg" alt="什么是图灵机"></p>
 <p>​        如上图，这是一个经典的图灵机模型图。其中包含这几个部分：</p>
@@ -1771,29 +1771,94 @@
 <p>​        上面的过程描述很抽象，这里推荐个视频可以帮助理解：<b style="color: blue;"><a href="https://www.bilibili.com/video/BV13v4y1w7yM/?share_source=copy_web&vd_source=c0b7e2971676981be548dbddf193bcc9">图灵机运作原理及示例</a></b></p>
 <p>​        无论是否理解这个机器，至少我们知道，它能通过一些指令，用读写头在纸带上修修改改，而且过程是一步一步的，一条指令一串操作这样修改，最后得出结果。这为现代计算机的实现提供了方向，而且科学家们也证明了这个模型的可行性（具体可以学习计算理论和数理逻辑相关知识）。</p>
 <p>​        我们要造一个计算机，首先得要有个东西装指令吧，还得有个东西能理解指令吧，还要能判断当前的状态；我们还要有个无限长的纸带，虽然不太现实，但至少得足够长吧；还要有个能在纸带上游走，对纸带数据进行增删改查的读写头吧；还有那个标记当前状态的玩意也得有吧。通过后面的学习，我们可以知道，现在目光所及的通用计算机几乎都是按照这个框架制造的。</p>
-<p>​        下一章我们要学习布尔逻辑，这也是个划时代的玩意，它将概念上的形式逻辑落地成了硅片上的电路，用看得见摸得着的东西来呈现只有思维里和纸上符号才能表示的逻辑。计算时我们脑子里的解题思路，就有了一个被实体化的可能，图灵机的指令那块也有了实现的希望。事实上在布尔逻辑和电路的帮助下，我们能把各种信息数字化到芯片里，进行存储，读取和处理等等操作。正是这些伟大的思想和技术的综合作用，才带了如今非凡繁盛的互联网时代。</p>
-<h3 id="三-学习环境和资料"><a href="#三-学习环境和资料" class="headerlink" title="三. 学习环境和资料"></a>三. 学习环境和资料</h3><p>​        学习这一套课程只需要有一台普通的电脑就行，win和linux系统都可。然后需要下载的资料链接放下面：</p>
+<p>​        下一章我们要学习<strong>布尔逻辑</strong>，这也是个划时代的玩意，它将概念上的形式逻辑落地成了硅片上的电路，用看得见摸得着的东西来呈现只有思维里和纸上符号才能表示的逻辑。计算时我们脑子里的解题思路，就有了一个被实体化的可能，图灵机的指令那块也有了实现的希望。事实上在布尔逻辑和电路的帮助下，我们能把各种信息数字化到芯片里，进行存储，读取和处理等等操作。正是这些伟大的思想和技术的综合作用，才带了如今非凡繁盛的互联网时代。</p>
+<h3 id="三-学习环境和资料"><a href="#三-学习环境和资料" class="headerlink" title="三. 学习环境和资料"></a>三. 学习环境和资料</h3><p>​    学习这一套课程只需要有一台普通的电脑就行，win和linux系统都可。然后需要下载的资料链接放下面：</p>
 <ol>
-<li><p>课程视频教程b站：**<a href="https://www.bilibili.com/video/BV1KJ411s7QJ/?share_source=copy_web&vd_source=c0b7e2971676981be548dbddf193bcc9">【高清-中字-公开课】依据基本原理构建现代计算机：从与非门到俄罗斯方块(点击观看)</a>** </p>
+<li><p>课程视频教程b站：<b><a href="https://www.bilibili.com/video/BV1KJ411s7QJ/?share_source=copy_web&vd_source=c0b7e2971676981be548dbddf193bcc9">【高清-中字-公开课】依据基本原理构建现代计算机：从与非门到俄罗斯方块(点击观看)</a></b> </p>
 </li>
-<li><p>课程官网：**<a href="https://www.nand2tetris.org/">Nand2Tetris（点击进入）</a>**</p>
+<li><p>课程官网：<b><a href="https://www.nand2tetris.org/">Nand2Tetris（点击进入）</a></b></p>
 </li>
-<li><p>课程配套软件和练习文件：**<a href="https://pan.baidu.com/s/1oX45mzHeQREl9IGp6YQe6g?pwd=2222">网盘下载（提取码：2222）</a>**</p>
+<li><p>课程配套软件和练习文件：<b><a href="https://pan.baidu.com/s/1oX45mzHeQREl9IGp6YQe6g?pwd=2222">网盘下载（提取码：2222）</a></b></p>
 </li>
 <li><p>课程配套书籍《计算机系统要素：从零开始构建现代计算机》：**<a href="https://pan.baidu.com/s/1yxG3ENOcnZrpe7BNoTsBfA?pwd=2222">网盘下载（提取码：2222）</a>**</p>
+<p> 我自己学习的方式是以看书为主，然后有不懂的地方再去看视频，学完一章就直接动手实验。</p>
 </li>
 </ol>
-<p>​        我自己学习的方式是以看书为主，然后有不懂的地方再去看视频，学完一章就直接动手实验。</p>
-<h1 id="Week1-布尔逻辑"><a href="#Week1-布尔逻辑" class="headerlink" title="Week1:布尔逻辑"></a>Week1:布尔逻辑</h1>]]></content>
+<h1 id="Week1-布尔逻辑"><a href="#Week1-布尔逻辑" class="headerlink" title="Week1:布尔逻辑"></a>Week1:布尔逻辑</h1><h3 id="一-布尔代数"><a href="#一-布尔代数" class="headerlink" title="一. 布尔代数"></a>一. 布尔代数</h3><p>布尔逻辑是一套由<strong>乔治布尔</strong>于十九世纪中叶定义的逻辑系统。所谓逻辑，就是对正确推论的研究，如何根据一系列<strong>前提</strong>，推论出一个<strong>正确的结果</strong>。下面我们来看看布尔逻辑的内容。</p>
+<p>首先我们知道一个命题，它不是真的，就是假的。假设有命题a为真，命题b也为真，那么有个命题c内容是a且b，它是真的还是假的？我们可以感性的举个例子，如果“这个棒棒糖是甜的”是真命题，“这个棒棒糖是球形”也是真命题，那么“这个棒棒糖是甜的并且它是球形”也显然是真命题。我们可以发现，前提a，b是真的，那么 a且b也是真的。我们把这种形式抽离出来，只要满足这个形式，不管内容是啥（不管ab是啥），它都成立。</p>
+<p>这里的 “且” 是语言上表达的一种逻辑连接词，也可以叫 “与” 表示两者都满足；类似的还有 “或” ，a或b，其中至少一个为真就为真；还有 “非” ，这个字只作用于一个命题，而前两者连接两个命题，如果a是真的，那么非a就是假的，反之亦然。与，或，非组成了基础的三种逻辑连接词。所以可以抽象出来：</p>
+<ul>
+<li>a且b：必须a和b都是真的这个命题才真</li>
+<li>a或b：a和b中至少一个是真的，这个命题就是真的</li>
+<li>非a：如果a是真的，那么这个命题是假的，a是假的这个命题就是真的</li>
+</ul>
+<p>布尔把 “真” 设为1，把 “假” 设为0。然后用上述连接词，1或0为1, 0或0为0, 1或1为1，等一下，这不和加法一样了吗只是1+1比较特殊，还是得1。同样，对于 “与” 来说，就和乘法一样。而 “非”，无非是把1变为0,0变成1。<strong>这些真真假假是可以像数字一样进行计算的！</strong>只是这里的数字只有0和1（这很容易联想到二进制），而且没有进位，1+1还是1，我们称这种计算叫逻辑运算。由此，<strong>布尔代数</strong>诞生了。</p>
+<blockquote>
+<p>一些逻辑运算规则：</p>
+<p>或：1+1=1；1+0=1；0+0=0；有1为1</p>
+<p>且：1x1=1；1x0=0；0x0=0；有0则0</p>
+<p>非：1’=0；0’=1；唱反调</p>
+</blockquote>
+<p>在布尔代数中，我们称这些连接词为布尔算子，就和普通代数中的加减乘除一样。<strong>与或非</strong>就是最基础的布尔算子。除了最基础的三个，我们还可以了解<strong>与非</strong>，就是先与再非；<strong>或非</strong>，先或再非；<strong>异或</strong>，连接两个命题，同真同假的话结果是假，只有真假不同结果才是真；<strong>同或</strong>，与异或相反，只有同真同假时结果才为真。普通的四则运算有一些交换律结合律之类的规律，还有些化简公式，布尔代数也不例外，如下图（不用刻意记住，需要时查找即可）。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211223212.png" alt="image-20221221122348025"></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212202352608.png" alt="image-20221220235158994"></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212202352620.png" alt="image-20221220235248586"></p>
+<h5 id="布尔函数"><a href="#布尔函数" class="headerlink" title="布尔函数"></a>布尔函数</h5><p>在普通的代数中，我们不仅有1+1这种具体的式子，也有x+y+2这种带着未知量(变量)的式子，当x和y取不同的值时，就会得到不同的结果，这个式子只是表示一个计算的过程，我们可以称其为函数。布尔代数同样也有布尔函数，或者叫布尔表达式，只是其中的运算变成了逻辑运算，其中的变量只能取0或1。函数体现了一种<strong>黑箱思想</strong>，我们的表达式的变量需要接收一些值，然后经过表达式的处理，得到一个结果。比如布尔表达式 (x+y)z’，需要接收三个具体的值分别给xyz三个变量，我们把表达式本身想象成一个黑盒子，用符号f(x,y,z)表示，f是盒子的名字，盒子上有三个入口分别叫x,y,z，还有个出口出来运算结果。假设黑盒子内部可以自动化的处理。当我们把1,1,0这三个值扔进x,y,z这三个入口，那么盒子就可以产生出结果1，因为内部运算(1+1)x0’的结果为1，可以写为f(1,1,0)=1。xyz三个变量，每个变量只能取0或者1两个值，所以一共有2的3次方也就是8中取法，我们把所有的输入情况和对应结果找出来，并列成一张表，就成了<strong>真值表</strong>。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211235807.png" alt="image-20221221123555773"></p>
+<h5 id="真值表反推函数表达式："><a href="#真值表反推函数表达式：" class="headerlink" title="真值表反推函数表达式："></a>真值表反推函数表达式：</h5><p>上面我们说了，函数就是一个黑盒子，给它输入，就一定会给一个固定的输出。反过来说，如果我们一开始不知道盒子里是啥呢？我们只知道有几个输入，还有对应输入应该是什么结果，换句话说就是只知道真值表！我们是否可以反推出盒子里的表达式呢？这也符合现实的很多情况，我们知道这个问题有哪些条件，我们也知道自己要什么结果，但是我们需要一个把条件变为结果的手段。这其实是可行的，我们找出真值表中结果为1的那些行，对于每一行，我们把变量名与起来，然后那些为0的变量去反，比如第三行，就是x‘yz’，xz取的0所以取反。结果为1的每一行都这么做之后，再用或连接起来，比如这个上面这个真值表就是x’yz’+xy’z’+xyz’。最后我们通过前文所讲的运算规律将其化简，就可以得到最终的表达式(x+y)z’。化简过程中你可能会发现中途有好多种表达式，所以一个真值表可能对应不止一个黑盒子，我们通常选取最简单的那一个。另外你还可以发现，<strong>不管多复杂的真值表，只用与或非三种算子都可以表示</strong>。</p>
+<h5 id="与非的妙用："><a href="#与非的妙用：" class="headerlink" title="与非的妙用："></a><strong>与非的妙用</strong>：</h5><p>与非(nand)，(xy)’，是一个十分牛的算法，因为只用与非代替基础的三种算子：与或非。这用上面运算规律中的<strong>德摩根律</strong>很容易能求出。进而我们可以把任何表达式，都转化为只用与非这一种算子的表达式。这在之后构建硬件中起了非常大的作用，你也可以发现课程题目中的nand说的就是与非门，这是这门课程项目的最基础的元素。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211313126.png" alt="image-20221221131327050"></p>
+<h5 id="与现实世界连接："><a href="#与现实世界连接：" class="headerlink" title="与现实世界连接："></a><strong>与现实世界连接</strong>：</h5><p>有了上面知识，我们就可以自己设计一个函数了，给这个函数喂一些0和1，就能吐出想要的0和1。但是这有什么用呢？上一章第二节我们谈到了图灵，他有个好朋友叫<strong>香农</strong>，香农在1938年的硕士论文《继电器与<em>开关电路</em>的符号分析》中将这些概念上的逻辑与物理世界连接，让这些理论的落地有了可能。香农是研究通讯的，他发现电从一点到另一点本身不是信息，而电的有无却可以是信息。比如我们了解的电报，通过电路开关以及开关的时间，就可以表示语言信息。而电路的开关引起了香农的注意，这电路一开一关两种状态，不是正好对应了布尔逻辑中的1和0两种状态吗？我们将信息转化为0和1，然后用电路的开关去表示，我们还能用真值表设计“黑盒子”去处理这些信息，也就是说，我们能把逻辑放到看得见摸得着的电路板上了。</p>
+<p>我们再回想一下上一章的图灵机，其中一个要考虑的点就是如何把我们的计算思路给存到机器里去，如何让机器去理解。现在看来，这一切都有了实现的可能。下一节<strong>逻辑门</strong>，我们将把理论落实，把抽象的与或非转化为具有物理实体的与门，非门，或门，还能会制造后面需要用到的一些门电路或者说芯片。你还会发现我们的门电路或者说芯片，就是给一堆输入的0和1，然后输出特定的0和1，设计门电路就是在设计布尔函数。</p>
+<p style="color:#888;background-color:lightyellow;">拓展：香农也是一位很有趣的科学家，这里有一部纪录片可以了解下：<a href="https://www.bilibili.com/bangumi/play/ss34520/?from=search&seid=4357879265608450011&spm_id_from=333.337.0.0">《香农传》</a></p>
+
+<h3 id="二-门电路"><a href="#二-门电路" class="headerlink" title="二. 门电路"></a>二. 门电路</h3><h5 id="从编码说起："><a href="#从编码说起：" class="headerlink" title="从编码说起："></a>从编码说起：</h5><p>我们知道电脑里面就是一堆电路，稍微了解计算机的可能听说过，电脑只会二进制语言，只能读懂0和1。但是我们玩电脑，可以看图片，听音乐，可以看视频，甚至在大型游戏中模拟了另外一个现实，你可以在一个空间中畅游互动。显然计算机表现出来的不只是0和1，这都离不开编码的帮助。</p>
+<p>像上一节说的电报，我们可以通过一些规则，把不是0和1的信息变成0和1。比如我们规定字母a是000，b是010，c是100，这样字母信息就变成了0和1的信息可以传入电脑中。向电脑输入字母应该是按键盘，安一个按钮可以输出一些0和1的信号，我们把这些信号变成abc字母规定的编号。比如按了a键，键盘输出101101，然后我们把它转化为000，这个过程就是<strong>编码</strong>。电脑怎么展示这些字母呢，首先它得有个屏幕，屏幕也是由0和1控制的，通过屏幕上有的地方通电发光，有的地方不通电变暗就能显示图案。很显然屏幕上面这么多发光点，控制屏幕的0和1是和字母不同的。也就是说我们需要一个翻译，来把字母的编码转化为屏幕可以显示的0和1，然后控制屏幕怎么发光，这个过程就是<strong>译码</strong>。</p>
+<p>上述过程我们可以猜想有两个东西，一个编码的东西，一个译码的东西，它们输入一些0和1，吐出一些0和1，这不就是上一节的布尔函数吗？通过编码译码，我们就可以把现实的信息数字化。当然上述例子极其粗糙，整个计算机系统是一个超级工程，肯定不会如此简单，后续我们也会学习更细节的东西。</p>
+<h5 id="在电路中实现逻辑"><a href="#在电路中实现逻辑" class="headerlink" title="在电路中实现逻辑"></a>在电路中实现逻辑</h5><p style="background-color: lightgreen;"> <b>|</b> tips: 这一小点为拓展，稍微了解即可 </p>
+
+<p>所谓的逻辑门就是逻辑电路中最基本的组件，可以实现与或非这些操作的电路。</p>
+<p>课程并没有要求我们去了解最基础的与非门电路是怎么实现的，我们前面说了，有了与非门，就可以实现所有的布尔函数。课程默认与非门是造好了的，我们拿来用便可，但我还是稍微了解了一下具体的实现。</p>
+<p>一切要从发明大王爱迪生说起，爱迪生在捣鼓灯泡的过程中发现了爱迪生效应，而弗莱明通过爱迪生效应制造了二极管，一种可以单向通电的元器件。后来福雷斯特在二极管的基础上制造了三极管，三极管在二极管的基础上增加了第三个端，在第三端施加少量电压便可以使另外两端导通。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211703536.png" alt="image-20221221170306412"></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211703168.png" alt="image-20221221170322087"></p>
+<p>我们可以用符号来表示三极管，并用三极管来构建基本的逻辑门。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211711668.png" alt="image-20221221171127619"></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211711063.png" alt="img"></p>
+<p>我们可以看到，这时候的三极管还是类似灯泡一样，烧的灯丝，我们称其为<strong>电子管</strong>。电子管体积巨大，功效奇高，而且寿命不长，所以用电子管构建的第一台计算机，也是体积庞大的功耗怪兽。后来利用半导体材料制造的<strong>晶体管</strong>横空出世，晶体管利用硅的特性来制造，体积小巧，功耗低，很快全面代替了电子管。后来人们发现，制造晶体管电路的材料可以被硅包办，为什么不直接把电路刻在一块硅片上呢？于是集成电路出现了，所有的元器件都是直接刻在硅片上，并且体积越来越小以至于到了纳米级别，数量越来越多到达千亿级别，让计算机真正成为了能握在掌心的超级工程。</p>
+<p>晶体管的工艺也一直在更新，为了更加稳定更加高效。现在比较流行的是<strong>cmos</strong>制程，用mos管来代替三极管，实现更稳定的性能。</p>
+<p>无论如何，我们的课程假设我们已经有了许多的<strong>与非门</strong>(nand)，你可以把它想象成一个小黑盒，盒子上有三根暴露的电线abc，电线只有两种状态，可以是有电和没电，也可以是高电压和低电压。c电线的状态总是(ab)’。我们将只用这些与非门来构造整个计算机。</p>
+<h5 id="用与非门构建基础的门电路"><a href="#用与非门构建基础的门电路" class="headerlink" title="用与非门构建基础的门电路"></a>用与非门构建基础的门电路</h5><p>还记得学布尔函数时的黑盒思想吧，我们先来把这些基本的门变成带接口的盒子画出来：</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211742060.png" alt="image-20221221173348672"></p>
+<p>这些其实就是逻辑门的电路符号。我们要实现一个门电路，其实就是求它的布尔表达式，有了这个表达式我们就可以根据表达式连接电路。下面以非门为例展示如何构建：</p>
+<ul>
+<li><p>首先我们确定或门的输入和输出，它有一个输入a,有一个输出out。</p>
+</li>
+<li><p>我们知道c=a+b,但是我们要化为全是与非门的形式，所以out=(aa)’，也就是a和a本身与非一下</p>
+</li>
+<li><p>接下来就是按照式子画图：</p>
+<ul>
+<li><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211748512.png" alt="image-20221221174829356"></li>
+</ul>
+</li>
+</ul>
+<p>有了非门，我们就可以把非门用在后面的逻辑门制造中，而不用考虑非门如何制造，同理我们可以画出其他几个基础逻辑门的电路图。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211751914.png" alt="image-20221221175156811"></p>
+<p>除了与或非异或，我们还需要两个特殊的逻辑门——<strong>multiplexor</strong>和<strong>demultiplexor</strong>，简称<strong>mux</strong>和<strong>dmux</strong>。</p>
+<p>mux的有三个接收端和一个输出端，三个接收端分别为a,b,sel，输出端为out，sel可以选择让out输出的是a的值还是b的值。比如a为0，b为1，当sel为0时，out就输出a的值0，当sel为1时就输出b的值为1。</p>
+<p>dmux可以看做是mux的逆过程，dmux有两个接收端，in和sel，两个输出端a，b。sel可以选择让in从a出来还是b出来，另一端一直为0。比如说in输入一个1，sel=0时，a就输出1b就输出0，sel=1时，a就输出0b就输出1。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211803368.png" alt="image-20221221180334312"></p>
+<p>以上两个电路比较复杂，不能像基本门电路一样直接写出表达式，所以我们采用真值表法来求出表达式</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212211804000.png" alt="image-20221221180450827"></p>
+<h5 id="多位基本门和多通道逻辑门"><a href="#多位基本门和多通道逻辑门" class="headerlink" title="多位基本门和多通道逻辑门"></a>多位基本门和多通道逻辑门</h5>]]></content>
       <categories>
         <category>CS基础知识</category>
       </categories>
       <tags>
         <tag>计算体系结构</tag>
-        <tag>os</tag>
         <tag>操作系统</tag>
         <tag>编译原理</tag>
-        <tag>手搓电脑</tag>
+        <tag>硬核手搓</tag>
       </tags>
   </entry>
   <entry>
