@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Git常用命令</title>
+    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212221358671.png" alt="image-20221222135812581"></p>
+<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l	//查看配置</span><br><span class="line">git config --system --list	//查看系统级别配置</span><br><span class="line">git config --global --list	//查看当前用户配置</span><br><span class="line"></span><br><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
+<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
+<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
+<p>shift + ins ： 同上</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>初始化工作区</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区状态</td>
+</tr>
+<tr>
+<td><code>git add 文件名</code></td>
+<td>将文件加入暂存区</td>
+</tr>
+<tr>
+<td><code>git rm --cached 文件名</code></td>
+<td>将文件从暂存区移除</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
+<td>将文件提交到本地库</td>
+</tr>
+<tr>
+<td><code>git reflog</code></td>
+<td>查看简化版本信息</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看完整版本信息</td>
+</tr>
+<tr>
+<td><code>git reset --hard 版本号</code></td>
+<td>穿梭到哪个版本</td>
+</tr>
+</tbody></table>
+<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch -v</code></td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td><code>git branch 分支名</code></td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td><code>git checkout 分支名</code></td>
+<td>切换到指定分支</td>
+</tr>
+<tr>
+<td><code>git merge 分支名</code></td>
+<td>将指定分支合并到当前分支</td>
+</tr>
+<tr>
+<td><code>git branch -d 分支名</code></td>
+<td>删除分支，分支包含更改未提交会被-d阻止，可以用-D强制删除</td>
+</tr>
+</tbody></table>
+<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
+<p>文件中会出现冲突信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
+
+<p>重新add 和commit</p>
+<p>==注意：commit 不能后不能带文件名否则会报错==</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
+<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
+<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>ssh-keygen -t rsa</code> 用git生成公钥，放入github实现免密登录，秘钥在 <strong>用户名/.ssh/id_rsa.pub</strong> 文件中</p>
+<p><code>git remote -v</code>  查看远程连接的库</p>
+<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
+<p><code>git push 名字/链接 本地分支名</code> 推送分支</p>
+<p><code>git pull 名字/链接 远程分支名</code>  拉取分支</p>
+<p><code>git pull 仓库名字/链接 --allow-unrelated-histories</code> 强行拉取合并(当远程库有本地库没有的文件时)</p>
+<p><code>git clone 名字/链接</code>  克隆仓库</p>
+<p><code>git clone 分支名 名字/链接</code>  克隆仓库</p>
+<div style="color:#999;background-color:lightyellow;padding:10px;border-left:4px solid #686">小贴士：git推送分支的完整写法是 <p style="color:#000">git push origin 本地分支名:远程分支名</p> 我们通常会省略远程分支名，这样GitHub会自动创建一个同名的分支，我们也可以指定这个需要推送到的远程分支名。</div>
+
+
+
+
+
+<h3 id="五-gitignore文件的使用"><a href="#五-gitignore文件的使用" class="headerlink" title="五. gitignore文件的使用"></a>五. gitignore文件的使用</h3><p>在git工程下面可以创建一个**.gitignore<strong>文件，里面可以设置，提交到暂存区时</strong>忽略**哪些文件，即哪些文件不传到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#基本的语法</span><br><span class="line">#	井号为注释</span><br><span class="line"></span><br><span class="line">*.txt	#忽略所有的txt文件</span><br><span class="line">!lib.txt	#除了lib.txt以外的都忽略</span><br><span class="line">/temp	#忽略temp文件夹</span><br><span class="line">build/	#忽略build文件夹下的所有文件</span><br><span class="line">build/*.txt	#忽略build文件夹下的txt文件</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六-工作流程梳理"><a href="#六-工作流程梳理" class="headerlink" title="六. 工作流程梳理"></a>六. 工作流程梳理</h3><ol>
+<li>git先初始化用户名和邮箱，没有公钥的先生成公钥，在github里添加公钥。</li>
+<li>创建一个git工程，使用<code>git init</code>或者<code>git clone</code>。同时github中新建一个仓库。</li>
+<li>当文件修改好了需要提交的时候，先<code>git add .</code>到暂存区，再<code>git commit -m &quot;日志信息&quot; .</code> 到本地库。</li>
+<li>复制github仓库链接，用<code>remote add 别名 链接</code>添加库的别名，方便后续使用。</li>
+<li>用<code>git push 别名/链接 本地分支 </code>来把指定分支的代码推送到github仓库。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>gitHub</tag>
+        <tag>实用工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS常见布局</title>
     <url>/2022/12/08/CSS%E5%B8%B8%E8%A7%81%E5%B8%83%E5%B1%80/</url>
     <content><![CDATA[<h1 id="CSS常见布局"><a href="#CSS常见布局" class="headerlink" title="CSS常见布局"></a>CSS常见布局</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
@@ -288,401 +411,6 @@
         <tag>网页布局</tag>
         <tag>CSS</tag>
         <tag>前端</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git常用命令</title>
-    <url>/2022/12/08/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
-<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212221358671.png" alt="image-20221222135812581"></p>
-<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l	//查看配置</span><br><span class="line">git config --system --list	//查看系统级别配置</span><br><span class="line">git config --global --list	//查看当前用户配置</span><br><span class="line"></span><br><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
-<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
-<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
-<p>shift + ins ： 同上</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git init</code></td>
-<td>初始化工作区</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>查看工作区状态</td>
-</tr>
-<tr>
-<td><code>git add 文件名</code></td>
-<td>将文件加入暂存区</td>
-</tr>
-<tr>
-<td><code>git rm --cached 文件名</code></td>
-<td>将文件从暂存区移除</td>
-</tr>
-<tr>
-<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
-<td>将文件提交到本地库</td>
-</tr>
-<tr>
-<td><code>git reflog</code></td>
-<td>查看简化版本信息</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>查看完整版本信息</td>
-</tr>
-<tr>
-<td><code>git reset --hard 版本号</code></td>
-<td>穿梭到哪个版本</td>
-</tr>
-</tbody></table>
-<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git branch -v</code></td>
-<td>查看分支</td>
-</tr>
-<tr>
-<td><code>git branch 分支名</code></td>
-<td>创建分支</td>
-</tr>
-<tr>
-<td><code>git checkout 分支名</code></td>
-<td>切换到指定分支</td>
-</tr>
-<tr>
-<td><code>git merge 分支名</code></td>
-<td>将指定分支合并到当前分支</td>
-</tr>
-<tr>
-<td><code>git branch -d 分支名</code></td>
-<td>删除分支，分支包含更改未提交会被-d阻止，可以用-D强制删除</td>
-</tr>
-</tbody></table>
-<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
-<p>文件中会出现冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
-
-<p>重新add 和commit</p>
-<p>==注意：commit 不能后不能带文件名否则会报错==</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
-<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
-<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>ssh-keygen -t rsa</code> 用git生成公钥，放入github实现免密登录，秘钥在 <strong>用户名/.ssh/id_rsa.pub</strong> 文件中</p>
-<p><code>git remote -v</code>  查看远程连接的库</p>
-<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
-<p><code>git push 名字/链接 本地分支名</code> 推送分支</p>
-<p><code>git pull 名字/链接 远程分支名</code>  拉取分支</p>
-<p><code>git pull 仓库名字/链接 --allow-unrelated-histories</code> 强行拉取合并(当远程库有本地库没有的文件时)</p>
-<p><code>git clone 名字/链接</code>  克隆仓库</p>
-<p><code>git clone 分支名 名字/链接</code>  克隆仓库</p>
-<div style="color:#999;background-color:lightyellow;padding:10px;border-left:4px solid #686">小贴士：git推送分支的完整写法是 <p style="color:#000">git push origin 本地分支名:远程分支名</p> 我们通常会省略远程分支名，这样GitHub会自动创建一个同名的分支，我们也可以指定这个需要推送到的远程分支名。</div>
-
-
-
-
-
-<h3 id="五-gitignore文件的使用"><a href="#五-gitignore文件的使用" class="headerlink" title="五. gitignore文件的使用"></a>五. gitignore文件的使用</h3><p>在git工程下面可以创建一个**.gitignore<strong>文件，里面可以设置，提交到暂存区时</strong>忽略**哪些文件，即哪些文件不传到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#基本的语法</span><br><span class="line">#	井号为注释</span><br><span class="line"></span><br><span class="line">*.txt	#忽略所有的txt文件</span><br><span class="line">!lib.txt	#除了lib.txt以外的都忽略</span><br><span class="line">/temp	#忽略temp文件夹</span><br><span class="line">build/	#忽略build文件夹下的所有文件</span><br><span class="line">build/*.txt	#忽略build文件夹下的txt文件</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="六-工作流程梳理"><a href="#六-工作流程梳理" class="headerlink" title="六. 工作流程梳理"></a>六. 工作流程梳理</h3><ol>
-<li>git先初始化用户名和邮箱，没有公钥的先生成公钥，在github里添加公钥。</li>
-<li>创建一个git工程，使用<code>git init</code>或者<code>git clone</code>。同时github中新建一个仓库。</li>
-<li>当文件修改好了需要提交的时候，先<code>git add .</code>到暂存区，再<code>git commit -m &quot;日志信息&quot; .</code> 到本地库。</li>
-<li>复制github仓库链接，用<code>remote add 别名 链接</code>添加库的别名，方便后续使用。</li>
-<li>用<code>git push 别名/链接 本地分支 </code>来把指定分支的代码推送到github仓库。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
-        <tag>gitHub</tag>
-        <tag>实用工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>MIT_6.S081_学习笔记</title>
-    <url>/2022/12/24/MIT-6-S081-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212241636196.png" alt="image-20221224163508934"></p>
-<p>MIT操作系统课程笔记</p>
-<p>更新至第一节：课程介绍</p>
-<span id="more"></span>
-
-<h2 id="Lecture1：课程介绍"><a href="#Lecture1：课程介绍" class="headerlink" title="Lecture1：课程介绍"></a>Lecture1：课程介绍</h2><p>第一堂课是课程整体介绍</p>
-<h3 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a>课程介绍</h3><p><strong>课程目标：</strong></p>
-<ul>
-<li>了解操作系统的设计与实现</li>
-<li>研究课程提供的小型操作系统XV6</li>
-<li>动手拓展操作系统</li>
-</ul>
-<p><strong>操作系统的作用：</strong></p>
-<ul>
-<li>为了更方便使用，并提高可移植性，对硬件进行抽象</li>
-<li>在多个应用中实现硬件的多路复用</li>
-<li>隔离应用程序，互不干扰</li>
-<li>多个应用共享资源</li>
-<li>保证共享的安全</li>
-<li>保证应用的高性能</li>
-<li>支持各种不同的应用</li>
-</ul>
-<p><strong>操作系统的运作过程：</strong></p>
-<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212241653926.png" alt="image-20221224165343759"></p>
-<p>操作系统会把电脑分为<strong>用户空间</strong>和<strong>内核空间</strong>，我们在用户空间打开一系列的应用，然后应用进程调用操作系统提供的接口就能进入内核空间，内核空间里提供各种服务，操作计算机的硬件资源，操作系统内核把应用的需求通过接口返回到用户空间。</p>
-<p>从这里我们可以看出，操作系统就像一层壳把整个计算机的硬件资源罩住，然后壳上提供一些接口给应用程序使用。所以应用程序只能运行在操作系统至上，调用各种操作系统提供的系统调用。</p>
-<p><strong>系统调用：</strong></p>
-<p>操作系统提供的这些系统调用很像c语言的函数调用，但实际上两者并不一样，系统调用会进入操作系统内核执行操作。</p>
-<p>系统调用举例：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//很像函数调用，需要带入参数</span></span><br><span class="line">fd = open(<span class="string">&quot;out&quot;</span>, <span class="number">1</span>);	<span class="comment">//打开一个文件，out是文件名，1表示想写，返回值fd为文件描述符</span></span><br><span class="line">write(fd, <span class="string">&quot;hello\n&quot;</span>, <span class="number">6</span>);	<span class="comment">//向文件中写入，参数分别为文件描述符，字符串，字符数</span></span><br><span class="line">pid = fork();	<span class="comment">//创建一个子进程，返回进程号pid</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="UNIX系统调用简介"><a href="#UNIX系统调用简介" class="headerlink" title="UNIX系统调用简介"></a>UNIX系统调用简介</h3><p>因为所有的应用需要使用计算机的资源，都需要通过操作系统提供的接口，也就是系统调用，所以课程后半段介绍了下unix的系统调用。</p>
-<p>课程研究的小型操作系统XV6和unix类似，选择unix是因为它代码开源，使用广泛，手册优良，设计干净。</p>
-<p>课程用几个代码实例来展示了系统调用的作用，以及各种不同系统调用的协同工作，主要介绍了如下系统调用：</p>
-<ul>
-<li><code>int open(char *file, int flags)</code> 打开一个文件；flags表示read/write；返回一个fd（文件描述符）</li>
-<li><code>int fork()</code> 复制当前进程的数据和命令，创建一个新进程即子进程，返回进程号pid。子进程的pid为0，以此区别父子进程。</li>
-<li><code>int exec(char *file, char *argv[])</code> 加载一个文件并使用参数执行它; 只有在出错时才返回。这个新执行的程序进程会替换掉当前进程，丢弃指令和数据。</li>
-<li><code>int exit(int status)  </code>  终止当前进程，并将状态报告给wait()函数。无返回</li>
-<li><code>int wait(int *status) </code>  等待一个子进程退出; 将退出状态存入*status; 返回子进程PID。</li>
-<li><code>int close(int fd)</code>  释放打开的文件fd文件描述符</li>
-<li><code>int pipe(int p[])</code>  创建一个管道，把read/write文件描述符放在p[0]和p[1]中</li>
-</ul>
-<blockquote>
-<p>文件描述符：open打开一个文件后，会给文件一个描述符，通常是一个数字。</p>
-<p>一般0指向标准输入，1指向标准输出，2指向错误输出</p>
-</blockquote>
-<p>代码还展示了这些系统调用如何合作工作，比如用fork创建一个新进程，用close释放文件描述符1，再open打开文件，此时会给这个文件匹配一个最小的未占用的描述符，也就是刚释放的1，完成重定向。</p>
-<p>这些代码具体可以看 ，<b><a href="https://github.com/duguosheng/6.S081-All-in-one/blob/main/tranlate_books/Introduction.md">课程介绍</a></b></p>
-<p>下面展示书上XV6的完整系统调用表</p>
-<table>
-<thead>
-<tr>
-<th><strong>系统调用</strong></th>
-<th><strong>描述</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>int fork()</code></td>
-<td>创建一个进程，返回子进程的PID</td>
-</tr>
-<tr>
-<td><code>int exit(int status)</code></td>
-<td>终止当前进程，并将状态报告给wait()函数。无返回</td>
-</tr>
-<tr>
-<td><code>int wait(int *status)</code></td>
-<td>等待一个子进程退出; 将退出状态存入*status; 返回子进程PID。</td>
-</tr>
-<tr>
-<td><code>int kill(int pid)</code></td>
-<td>终止对应PID的进程，返回0，或返回-1表示错误</td>
-</tr>
-<tr>
-<td><code>int getpid()</code></td>
-<td>返回当前进程的PID</td>
-</tr>
-<tr>
-<td><code>int sleep(int n)</code></td>
-<td>暂停n个时钟节拍</td>
-</tr>
-<tr>
-<td><code>int exec(char *file, char *argv[])</code></td>
-<td>加载一个文件并使用参数执行它; 只有在出错时才返回</td>
-</tr>
-<tr>
-<td><code>char *sbrk(int n)</code></td>
-<td>按n 字节增长进程的内存。返回新内存的开始</td>
-</tr>
-<tr>
-<td><code>int open(char *file, int flags)</code></td>
-<td>打开一个文件；flags表示read/write；返回一个fd（文件描述符）</td>
-</tr>
-<tr>
-<td><code>int write(int fd, char *buf, int n)</code></td>
-<td>从buf 写n 个字节到文件描述符fd; 返回n</td>
-</tr>
-<tr>
-<td><code>int read(int fd, char *buf, int n)</code></td>
-<td>将n 个字节读入buf；返回读取的字节数；如果文件结束，返回0</td>
-</tr>
-<tr>
-<td><code>int close(int fd)</code></td>
-<td>释放打开的文件fd</td>
-</tr>
-<tr>
-<td><code>int dup(int fd)</code></td>
-<td>返回一个新的文件描述符，指向与fd 相同的文件</td>
-</tr>
-<tr>
-<td><code>int pipe(int p[])</code></td>
-<td>创建一个管道，把read/write文件描述符放在p[0]和p[1]中</td>
-</tr>
-<tr>
-<td><code>int chdir(char *dir)</code></td>
-<td>改变当前的工作目录</td>
-</tr>
-<tr>
-<td><code>int mkdir(char *dir)</code></td>
-<td>创建一个新目录</td>
-</tr>
-<tr>
-<td><code>int mknod(char *file, int, int)</code></td>
-<td>创建一个设备文件</td>
-</tr>
-<tr>
-<td><code>int fstat(int fd, struct stat *st)</code></td>
-<td>将打开文件fd的信息放入*st</td>
-</tr>
-<tr>
-<td><code>int stat(char *file, struct stat *st)</code></td>
-<td>将指定名称的文件信息放入*st</td>
-</tr>
-<tr>
-<td><code>int link(char *file1, char *file2)</code></td>
-<td>为文件file1创建另一个名称(file2)</td>
-</tr>
-<tr>
-<td><code>int unlink(char *file)</code></td>
-<td>删除一个文件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>CS基础知识</category>
-      </categories>
-      <tags>
-        <tag>操作系统</tag>
-        <tag>课程笔记</tag>
-        <tag>MIT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Shell编程入门</title>
-    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
-<ul>
-<li>脚本以<code> #!/bin/bash</code> 开头</li>
-<li>脚本通常以.sh结尾</li>
-<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
-<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
-<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
-</ul>
-<p>一个HelloWorld示例程序</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
-<li>定义变量 ： 变量名=值</li>
-<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
-<li>声明静态变量 ：readonly 变量 （无法unset）</li>
-</ul>
-<p>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
-<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
-<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
-<li>==set==显示系统所有的环境变量</li>
-</ul>
-<p><strong>设置环境变量</strong></p>
-<ol>
-<li>修改/etc/profile 文件（比如用vim打开）</li>
-<li>在文件中加入 ==export 变量名=变量值==语句</li>
-<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
-<li>新加入的环境变量可以全局使用了</li>
-</ol>
-<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
-<ul>
-<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
-<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
-<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
-<li><code>$*</code> 代表所有参数，看做一个整体</li>
-<li><code>$@</code> 代表所有参数，每个区分对待</li>
-<li><code>$#</code> 代表所有参数的个数</li>
-</ul>
-<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
-<li><code>$$</code> 当前进程的进程号</li>
-<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
-<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
-</ul>
-<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
-<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
-<li><code>$((运算式))</code></li>
-<li><code>$[运算式]</code>  （推荐）</li>
-<li><code>expr m - n</code> 中间有空格</li>
-<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
-</ol>
-<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
-<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
-<li>判断目录是否存在，用 <code>-f</code></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>多分支语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>case语句</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
-<thead>
-<tr>
-<th>语句</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>“” = “”</td>
-<td>字符串比较</td>
-</tr>
-<tr>
-<td>-lt</td>
-<td>小于</td>
-</tr>
-<tr>
-<td>-le</td>
-<td>小于等于</td>
-</tr>
-<tr>
-<td>-eq</td>
-<td>等于</td>
-</tr>
-<tr>
-<td>-gt</td>
-<td>大于</td>
-</tr>
-<tr>
-<td>-ge</td>
-<td>大于等于</td>
-</tr>
-<tr>
-<td>-ne</td>
-<td>不等于</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>Shell</tag>
       </tags>
   </entry>
   <entry>
@@ -1810,24 +1538,276 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/12/06/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+    <title>MIT_6.S081_学习笔记</title>
+    <url>/2022/12/24/MIT-6-S081-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212241636196.png" alt="image-20221224163508934"></p>
+<p>MIT操作系统课程笔记</p>
+<p>更新至第一节：课程介绍</p>
 <span id="more"></span>
 
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Lecture1：课程介绍"><a href="#Lecture1：课程介绍" class="headerlink" title="Lecture1：课程介绍"></a>Lecture1：课程介绍</h2><p>第一堂课是课程整体介绍</p>
+<h3 id="课程介绍"><a href="#课程介绍" class="headerlink" title="课程介绍"></a>课程介绍</h3><p><strong>课程目标：</strong></p>
+<ul>
+<li>了解操作系统的设计与实现</li>
+<li>研究课程提供的小型操作系统XV6</li>
+<li>动手拓展操作系统</li>
+</ul>
+<p><strong>操作系统的作用：</strong></p>
+<ul>
+<li>为了更方便使用，并提高可移植性，对硬件进行抽象</li>
+<li>在多个应用中实现硬件的多路复用</li>
+<li>隔离应用程序，互不干扰</li>
+<li>多个应用共享资源</li>
+<li>保证共享的安全</li>
+<li>保证应用的高性能</li>
+<li>支持各种不同的应用</li>
+</ul>
+<p><strong>操作系统的运作过程：</strong></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212241653926.png" alt="image-20221224165343759"></p>
+<p>操作系统会把电脑分为<strong>用户空间</strong>和<strong>内核空间</strong>，我们在用户空间打开一系列的应用，然后应用进程调用操作系统提供的接口就能进入内核空间，内核空间里提供各种服务，操作计算机的硬件资源，操作系统内核把应用的需求通过接口返回到用户空间。</p>
+<p>从这里我们可以看出，操作系统就像一层壳把整个计算机的硬件资源罩住，然后壳上提供一些接口给应用程序使用。所以应用程序只能运行在操作系统至上，调用各种操作系统提供的系统调用。</p>
+<p><strong>系统调用：</strong></p>
+<p>操作系统提供的这些系统调用很像c语言的函数调用，但实际上两者并不一样，系统调用会进入操作系统内核执行操作。</p>
+<p>系统调用举例：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//很像函数调用，需要带入参数</span></span><br><span class="line">fd = open(<span class="string">&quot;out&quot;</span>, <span class="number">1</span>);	<span class="comment">//打开一个文件，out是文件名，1表示想写，返回值fd为文件描述符</span></span><br><span class="line">write(fd, <span class="string">&quot;hello\n&quot;</span>, <span class="number">6</span>);	<span class="comment">//向文件中写入，参数分别为文件描述符，字符串，字符数</span></span><br><span class="line">pid = fork();	<span class="comment">//创建一个子进程，返回进程号pid</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h3 id="UNIX系统调用简介"><a href="#UNIX系统调用简介" class="headerlink" title="UNIX系统调用简介"></a>UNIX系统调用简介</h3><p>因为所有的应用需要使用计算机的资源，都需要通过操作系统提供的接口，也就是系统调用，所以课程后半段介绍了下unix的系统调用。</p>
+<p>课程研究的小型操作系统XV6和unix类似，选择unix是因为它代码开源，使用广泛，手册优良，设计干净。</p>
+<p>课程用几个代码实例来展示了系统调用的作用，以及各种不同系统调用的协同工作，主要介绍了如下系统调用：</p>
+<ul>
+<li><code>int open(char *file, int flags)</code> 打开一个文件；flags表示read/write；返回一个fd（文件描述符）</li>
+<li><code>int fork()</code> 复制当前进程的数据和命令，创建一个新进程即子进程，返回进程号pid。子进程的pid为0，以此区别父子进程。</li>
+<li><code>int exec(char *file, char *argv[])</code> 加载一个文件并使用参数执行它; 只有在出错时才返回。这个新执行的程序进程会替换掉当前进程，丢弃指令和数据。</li>
+<li><code>int exit(int status)  </code>  终止当前进程，并将状态报告给wait()函数。无返回</li>
+<li><code>int wait(int *status) </code>  等待一个子进程退出; 将退出状态存入*status; 返回子进程PID。</li>
+<li><code>int close(int fd)</code>  释放打开的文件fd文件描述符</li>
+<li><code>int pipe(int p[])</code>  创建一个管道，把read/write文件描述符放在p[0]和p[1]中</li>
+</ul>
+<blockquote>
+<p>文件描述符：open打开一个文件后，会给文件一个描述符，通常是一个数字。</p>
+<p>一般0指向标准输入，1指向标准输出，2指向错误输出</p>
+</blockquote>
+<p>代码还展示了这些系统调用如何合作工作，比如用fork创建一个新进程，用close释放文件描述符1，再open打开文件，此时会给这个文件匹配一个最小的未占用的描述符，也就是刚释放的1，完成重定向。</p>
+<p>这些代码具体可以看 ，<b><a href="https://github.com/duguosheng/6.S081-All-in-one/blob/main/tranlate_books/Introduction.md">课程介绍</a></b></p>
+<p>下面展示书上XV6的完整系统调用表</p>
+<table>
+<thead>
+<tr>
+<th><strong>系统调用</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>int fork()</code></td>
+<td>创建一个进程，返回子进程的PID</td>
+</tr>
+<tr>
+<td><code>int exit(int status)</code></td>
+<td>终止当前进程，并将状态报告给wait()函数。无返回</td>
+</tr>
+<tr>
+<td><code>int wait(int *status)</code></td>
+<td>等待一个子进程退出; 将退出状态存入*status; 返回子进程PID。</td>
+</tr>
+<tr>
+<td><code>int kill(int pid)</code></td>
+<td>终止对应PID的进程，返回0，或返回-1表示错误</td>
+</tr>
+<tr>
+<td><code>int getpid()</code></td>
+<td>返回当前进程的PID</td>
+</tr>
+<tr>
+<td><code>int sleep(int n)</code></td>
+<td>暂停n个时钟节拍</td>
+</tr>
+<tr>
+<td><code>int exec(char *file, char *argv[])</code></td>
+<td>加载一个文件并使用参数执行它; 只有在出错时才返回</td>
+</tr>
+<tr>
+<td><code>char *sbrk(int n)</code></td>
+<td>按n 字节增长进程的内存。返回新内存的开始</td>
+</tr>
+<tr>
+<td><code>int open(char *file, int flags)</code></td>
+<td>打开一个文件；flags表示read/write；返回一个fd（文件描述符）</td>
+</tr>
+<tr>
+<td><code>int write(int fd, char *buf, int n)</code></td>
+<td>从buf 写n 个字节到文件描述符fd; 返回n</td>
+</tr>
+<tr>
+<td><code>int read(int fd, char *buf, int n)</code></td>
+<td>将n 个字节读入buf；返回读取的字节数；如果文件结束，返回0</td>
+</tr>
+<tr>
+<td><code>int close(int fd)</code></td>
+<td>释放打开的文件fd</td>
+</tr>
+<tr>
+<td><code>int dup(int fd)</code></td>
+<td>返回一个新的文件描述符，指向与fd 相同的文件</td>
+</tr>
+<tr>
+<td><code>int pipe(int p[])</code></td>
+<td>创建一个管道，把read/write文件描述符放在p[0]和p[1]中</td>
+</tr>
+<tr>
+<td><code>int chdir(char *dir)</code></td>
+<td>改变当前的工作目录</td>
+</tr>
+<tr>
+<td><code>int mkdir(char *dir)</code></td>
+<td>创建一个新目录</td>
+</tr>
+<tr>
+<td><code>int mknod(char *file, int, int)</code></td>
+<td>创建一个设备文件</td>
+</tr>
+<tr>
+<td><code>int fstat(int fd, struct stat *st)</code></td>
+<td>将打开文件fd的信息放入*st</td>
+</tr>
+<tr>
+<td><code>int stat(char *file, struct stat *st)</code></td>
+<td>将指定名称的文件信息放入*st</td>
+</tr>
+<tr>
+<td><code>int link(char *file1, char *file2)</code></td>
+<td>为文件file1创建另一个名称(file2)</td>
+</tr>
+<tr>
+<td><code>int unlink(char *file)</code></td>
+<td>删除一个文件</td>
+</tr>
+</tbody></table>
 ]]></content>
+      <categories>
+        <category>CS基础知识</category>
+      </categories>
+      <tags>
+        <tag>操作系统</tag>
+        <tag>课程笔记</tag>
+        <tag>MIT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Shell编程入门</title>
+    <url>/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<h3 id="一-Shell常识"><a href="#一-Shell常识" class="headerlink" title="一.Shell常识"></a>一.Shell常识</h3><p>本笔记采用==高亮==表示linux内指令，采用<code>code</code>表示脚本代码</p>
+<ul>
+<li>脚本以<code> #!/bin/bash</code> 开头</li>
+<li>脚本通常以.sh结尾</li>
+<li>脚本需要有可执行权限，也可以用==sh xxx.sh==执行不用权限</li>
+<li>单行注释用<code>#</code>,多行注释用<code>:&lt;&lt;!  xxxx   !</code></li>
+<li> 注意，开头的<code>#!/bin/bash</code>中的<code>#!</code>的意思是指定一个解释脚本的程序</li>
+</ul>
+<p>一个HelloWorld示例程序</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Hello world ~&quot;</span> <span class="comment">#直接写linux命令，按顺序执行</span></span><br><span class="line"><span class="comment">#这是单行注释</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">这是多行注释</span><br><span class="line">！</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="二-Shell变量"><a href="#二-Shell变量" class="headerlink" title="二.Shell变量"></a>二.Shell变量</h3><h4 id="1-变量的定义赋值"><a href="#1-变量的定义赋值" class="headerlink" title="1.变量的定义赋值"></a>1.变量的定义赋值</h4><ul>
+<li>定义变量 ： 变量名=值</li>
+<li>撤销变量 ： unset 变量名（对静态变量无效）</li>
+<li>声明静态变量 ：readonly 变量 （无法unset）</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">A=100  <span class="comment">#次处A为变量名,100是值</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$A</span>  <span class="comment"># 输出要带上$符号</span></span><br><span class="line"><span class="built_in">unset</span> A  <span class="comment">#撤销变量A</span></span><br><span class="line"><span class="built_in">readonly</span> B=2 <span class="comment">#声明静态变量B</span></span><br></pre></td></tr></table></figure>
+<p>可以把<strong>指令的结果赋值给变量</strong>，指令加上``反引号或者$()。<br>举例：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">A=`<span class="built_in">date</span>`</span><br><span class="line">B=$(<span class="built_in">date</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;A=<span class="variable">$A</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;B=<span class="variable">$B</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-环境变量"><a href="#2-环境变量" class="headerlink" title="2.环境变量"></a>2.环境变量</h4><ul>
+<li>常见<strong>系统环境变量</strong>： $HOME,$PWD,$SHELL,$USER</li>
+<li>==set==显示系统所有的环境变量</li>
+</ul>
+<p><strong>设置环境变量</strong></p>
+<ol>
+<li>修改/etc/profile 文件（比如用vim打开）</li>
+<li>在文件中加入 ==export 变量名=变量值==语句</li>
+<li>==source 配置文件== （即/etc/profile）让配置立即生效</li>
+<li>新加入的环境变量可以全局使用了</li>
+</ol>
+<h4 id="3-位置参数变量"><a href="#3-位置参数变量" class="headerlink" title="3.位置参数变量"></a>3.位置参数变量</h4><p>类似于编程中函数的参数</p>
+<ul>
+<li>运行是后面带上位置参数 ==./文件名.sh 10 20==，此处就带了10和20两个参数</li>
+<li>在脚本代码中，用<code>$0</code> <code>$1</code> <code>$2</code> <code>$3</code>…来获取参数。</li>
+<li>此处<code>$0</code>就是10 ，·<code>$1</code>就是20</li>
+<li><code>$*</code> 代表所有参数，看做一个整体</li>
+<li><code>$@</code> 代表所有参数，每个区分对待</li>
+<li><code>$#</code> 代表所有参数的个数</li>
+</ul>
+<h4 id="4-预定义变量"><a href="#4-预定义变量" class="headerlink" title="4.预定义变量"></a>4.预定义变量</h4><ul>
+<li><code>$$</code> 当前进程的进程号</li>
+<li><code>$!</code> 后台运行的最后一个进程的进程号</li>
+<li><code>$?</code> 最后一次命令运行返回的状态，0为成功执行</li>
+</ul>
+<p>tips： ==./脚本或程序 &amp;== 命令后面加个&amp;可以后台运行</p>
+<h3 id="三-运算符"><a href="#三-运算符" class="headerlink" title="三.运算符"></a>三.运算符</h3><ol>
+<li><code>$((运算式))</code></li>
+<li><code>$[运算式]</code>  （推荐）</li>
+<li><code>expr m - n</code> 中间有空格</li>
+<li><code>expr \*, /, %</code> expression表达式的*要加反斜杠\</li>
+</ol>
+<h3 id="四-分支语句"><a href="#四-分支语句" class="headerlink" title="四.分支语句"></a>四.分支语句</h3><ol>
+<li>字符比较，注意等号两边空格，中括号两边空格<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ &quot;OK&quot; = &quot;OK&quot; ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;equal &quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure></li>
+<li>判断目录是否存在，用 <code>-f</code></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ -f /root/shcode/aaa.txt ]</span><br><span class="line">then</span><br><span class="line">        echo &quot;存在&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>多分支语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if [ $1 -gt 60 ]</span><br><span class="line">then </span><br><span class="line">    echo &quot;及格&quot;</span><br><span class="line">elif [ $1 -lt 60 ]</span><br><span class="line">    echo &quot;不及格&quot;</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>case语句</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">&quot;值1&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值2&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line">&quot;值3&quot;)</span><br><span class="line">执行语句</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">以上都不满足执行本条语句</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="常见条件判断运算符"><a href="#常见条件判断运算符" class="headerlink" title="常见条件判断运算符"></a>常见条件判断运算符</h5><table>
+<thead>
+<tr>
+<th>语句</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“” = “”</td>
+<td>字符串比较</td>
+</tr>
+<tr>
+<td>-lt</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>-le</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>-eq</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>-gt</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>-ge</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>-ne</td>
+<td>不等于</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>实用工具</tag>
+        <tag>Shell</tag>
+      </tags>
   </entry>
   <entry>
     <title>Typora使用教程</title>
@@ -1955,6 +1935,26 @@
         <tag>Typora</tag>
         <tag>hexo</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/12/06/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>html常用标签及属性</title>
@@ -2338,21 +2338,6 @@
       </tags>
   </entry>
   <entry>
-    <title>画板测试楼</title>
-    <url>/2022/12/12/%E7%94%BB%E6%9D%BF%E6%B5%8B%E8%AF%95%E6%A5%BC/</url>
-    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212122038998.png" alt="image-20221212203852937"></p>
-<p>在评论区测试画板功能哦</p>
-<span id="more"></span>
-
-]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>nand2tetris学习笔记</title>
     <url>/2022/12/20/nand2tetris%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212201817519.png" alt="image-20221220181728418"></p>
@@ -2605,6 +2590,21 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
         <tag>课程笔记</tag>
         <tag>计算体系结构</tag>
         <tag>编译原理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>画板测试楼</title>
+    <url>/2022/12/12/%E7%94%BB%E6%9D%BF%E6%B5%8B%E8%AF%95%E6%A5%BC/</url>
+    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212122038998.png" alt="image-20221212203852937"></p>
+<p>在评论区测试画板功能哦</p>
+<span id="more"></span>
+
+]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
       </tags>
   </entry>
 </search>
