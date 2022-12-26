@@ -142,6 +142,24 @@
   </div>
 
 </header>
+
+      
+       <div class="fav">
+          <style>
+            .fav{
+              width:280px;
+              display:flex;
+              flex-direction:column;
+              background-color:#fff;
+              padding:0px 10px 20px 10px;
+              margin-top:12px;
+            }
+          </style>
+          <p style="font-weight:bolder;margin:5px;margin-top:10px">文章推荐</p> 
+          <a href="/前端/CSS常见布局">CSS常见布局</a>
+           <a href="/前端/CSS常见布局">nand2tetris学习笔记</a>
+      </div>
+      
         
   
   <aside class="sidebar">
@@ -197,13 +215,17 @@
       </span>
   </div>
 
+
+
+
+
 <div id="posts-calendar"></div>
   <script id="postsCalendar">
     let postsCalendar = echarts.init(document.getElementById('posts-calendar'));
     let postsCalendarOption = {
         title: {
             top: 0,
-            text: 'Post Calendar',
+            text: '文章统计',
             left: 'center',
             textStyle: {
                 color: '#3C4858'
@@ -232,10 +254,10 @@
             itemHeight: 12,
             orient: 'horizontal',
             left: 'center',
-            bottom: 30
+            bottom: 60
         },
         calendar: [{
-            top: 90,
+            top: 80,
             right: 25,
             range: ["2021-12-26", "2022-12-26"],
             cellSize: [13, 13],
@@ -311,7 +333,7 @@
       </div>
 
       <div class="post-title">
-          <a class="post-title-link" href="/2022/12/08/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" itemprop="url">
+          <a class="post-title-link" href="/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Shell%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8/" itemprop="url">
             <span itemprop="name">Shell编程入门</span>
           </a>
       </div>
