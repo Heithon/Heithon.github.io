@@ -291,6 +291,129 @@
       </tags>
   </entry>
   <entry>
+    <title>Git常用命令</title>
+    <url>/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212221358671.png" alt="image-20221222135812581"></p>
+<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l	//查看配置</span><br><span class="line">git config --system --list	//查看系统级别配置</span><br><span class="line">git config --global --list	//查看当前用户配置</span><br><span class="line"></span><br><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
+<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
+<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
+<p>shift + ins ： 同上</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git init</code></td>
+<td>初始化工作区</td>
+</tr>
+<tr>
+<td><code>git status</code></td>
+<td>查看工作区状态</td>
+</tr>
+<tr>
+<td><code>git add 文件名</code></td>
+<td>将文件加入暂存区</td>
+</tr>
+<tr>
+<td><code>git rm --cached 文件名</code></td>
+<td>将文件从暂存区移除</td>
+</tr>
+<tr>
+<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
+<td>将文件提交到本地库</td>
+</tr>
+<tr>
+<td><code>git reflog</code></td>
+<td>查看简化版本信息</td>
+</tr>
+<tr>
+<td><code>git log</code></td>
+<td>查看完整版本信息</td>
+</tr>
+<tr>
+<td><code>git reset --hard 版本号</code></td>
+<td>穿梭到哪个版本</td>
+</tr>
+</tbody></table>
+<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>git branch -v</code></td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td><code>git branch 分支名</code></td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td><code>git checkout 分支名</code></td>
+<td>切换到指定分支</td>
+</tr>
+<tr>
+<td><code>git merge 分支名</code></td>
+<td>将指定分支合并到当前分支</td>
+</tr>
+<tr>
+<td><code>git branch -d 分支名</code></td>
+<td>删除分支，分支包含更改未提交会被-d阻止，可以用-D强制删除</td>
+</tr>
+</tbody></table>
+<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
+<p>文件中会出现冲突信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
+
+<p>重新add 和commit</p>
+<p>==注意：commit 不能后不能带文件名否则会报错==</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
+<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
+<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>ssh-keygen -t rsa</code> 用git生成公钥，放入github实现免密登录，秘钥在 <strong>用户名/.ssh/id_rsa.pub</strong> 文件中</p>
+<p><code>git remote -v</code>  查看远程连接的库</p>
+<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
+<p><code>git push 名字/链接 本地分支名</code> 推送分支</p>
+<p><code>git pull 名字/链接 远程分支名</code>  拉取分支</p>
+<p><code>git pull 仓库名字/链接 --allow-unrelated-histories</code> 强行拉取合并(当远程库有本地库没有的文件时)</p>
+<p><code>git clone 名字/链接</code>  克隆仓库</p>
+<p><code>git clone 分支名 名字/链接</code>  克隆仓库</p>
+<div style="color:#999;background-color:lightyellow;padding:10px;border-left:4px solid #686">小贴士：git推送分支的完整写法是 <p style="color:#000">git push origin 本地分支名:远程分支名</p> 我们通常会省略远程分支名，这样GitHub会自动创建一个同名的分支，我们也可以指定这个需要推送到的远程分支名。</div>
+
+
+
+
+
+<h3 id="五-gitignore文件的使用"><a href="#五-gitignore文件的使用" class="headerlink" title="五. gitignore文件的使用"></a>五. gitignore文件的使用</h3><p>在git工程下面可以创建一个**.gitignore<strong>文件，里面可以设置，提交到暂存区时</strong>忽略**哪些文件，即哪些文件不传到暂存区</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#基本的语法</span><br><span class="line">#	井号为注释</span><br><span class="line"></span><br><span class="line">*.txt	#忽略所有的txt文件</span><br><span class="line">!lib.txt	#除了lib.txt以外的都忽略</span><br><span class="line">/temp	#忽略temp文件夹</span><br><span class="line">build/	#忽略build文件夹下的所有文件</span><br><span class="line">build/*.txt	#忽略build文件夹下的txt文件</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六-工作流程梳理"><a href="#六-工作流程梳理" class="headerlink" title="六. 工作流程梳理"></a>六. 工作流程梳理</h3><ol>
+<li>git先初始化用户名和邮箱，没有公钥的先生成公钥，在github里添加公钥。</li>
+<li>创建一个git工程，使用<code>git init</code>或者<code>git clone</code>。同时github中新建一个仓库。</li>
+<li>当文件修改好了需要提交的时候，先<code>git add .</code>到暂存区，再<code>git commit -m &quot;日志信息&quot; .</code> 到本地库。</li>
+<li>复制github仓库链接，用<code>remote add 别名 链接</code>添加库的别名，方便后续使用。</li>
+<li>用<code>git push 别名/链接 本地分支 </code>来把指定分支的代码推送到github仓库。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>实用工具</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+        <tag>gitHub</tag>
+        <tag>实用工具</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux常用命令</title>
     <url>/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/LInux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h1 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h1><h2 id="vim常用操作"><a href="#vim常用操作" class="headerlink" title="vim常用操作"></a>vim常用操作</h2><table>
@@ -1410,131 +1533,8 @@
         <category>实用工具</category>
       </categories>
       <tags>
+        <tag>实用工具</tag>
         <tag>Linux</tag>
-        <tag>实用工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git常用命令</title>
-    <url>/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h1 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h1><h3 id="一-Git-工作机制"><a href="#一-Git-工作机制" class="headerlink" title="一. Git 工作机制"></a>一. Git 工作机制</h3><p>工作区-&gt;暂存区-&gt;本地库-&gt;代码托管中心（远程库）</p>
-<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212221358671.png" alt="image-20221222135812581"></p>
-<h3 id="二-Git-操作"><a href="#二-Git-操作" class="headerlink" title="二. Git 操作"></a>二. Git 操作</h3><h4 id="1-设置签名"><a href="#1-设置签名" class="headerlink" title="1.设置签名"></a>1.设置签名</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l	//查看配置</span><br><span class="line">git config --system --list	//查看系统级别配置</span><br><span class="line">git config --global --list	//查看当前用户配置</span><br><span class="line"></span><br><span class="line">git config --global user.name xxx    //设置名字</span><br><span class="line"></span><br><span class="line">git config --global user.email xxx   //设置邮箱</span><br></pre></td></tr></table></figure>
-<p>C:\Users\用户名\.gitconfig 用户配置文件</p>
-<h4 id="2-git命令"><a href="#2-git命令" class="headerlink" title="2.git命令"></a>2.git命令</h4><p>左键选中+中键：  直接复制粘贴</p>
-<p>shift + ins ： 同上</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git init</code></td>
-<td>初始化工作区</td>
-</tr>
-<tr>
-<td><code>git status</code></td>
-<td>查看工作区状态</td>
-</tr>
-<tr>
-<td><code>git add 文件名</code></td>
-<td>将文件加入暂存区</td>
-</tr>
-<tr>
-<td><code>git rm --cached 文件名</code></td>
-<td>将文件从暂存区移除</td>
-</tr>
-<tr>
-<td><code>git commit -m &quot;日志信息&quot; 文件名</code></td>
-<td>将文件提交到本地库</td>
-</tr>
-<tr>
-<td><code>git reflog</code></td>
-<td>查看简化版本信息</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>查看完整版本信息</td>
-</tr>
-<tr>
-<td><code>git reset --hard 版本号</code></td>
-<td>穿梭到哪个版本</td>
-</tr>
-</tbody></table>
-<h4 id="3-git分支"><a href="#3-git分支" class="headerlink" title="3.git分支"></a>3.git分支</h4><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>git branch -v</code></td>
-<td>查看分支</td>
-</tr>
-<tr>
-<td><code>git branch 分支名</code></td>
-<td>创建分支</td>
-</tr>
-<tr>
-<td><code>git checkout 分支名</code></td>
-<td>切换到指定分支</td>
-</tr>
-<tr>
-<td><code>git merge 分支名</code></td>
-<td>将指定分支合并到当前分支</td>
-</tr>
-<tr>
-<td><code>git branch -d 分支名</code></td>
-<td>删除分支，分支包含更改未提交会被-d阻止，可以用-D强制删除</td>
-</tr>
-</tbody></table>
-<p><strong>冲突合并</strong>：==同一个文件的同一个位置==有两种不同的修改</p>
-<p>文件中会出现冲突信息</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">hello git!2222222222222</span><br><span class="line">hello git!3333333333333</span><br><span class="line">=======                     （===上面是当前代码，下面是要合并的代码）</span><br><span class="line">hello git!2222</span><br><span class="line">hello git!</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>自己手动修改，选取要保留的部分，删掉多余代码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello git!3333333333333</span><br><span class="line">hello git!2222</span><br></pre></td></tr></table></figure>
-
-<p>重新add 和commit</p>
-<p>==注意：commit 不能后不能带文件名否则会报错==</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git commit -m &quot;merge test&quot;  //不能带文件名</span><br></pre></td></tr></table></figure>
-<p>成功合并后只会修改当前的分支，不会修改拿来合并的那个另一个分支</p>
-<h3 id="四-github的使用"><a href="#四-github的使用" class="headerlink" title="四. github的使用"></a>四. github的使用</h3><p><code>ssh-keygen -t rsa</code> 用git生成公钥，放入github实现免密登录，秘钥在 <strong>用户名/.ssh/id_rsa.pub</strong> 文件中</p>
-<p><code>git remote -v</code>  查看远程连接的库</p>
-<p><code>git remote add 自定义名字 远程库链接</code>  新建远程库的连接</p>
-<p><code>git push 名字/链接 本地分支名</code> 推送分支</p>
-<p><code>git pull 名字/链接 远程分支名</code>  拉取分支</p>
-<p><code>git pull 仓库名字/链接 --allow-unrelated-histories</code> 强行拉取合并(当远程库有本地库没有的文件时)</p>
-<p><code>git clone 名字/链接</code>  克隆仓库</p>
-<p><code>git clone 分支名 名字/链接</code>  克隆仓库</p>
-<div style="color:#999;background-color:lightyellow;padding:10px;border-left:4px solid #686">小贴士：git推送分支的完整写法是 <p style="color:#000">git push origin 本地分支名:远程分支名</p> 我们通常会省略远程分支名，这样GitHub会自动创建一个同名的分支，我们也可以指定这个需要推送到的远程分支名。</div>
-
-
-
-
-
-<h3 id="五-gitignore文件的使用"><a href="#五-gitignore文件的使用" class="headerlink" title="五. gitignore文件的使用"></a>五. gitignore文件的使用</h3><p>在git工程下面可以创建一个**.gitignore<strong>文件，里面可以设置，提交到暂存区时</strong>忽略**哪些文件，即哪些文件不传到暂存区</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#基本的语法</span><br><span class="line">#	井号为注释</span><br><span class="line"></span><br><span class="line">*.txt	#忽略所有的txt文件</span><br><span class="line">!lib.txt	#除了lib.txt以外的都忽略</span><br><span class="line">/temp	#忽略temp文件夹</span><br><span class="line">build/	#忽略build文件夹下的所有文件</span><br><span class="line">build/*.txt	#忽略build文件夹下的txt文件</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="六-工作流程梳理"><a href="#六-工作流程梳理" class="headerlink" title="六. 工作流程梳理"></a>六. 工作流程梳理</h3><ol>
-<li>git先初始化用户名和邮箱，没有公钥的先生成公钥，在github里添加公钥。</li>
-<li>创建一个git工程，使用<code>git init</code>或者<code>git clone</code>。同时github中新建一个仓库。</li>
-<li>当文件修改好了需要提交的时候，先<code>git add .</code>到暂存区，再<code>git commit -m &quot;日志信息&quot; .</code> 到本地库。</li>
-<li>复制github仓库链接，用<code>remote add 别名 链接</code>添加库的别名，方便后续使用。</li>
-<li>用<code>git push 别名/链接 本地分支 </code>来把指定分支的代码推送到github仓库。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>实用工具</category>
-      </categories>
-      <tags>
-        <tag>实用工具</tag>
-        <tag>git</tag>
-        <tag>gitHub</tag>
       </tags>
   </entry>
   <entry>
@@ -1934,6 +1934,68 @@
         <tag>实用工具</tag>
         <tag>Typora</tag>
         <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/uncategorized/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>hexo自定义友链页面</title>
+    <url>/%E5%8D%9A%E5%AE%A2/hexo%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%8B%E9%93%BE%E9%A1%B5%E9%9D%A2/</url>
+    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252232288.png" alt="image-20221225223214297"></p>
+<p>如何自定义一个友链页面，甚至一个任意html？</p>
+<span id="more"></span>
+
+<h2 id="主题版本"><a href="#主题版本" class="headerlink" title="主题版本"></a>主题版本</h2><p><strong>hexo</strong>：5.4.2</p>
+<p><strong>next主题</strong>：8.14.0</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="心路历程（着急直接看下面完整步骤）"><a href="#心路历程（着急直接看下面完整步骤）" class="headerlink" title="心路历程（着急直接看下面完整步骤）"></a>心路历程（着急直接看下面完整步骤）</h3><p>next主题的友链是放到侧边栏的，如果友链过多，或者想加入更多介绍信息，就会臃肿或者很难实现。正好又想整个导航页面，把友链和常用网址一起放进导航页面里，最好是像分类页、标签页那样，显示在post block里(就是中间显示文章那块，侧边栏不变)。</p>
+<p>实际上问题就是，<strong>有没有一种方式能够用html自定义post block？而不是只能显示文章。</strong></p>
+<p>hexo原本创建自定义页的方法是用 <code>new page 分页名称</code> 这个指令，然后会在sorce目录下新建一个页面名称命名的文件夹，里面有一个index.md文件，实际上就是像渲染文章一样用markdown文档渲染这个新页面。而markdown是支持渲染html代码的！我们就很自然的想到直接在markdown文件中写html代码，既方便又是非入侵的。</p>
+<p>可是很快就遇到了问题，这个md文件里只能渲染简单的html代码，比如一些层级不多，带着内联样式的div盒子。但是一旦层级套的太多，各种样式的定义弄上去，就直接识别为一个代码块，不能成功渲染。</p>
+<p>正在头疼之时，突然找到了解决方案：<strong>把index.md换成index.html</strong>，我为了方便查看效果，先用html文件写了再复制到md文件里，就顺手在旁边放了个html文件，惊讶的发现<strong>hexo渲染页面会优选选择index.html</strong>，并且会直接把index.html的内容渲染到post block上。可谓时来运转，柳暗花明，这恰恰戳中的我的需求。</p>
+<h3 id="完整步骤"><a href="#完整步骤" class="headerlink" title="完整步骤"></a>完整步骤</h3><ol>
+<li><p>使用<code>hexo new page 导航</code> 建立一个导航页，你博客根目录的source文件夹中会出现一个叫导航的文件夹</p>
+</li>
+<li><p>进入导航文件夹<code>cd /source/导航</code>，新建一个index.html  (根据测试会优先使用html文件，如感觉不保险可以把index.md删掉)</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252213206.png" alt="image-20221225221348135"></p>
+</li>
+<li><p>在index.html中编辑自己的页面并保存，最后面我会给出我的代码参考。</p>
+</li>
+<li><p>重新部署网站试试看吧！</p>
+</li>
+</ol>
+<p>你需要使用自己的前端知识来构建这个页面，也可以去扒其他好看的页面，也可以参考我的渣代码。</p>
+<p style="background-color:rgba(255,0,0,.2); padding:0 15px; font-weight:bolder; border-left:5px #bbb solid">注意：经测试，html文件中的css样式会作用到整个页面（包括侧边栏），特别是a标签的样式。所以一定要活用选择器，多设置class,选择自己定义的标签，切勿影响到其他标签</p>
+
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>网站实例：<a href="https://heithon.fun/%E5%AF%BC%E8%88%AA/">Heithon的导航页（点击查看）</a></p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252228964.png" alt="image-20221225222807883"></p>
+<p>效果如上，代码如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 45px; font-weight: bolder; margin: 20px;&quot;</span>&gt;</span>导航页<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navigation&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: flex;flex-direction: column;&quot;</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css">            </span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.frame</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>: <span class="number">#BBB</span> solid <span class="number">3px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">10px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-size</span>: <span class="number">15px</span>;		<span class="comment">/*字体大小*/</span></span></span><br><span class="line"><span class="language-css">	            <span class="attribute">line-height</span>: <span class="number">20px</span>;      <span class="comment">/*行高*/</span></span></span><br><span class="line"><span class="language-css">	            </span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.type</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">line-height</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-weight</span>: bolder;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.boxwrapper</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除a标签下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: black;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: auto;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-right</span>: <span class="number">30px</span>;  </span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">20px</span>; </span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-bottom</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除未被访问的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除已经被访问过的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除鼠标悬停时的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>,<span class="number">1.1</span>);</span></span><br><span class="line"><span class="language-css">                <span class="attribute">transition-duration</span>: .<span class="number">2s</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除正在点击的a标签的下划线（鼠标按下，尚未松开）*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除获得焦点的a标签的下划线（被鼠标点击过）*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">  </span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>: <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) solid;</span></span><br><span class="line"><span class="language-css">                <span class="comment">/* border-left: 2px black solid; */</span></span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">justify-content</span>: space-between;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">2</span>);</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span> <span class="selector-class">.img</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">90px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">90px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-repeat</span>: no-repeat;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-position</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-size</span>: <span class="number">110%</span> <span class="number">110%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">0px</span> <span class="number">10px</span> -<span class="number">2px</span> <span class="number">#999</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span> <span class="selector-class">.words</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">80px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: <span class="number">150px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-direction</span>: column;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.words</span> <span class="selector-class">.name</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">5px</span> ;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-weight</span>: bolder;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.words</span> <span class="selector-class">.infor</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: <span class="number">#666</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jump</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>: <span class="number">5px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-right</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jump</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-left</span>: <span class="number">4px</span> <span class="number">#BBB</span> solid;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jumpbtn</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">min-width</span>: auto;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">line-height</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>: black;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-self</span>:center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">    </span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        /*点击跳转到指定位置*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jump&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#friendlink&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>友情链接<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#blogs&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>大佬博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#webs&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>实用网站<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		/*一个frame就是一类，上面的跳转按钮通过id跳转到这些frame*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;friendlink&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>友情链接<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                /*下面每一个a标签都是一个链接卡片，新增链接直接新增整个a包裹的标签就行*/</span><br><span class="line">                /*img里的url填头像地址，name填网站名，infor填网站简介*/</span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://mashiro.pub/&quot;</span> <span class="attr">class</span>=<span class="string">&quot;link&quot;</span>  <span class="attr">target</span>=<span class="string">&quot;_blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/shina.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>LoliMashiro<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>呐，你想变成什么颜色？<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;blogs&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>大佬博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.liaoxuefeng.com/&quot;</span> <span class="attr">class</span>=<span class="string">&quot;link&quot;</span> <span class="attr">target</span>=<span class="string">&quot; _blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/liaoxuefeng.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>廖雪峰的blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>java|python|前端|区块链|SQL<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">              </span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;webs&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>实用网站<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://csblog.cc/&quot;</span> <span class="attr">target</span>=<span class="string">&quot; _blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/csblog.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>一站式秃头孵化基地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>聚合了许多高质量技术博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
   <entry>
@@ -2573,72 +2635,11 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/uncategorized/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span>
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>hexo自定义友链页面</title>
-    <url>/%E5%8D%9A%E5%AE%A2/hexo%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%8B%E9%93%BE%E9%A1%B5%E9%9D%A2/</url>
-    <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252232288.png" alt="image-20221225223214297"></p>
-<p>如何自定义一个友链页面，甚至一个任意html？</p>
-<span id="more"></span>
-
-<h2 id="主题版本"><a href="#主题版本" class="headerlink" title="主题版本"></a>主题版本</h2><p><strong>hexo</strong>：5.4.2</p>
-<p><strong>next主题</strong>：8.14.0</p>
-<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="心路历程（着急直接看下面完整步骤）"><a href="#心路历程（着急直接看下面完整步骤）" class="headerlink" title="心路历程（着急直接看下面完整步骤）"></a>心路历程（着急直接看下面完整步骤）</h3><p>next主题的友链是放到侧边栏的，如果友链过多，或者想加入更多介绍信息，就会臃肿或者很难实现。正好又想整个导航页面，把友链和常用网址一起放进导航页面里，最好是像分类页、标签页那样，显示在post block里(就是中间显示文章那块，侧边栏不变)。</p>
-<p>实际上问题就是，<strong>有没有一种方式能够用html自定义post block？而不是只能显示文章。</strong></p>
-<p>hexo原本创建自定义页的方法是用 <code>new page 分页名称</code> 这个指令，然后会在sorce目录下新建一个页面名称命名的文件夹，里面有一个index.md文件，实际上就是像渲染文章一样用markdown文档渲染这个新页面。而markdown是支持渲染html代码的！我们就很自然的想到直接在markdown文件中写html代码，既方便又是非入侵的。</p>
-<p>可是很快就遇到了问题，这个md文件里只能渲染简单的html代码，比如一些层级不多，带着内联样式的div盒子。但是一旦层级套的太多，各种样式的定义弄上去，就直接识别为一个代码块，不能成功渲染。</p>
-<p>正在头疼之时，突然找到了解决方案：<strong>把index.md换成index.html</strong>，我为了方便查看效果，先用html文件写了再复制到md文件里，就顺手在旁边放了个html文件，惊讶的发现<strong>hexo渲染页面会优选选择index.html</strong>，并且会直接把index.html的内容渲染到post block上。可谓时来运转，柳暗花明，这恰恰戳中的我的需求。</p>
-<h3 id="完整步骤"><a href="#完整步骤" class="headerlink" title="完整步骤"></a>完整步骤</h3><ol>
-<li><p>使用<code>hexo new page 导航</code> 建立一个导航页，你博客根目录的source文件夹中会出现一个叫导航的文件夹</p>
-</li>
-<li><p>进入导航文件夹<code>cd /source/导航</code>，新建一个index.html  (根据测试会优先使用html文件，如感觉不保险可以把index.md删掉)</p>
-<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252213206.png" alt="image-20221225221348135"></p>
-</li>
-<li><p>在index.html中编辑自己的页面并保存，最后面我会给出我的代码参考。</p>
-</li>
-<li><p>重新部署网站试试看吧！</p>
-</li>
-</ol>
-<p>你需要使用自己的前端知识来构建这个页面，也可以去扒其他好看的页面，也可以参考我的渣代码。</p>
-<p style="background-color:rgba(255,0,0,.2); padding:0 15px; font-weight:bolder; border-left:5px #bbb solid">注意：经测试，html文件中的css样式会作用到整个页面（包括侧边栏），特别是a标签的样式。所以一定要活用选择器，多设置class,选择自己定义的标签，切勿影响到其他标签</p>
-
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><p>网站实例：<a href="https://heithon.fun/%E5%AF%BC%E8%88%AA/">Heithon的导航页（点击查看）</a></p>
-<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212252228964.png" alt="image-20221225222807883"></p>
-<p>效果如上，代码如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;font-size: 45px; font-weight: bolder; margin: 20px;&quot;</span>&gt;</span>导航页<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;navigation&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display: flex;flex-direction: column;&quot;</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css">            </span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.frame</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>: <span class="number">#BBB</span> solid <span class="number">3px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>:<span class="number">10px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-size</span>: <span class="number">15px</span>;		<span class="comment">/*字体大小*/</span></span></span><br><span class="line"><span class="language-css">	            <span class="attribute">line-height</span>: <span class="number">20px</span>;      <span class="comment">/*行高*/</span></span></span><br><span class="line"><span class="language-css">	            </span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.type</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-size</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">line-height</span>: <span class="number">30px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-weight</span>: bolder;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.boxwrapper</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除a标签下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: black;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: auto;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-right</span>: <span class="number">30px</span>;  </span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">20px</span>; </span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-bottom</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除未被访问的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除已经被访问过的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除鼠标悬停时的a标签的下划线*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>,<span class="number">1.1</span>);</span></span><br><span class="line"><span class="language-css">                <span class="attribute">transition-duration</span>: .<span class="number">2s</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除正在点击的a标签的下划线（鼠标按下，尚未松开）*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="comment">/*去除获得焦点的a标签的下划线（被鼠标点击过）*/</span></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.navigation</span> <span class="selector-tag">a</span><span class="selector-pseudo">:focus</span> &#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">text-decoration</span>: none;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">  </span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border</span>: <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) solid;</span></span><br><span class="line"><span class="language-css">                <span class="comment">/* border-left: 2px black solid; */</span></span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">justify-content</span>: space-between;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">10px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">2</span>);</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span> <span class="selector-class">.img</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">90px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>:<span class="number">90px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-repeat</span>: no-repeat;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-position</span>: center;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-size</span>: <span class="number">110%</span> <span class="number">110%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">box-shadow</span>: <span class="number">5px</span> <span class="number">0px</span> <span class="number">10px</span> -<span class="number">2px</span> <span class="number">#999</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.box</span> <span class="selector-class">.words</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">80px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">width</span>: <span class="number">150px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-direction</span>: column;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.words</span> <span class="selector-class">.name</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-bottom</span>: <span class="number">5px</span> ;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">font-weight</span>: bolder;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.words</span> <span class="selector-class">.infor</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: <span class="number">#666</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jump</span> <span class="selector-tag">a</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin</span>: <span class="number">5px</span> <span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">margin-right</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jump</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-left</span>: <span class="number">4px</span> <span class="number">#BBB</span> solid;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">flex-wrap</span>: wrap;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-items</span>: center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">            <span class="selector-class">.jumpbtn</span>&#123;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">height</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">min-width</span>: auto;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">padding</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">line-height</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">background-color</span>: black;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">color</span>: white;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span></span><br><span class="line"><span class="language-css">                <span class="attribute">align-self</span>:center;</span></span><br><span class="line"><span class="language-css">            &#125;</span></span><br><span class="line"><span class="language-css">    </span></span><br><span class="line"><span class="language-css">        </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">        /*点击跳转到指定位置*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jump&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#friendlink&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>友情链接<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#blogs&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>大佬博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#webs&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;jumpbtn&quot;</span>&gt;</span>实用网站<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		/*一个frame就是一类，上面的跳转按钮通过id跳转到这些frame*/</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;friendlink&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>友情链接<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                /*下面每一个a标签都是一个链接卡片，新增链接直接新增整个a包裹的标签就行*/</span><br><span class="line">                /*img里的url填头像地址，name填网站名，infor填网站简介*/</span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://mashiro.pub/&quot;</span> <span class="attr">class</span>=<span class="string">&quot;link&quot;</span>  <span class="attr">target</span>=<span class="string">&quot;_blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/shina.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>LoliMashiro<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>呐，你想变成什么颜色？<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;blogs&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>大佬博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.liaoxuefeng.com/&quot;</span> <span class="attr">class</span>=<span class="string">&quot;link&quot;</span> <span class="attr">target</span>=<span class="string">&quot; _blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/liaoxuefeng.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>廖雪峰的blog<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>java|python|前端|区块链|SQL<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">              </span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;frame&quot;</span> <span class="attr">id</span>=<span class="string">&quot;webs&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;type&quot;</span>&gt;</span>实用网站<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;boxwrapper&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://csblog.cc/&quot;</span> <span class="attr">target</span>=<span class="string">&quot; _blank;&quot;</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box&quot;</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img&quot;</span> <span class="attr">style</span>=<span class="string">&quot;background-image: url(/images/icons/csblog.png);&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;words&quot;</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;name&quot;</span>&gt;</span>一站式秃头孵化基地<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;infor&quot;</span>&gt;</span>聚合了许多高质量技术博客<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>     </span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>博客</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>画板测试楼</title>
     <url>/test/%E7%94%BB%E6%9D%BF%E6%B5%8B%E8%AF%95%E6%A5%BC/</url>
     <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202212122038998.png" alt="image-20221212203852937"></p>
-<p>在评论区测试画板功能哦</p>
+<p><del>在评论区测试画板功能哦</del></p>
+<p><strong>画板功能已经取消</strong>，本层改用做<strong>评论测试</strong></p>
 <span id="more"></span>
 
 ]]></content>

@@ -145,20 +145,20 @@ let categoryFun = function(){
 // 加载表格函数---------------------------------
 
 // 加载评论函数---------------------------------
-let valine = function(){
-  if(!CONFIG.page.isHome){
-    new Valine({
-      el: '#vcomments',
-      severURLs: 'https://nqlocvfm.api.lncldglobal.com',
-      //element: "#veditor",
-      appId: 'nQlOcVfmRAxcrMLd2drA4QUj-MdYXbMMI',
-      appKey: 'bwM4xEJ5qPfEA7kduuC0nd4g',
-      avatar: 'retro',
-      path: window.location.pathname,
-    })
+// let valine = function(){
+//   if(!CONFIG.page.isHome){
+//     new Valine({
+//       el: '#vcomments',
+//       severURLs: 'https://nqlocvfm.api.lncldglobal.com',
+//       //element: "#veditor",
+//       appId: 'nQlOcVfmRAxcrMLd2drA4QUj-MdYXbMMI',
+//       appKey: 'bwM4xEJ5qPfEA7kduuC0nd4g',
+//       avatar: 'retro',
+//       path: window.location.pathname,
+//     })
 
-  }
-}
+//   }
+// }
 
 let cdraw = function(){
     var count = 0;

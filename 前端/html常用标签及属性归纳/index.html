@@ -4,7 +4,7 @@
   
   <script src="/js/live2d.js"></script>
   
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
   
   <script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script>
   <script src="/js/cdraw.js"></script>
@@ -381,6 +381,14 @@
         </span>
     </span>
 
+  
+    <span id="/%E5%89%8D%E7%AB%AF/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%B1%9E%E6%80%A7%E5%BD%92%E7%BA%B3/" class="post-meta-item twikoo_visitors" data-flag-title="html常用标签及属性" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
   
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
@@ -829,23 +837,10 @@
 
 
 
+    <div class="comments"><div id="twikoo-comments"></div></div>
 
     
-    <div id="vcomments"></div>
-    <script>
-      if(!CONFIG.page.isHome){
-      new Valine({
-            el: '#vcomments',
-            severURLs: 'https://nqlocvfm.api.lncldglobal.com',
-            //element: "#veditor",
-            appId: 'nQlOcVfmRAxcrMLd2drA4QUj-MdYXbMMI',
-            appKey: 'bwM4xEJ5qPfEA7kduuC0nd4g',
-            avatar: 'retro',
-            path: window.location.pathname,
-        })
-      //document.querySelector('.vcontent p').style.color = "#bbb";
-      }
-    </script>
+    
     
     
     </div>
@@ -918,6 +913,30 @@
 
 
 
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":true,"envId":"http://139.9.225.29:8080","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+.comments{
+  opacity: 0.85;
+}
+</style>
 
 
 
