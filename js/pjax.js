@@ -148,12 +148,14 @@ let categoryFun = function(){
 let valine = function(){
   if(!CONFIG.page.isHome){
     new Valine({
-        el: '#vcomments',
-        //element: "#veditor",
-        appId: 'x76UamaH1tESBeYk3ltUtgdL-gzGzoHsz',
-        appKey: 'oD0YdOe4tENnPdKI4k2kdTzj',
-        avatar: 'retro',
-        path: window.location.pathname,
+      el: '#vcomments',
+      //element: "#veditor",
+      appId: 'nQlOcVfmRAxcrMLd2drA4QUj-MdYXbMMI',
+      appKey: 'bwM4xEJ5qPfEA7kduuC0nd4g',
+      avatar: 'retro',
+      path: window.location.pathname,
+      lang: 'zh-cn',
+      placeholder: '有想法就说句话吧！',
     })
 
   }
