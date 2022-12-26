@@ -353,7 +353,7 @@
                 type: 'pie',
                 radius: '75%',
                 color: ['#BBBBBB', '#3E1717', '#999999', '#7D2D2D', '#666666', '#BB4444', '#333333', '#CD7676', '#111111'],
-                data: [{"name":"实用工具","value":4},{"name":"前端","value":2},{"name":"CS基础知识","value":2},{"name":"博客","value":1},{"name":"test","value":2}],
+                data: [{"name":"前端","value":2},{"name":"实用工具","value":4},{"name":"CS基础知识","value":2},{"name":"博客","value":1},{"name":"test","value":2}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -389,13 +389,12 @@
       if(!CONFIG.page.isHome){
       new Valine({
             el: '#vcomments',
+            severURLs: 'https://nqlocvfm.api.lncldglobal.com',
             //element: "#veditor",
             appId: 'nQlOcVfmRAxcrMLd2drA4QUj-MdYXbMMI',
             appKey: 'bwM4xEJ5qPfEA7kduuC0nd4g',
             avatar: 'retro',
             path: window.location.pathname,
-            lang: 'zh-cn',
-            placeholder: '有想法就说句话吧！',
         })
       //document.querySelector('.vcontent p').style.color = "#bbb";
       }
