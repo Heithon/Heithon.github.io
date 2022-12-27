@@ -361,14 +361,6 @@
     </span>
 
   
-    <span id="/test/%E7%94%BB%E6%9D%BF%E6%B5%8B%E8%AF%95%E6%A5%BC/" class="post-meta-item twikoo_visitors" data-flag-title="画板测试楼" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="twikoo_visitors"></span>
-    </span>
-  
     <span class="post-meta-break"></span>
     <span class="post-meta-item" title="本文字数">
       <span class="post-meta-item-icon">
@@ -451,7 +443,6 @@
 
 
 
-    <div class="comments"><div id="twikoo-comments"></div></div>
 
     
     
@@ -527,30 +518,6 @@
 
 
 
-<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":true,"envId":"http://139.9.225.29:8080","el":"#twikoo-comments"}</script>
-<script>
-document.addEventListener('page:loaded', () => {
-  NexT.utils.loadComments(CONFIG.twikoo.el)
-    .then(() => NexT.utils.getScript(
-      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
-      { condition: window.twikoo }
-    ))
-    .then(() => {
-      twikoo.init(CONFIG.twikoo);
-    });
-});
-</script>
-<style>
-.post-block, .comments {
-  overflow: visible;
-}
-.tk-owo-emotion {
-  display: inline-block;
-}
-.comments{
-  opacity: 0.85;
-}
-</style>
 
 
 
