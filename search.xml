@@ -6,11 +6,22 @@
     <content><![CDATA[<div style="background-color:black;color:white;padding: 5px 20px"><h3>本小站主要分享一些技术学习笔记和读书笔记</h3><h4>欢迎互换友情链接！具体请进入 <a href="/导航/">导航|友链</a> 栏查看</h4><p style="color:#fff;background-color:darkred;padding:0 20px;">如果遇到显示错误，请按Ctrl+F5刷新页面</p><p style="color:#fff;background-color:darkred;padding:0 20px;">如遇无法解决的bug请联系我，十分感谢！</p><h3>
     祝您阅读愉快！
     </h3>
-    <!--<p style="background-color:yellow;color:#666;padding:0 20px"><b>公告</b>：域名正在申请备案，评论区暂时无法使用，请见谅！</p>-->
+    <h2 style="background-color:yellow;color:#666;padding:0 20px"><b>公告</b>：域名正在申请备案，评论区暂时无法使用，请见谅！</h2>
     <div>
 
 
-<div></div>]]></content>
+<span id="more"></span>
+
+<div class="note primary"><h4 id="Primary-Header"><a href="#Primary-Header" class="headerlink" title="Primary Header"></a>Primary Header</h4><p>欢迎来到Heithon’blog</p>
+</div>
+
+<p>请看向左边侧栏：</p>
+<ul>
+<li>通过<strong>分类和标签</strong>，它们能帮你快速检索想要的文章</li>
+<li>通过<strong>归档</strong>，您能看到按创建时间排列的文章列表</li>
+<li>通过 <strong>导航|友链</strong> ，您可以看到里面收录了一些实用且有趣的网站或博客</li>
+</ul>
+]]></content>
       <categories>
         <category>test</category>
       </categories>
