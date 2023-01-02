@@ -1,6 +1,7 @@
 /* global NexT, CONFIG */
 
 NexT.motion = {};
+console.log("xxxxxxxxxxxxxxxx开始工作");
 
 NexT.motion.integrator = {
   queue: [],
