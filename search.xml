@@ -3,10 +3,10 @@
   <entry>
     <title>【置顶】欢迎来到本小站！</title>
     <url>/test/%E3%80%90%E7%BD%AE%E9%A1%B6%E3%80%91%E6%AC%A2%E8%BF%8E%E6%9D%A5%E5%88%B0%E6%9C%AC%E5%B0%8F%E7%AB%99%EF%BC%81/</url>
-    <content><![CDATA[<div style="background-color:black;color:white;padding: 5px 20px"><h3>本小站主要分享一些技术学习笔记和读书笔记</h3><h4>欢迎互换友情链接！具体请进入 <a href="/导航/">导航|友链</a> 栏查看</h4><p style="color:#fff;background-color:darkred;padding:0 20px;">如果遇到显示错误，请按Ctrl+F5刷新页面</p><p style="color:#fff;background-color:darkred;padding:0 20px;">如遇无法解决的bug请联系我，十分感谢！</p><h3>
+    <content><![CDATA[<div style="background-color:black;color:white;padding: 5px 20px"><h3>本小站主要分享一些技术学习笔记和读书笔记</h3><h4>欢迎互换友情链接！具体请进入 <a href="/nav/">导航|友链</a> 栏查看</h4><p style="color:#fff;background-color:darkred;padding:0 20px;">如果遇到显示错误，请按Ctrl+F5刷新页面</p><p style="color:#fff;background-color:darkred;padding:0 20px;">如遇无法解决的bug请联系我，十分感谢！</p><h3>
     祝您阅读愉快！
     </h3>
-    <h2 style="background-color:yellow;color:#666;padding:0 20px"><b>公告</b>：域名正在申请备案，评论区暂时无法使用，请见谅！</h2>
+   <!-- <h2 style="background-color:yellow;color:#666;padding:0 20px"><b>公告</b>：域名正在申请备案，评论区暂时无法使用，请见谅！</h2> -->
     <div>
 
 
@@ -2460,8 +2460,8 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
         <category>实用工具</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>实用工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2697,9 +2697,9 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
         <category>实用工具</category>
       </categories>
       <tags>
-        <tag>实用工具</tag>
         <tag>git</tag>
         <tag>gitHub</tag>
+        <tag>实用工具</tag>
       </tags>
   </entry>
   <entry>
