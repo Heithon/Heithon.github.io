@@ -34,6 +34,7 @@
 <p>使用logseq最好有<strong>Markdown</strong>基础</p>
 <span id="more"></span>
 
+<p>感觉这种双链笔记实在强大，就是一个数据库，以后应该会作为主力笔记软件了👍👍👍</p>
 <h2 id="软件的工作方式"><a href="#软件的工作方式" class="headerlink" title="软件的工作方式"></a>软件的工作方式</h2><ul>
 <li><p>logseq笔记的运作，是将许多的<a href="https://www.runoob.com/markdown/md-tutorial.html">markdown</a>文件(.md结尾的文件),用类似超链接的方式组织起来，不过这种链接是双向的。</p>
 </li>
@@ -60,7 +61,14 @@
 <p><strong>链接</strong>：链接是logseq中一个相当重要的东西，它连接了页面，块，甚至pdf文档，图片，和所有外部资源。我们后面提到的<strong>引用</strong>，实际上就是链接。</p>
 <p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301021757850.png" alt="image-20230102175756789"></p>
 <h2 id="新建一个图谱-笔记"><a href="#新建一个图谱-笔记" class="headerlink" title="新建一个图谱(笔记)"></a>新建一个图谱(笔记)</h2><p>logseq中笔记也称为图谱（如上面所说就是一个网状图），上面说过一个笔记就是一个文件夹，我们新建一个文件夹，然后通过软件左上角的<strong>添加图谱</strong>，选择这个文件夹。</p>
-<p>软件的左边最下面选择页面，新建一个笔记后，会有两个自带的特殊页面，一个是<strong>contents</strong>，它是隐藏看不见的，其实就是目录，后面详细讲。另一个是<strong>日志</strong>，在左侧边栏可以看到一个日期命名的页面</p>
+<p>软件的左边最下面选择页面，新建一个笔记后，会有两个自带的特殊页面，一个是<strong>contents</strong>，它是隐藏看不见的，其实就是目录，这个后面细讲。另一个是<strong>日志</strong>，在左侧边栏有个日志，点击即可进入。</p>
+<p><strong>日志</strong>：第一次点进去可能看到的就是只有日期命名的页面，但你在里面添加内容，就会在<strong>journals文件夹</strong>内生成一个以当天日期命名的markdown文件。第二天你会看到当天的日期，如果添加内容，就会在文件夹里又markdown。这个页面就很适合用于<strong>每日计划</strong>。</p>
+<p>但是日志有个缺点：如果之前有一天没有写任务进去，那么那一天就无法跳转了，除非手动建立那一天命名的md文件，想要去未来的某天也很难实现。之后介绍一款插件可以实现日志漫游。</p>
+<blockquote>
+<p>注意，只有由内容的那天才会生成一个实实在在的页面，也就是创建一个md文件，如果没有内容是没有md文件的。</p>
+</blockquote>
+<p>journals文件下的日志文件，<strong>一天一个文件</strong>，logseq可以将它组织起来。</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031740621.png" alt="image-20230103173848101"></p>
 <h2 id="块（block）"><a href="#块（block）" class="headerlink" title="块（block）"></a>块（block）</h2><p>我们打开第一个</p>
 <p>logleq编辑界面中，一行的开头有一个小圆点，一个小圆点就是一个“块”，有点类似无序列表。</p>
 <blockquote>
@@ -77,7 +85,11 @@
 <p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301021433904.png" alt="image-20230102143254814"></p>
 <ul>
 <li><strong>改变颜色</strong>：右键块前面的小圆点，可以选择颜色（只修改第一行）</li>
-<li><strong>双链</strong>：一个重要的操作，可以在文档的任意地方，对其它的块和页面进行引用。<br>右键块前面的小圆点，选择**复制块的引用(ref)<strong>，然后粘贴到想要引用的地方即可，鼠标放到引用上面可以预览，点击可以跳转到那个块里。<br>右键块前面的小圆点，选择</strong>复制内嵌块(embed)**，然后粘贴到想要引用的地方即可，相比于引用，能看到整个块的内容。修改引用位置的块，原来的块也会同步修改。<blockquote>
+<li><strong>双链</strong>：一个重要的操作，可以在文档的任意地方，对其它的块和页面进行引用。<ul>
+<li>右键块前面的小圆点，选择**复制块的引用(ref)**，然后粘贴到想要引用的地方即可，鼠标放到引用上面可以预览，点击可以跳转到那个块里。</li>
+<li>右键块前面的小圆点，选择**复制内嵌块(embed)**，然后粘贴到想要引用的地方即可，相比于引用，能看到整个块的内容。修改引用位置的块，原来的块也会同步修改。</li>
+</ul>
+<blockquote>
 <p>[[]] 可以创建一个双向链接，里面填入套链接到的地方，可以是页面名称，标签</p>
 </blockquote>
 </li>
@@ -86,7 +98,7 @@
 </ul>
 <p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301021501837.png" alt="image-20230102150104769"></p>
 <blockquote>
-<p>拓展：【**win+.**】可以唤出Windows自带的emoji👽👽👽</p>
+<p>拓展：【win+.】可以唤出Windows自带的emoji👽👽👽</p>
 </blockquote>
 <h2 id="目录和新建页面"><a href="#目录和新建页面" class="headerlink" title="目录和新建页面"></a>目录和新建页面</h2><h3 id="新建页面"><a href="#新建页面" class="headerlink" title="新建页面"></a>新建页面</h3><p>新建一个页面的方式有两种：</p>
 <ol>
@@ -152,6 +164,8 @@
 </li>
 <li><p>跨行就用两对嵌套的$，<code>$$ 公式内容 $$</code></p>
 </li>
+<li><p>数学公式语法请查看这篇教程：<a href="/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Typora%E7%9A%84%E4%BD%BF%E7%94%A8">Typora的使用</a></p>
+</li>
 </ul>
 <h2 id="闪卡制作"><a href="#闪卡制作" class="headerlink" title="闪卡制作"></a>闪卡制作</h2><p>logseq可以制作类似anki那种闪卡(抽认卡)，就像单词卡或者儿童认字卡，卡的正面是问题，背面是答案。</p>
 <p>可以按照艾宾浩斯遗忘曲线进行记忆，和anki类似。</p>
@@ -181,6 +195,43 @@
 <li>我们可以发现，一个<strong>有许多子块的块</strong>，在渲染后，它的html标签的层级结构也是嵌套的。</li>
 <li>这样我们就可以查看并选择需要的选择器来修改样式。</li>
 <li>一个使用css制作优先级矩阵的案例：<a href="https://discuss.logseq.com/t/css-template-eisenhower-matrix/526">【css+template】 eisenhower matrix</a></li>
+</ul>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><h3 id="random-access随机访问"><a href="#random-access随机访问" class="headerlink" title="random access随机访问"></a>random access随机访问</h3><p>随机访问就相当于全文匹配关键词检索，类似word里按ctrl+f一样</p>
+<p>通过左上角的<strong>放大镜</strong>按钮，或者快捷键【<strong>Ctrl+K</strong>】</p>
+<p>搜索结果前面的P表示page(页面)，B表示block(块)</p>
+<h3 id="Query命令"><a href="#Query命令" class="headerlink" title="Query命令"></a>Query命令</h3><p>前文说过，loseq其实就是一个<strong>图数据库</strong>，因此可以用一些查询语言进行查询操作</p>
+<p>输入/query ，就可以得到一个查询语句的框架，<code>&#123;&#123;query &#125;&#125;</code></p>
+<p>我们前面创建过许多用[[]]包裹的链接，通常指向<strong>页面</strong>和<strong>标签</strong>，我们可以通过这些链接来进行查询。</p>
+<p><strong>官方查询命令文档</strong>：<a href="https://docs.logseq.com/#/page/queries">logseq queries</a></p>
+<ul>
+<li>最基本的<strong>与或非</strong>逻辑：<br><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031805874.png" alt="image-20230103180531832"><br><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031806540.png" alt="image-20230103180613501"></li>
+<li><strong>过滤器</strong>：过滤器可以将特定信息过滤出来，结合and or not效果更佳<ul>
+<li>between:</li>
+<li>page</li>
+<li>property [[Block Properties]]</li>
+<li>full-text Query</li>
+<li>task</li>
+<li>priority</li>
+<li>page-property</li>
+<li>page-tags</li>
+<li>all-page-tags</li>
+<li>sort-by</li>
+</ul>
+</li>
+<li>综合上面技术对<strong>task</strong>和<strong>文本</strong>的查询<br><img src="C:\Users\heisen\AppData\Roaming\Typora\typora-user-images\image-20230103190444754.png" alt="image-20230103190444754"></li>
+<li>基本上是如上形式，详情可以看<a href="https://docs.logseq.com/#/page/queries">官方文档</a>。</li>
+</ul>
+<h3 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h3><p>由于logseq底层是一个图数据库，这个图数据库叫做Datascript，所以也有一种适用于它的数据库查询语言——<strong>Datalog</strong></p>
+<blockquote>
+<p>Datalog是一种规范，类似SQL，不同的数据库软件都依据这个规范实现自己的查询语言。</p>
+</blockquote>
+<p>要说清Datalog又需要大量篇幅了，因此这里推荐一些不错的入门教程：</p>
+<ul>
+<li><a href="https://qwxlea.github.io/#/page/datalog%2Fintro%20to%20datalog">Intro to Datalog</a></li>
+<li><a href="https://logseq.pro/#/page/query%E7%A5%9B%E9%AD%85">Query祛魅</a><ul>
+<li>文档的视频教程：<a href="https://www.bilibili.com/video/BV1Ee4y1178F/?share_source=copy_web&vd_source=c0b7e2971676981be548dbddf193bcc9">【Query 祛魅 | Advanced Queries | Logseq Pro S1E2】</a> </li>
+</ul>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -919,6 +970,59 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 
 
 
+<h1 id="四-数学公式Latex语法"><a href="#四-数学公式Latex语法" class="headerlink" title="四. 数学公式Latex语法"></a>四. 数学公式Latex语法</h1><p><strong>latex</strong>是一个强大的开源排版工具，在论文和图书排版领域被广泛应用，并且它很好的支持数学公式的显示。markdown里也支持latex语法的数学公式显示。</p>
+<p>你需要在设置里面打开typora相关功能，如下图：</p>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031234537.png" alt="image-20230103123436431"></p>
+<p><strong>基本语法</strong>：</p>
+<p>Latex利用<strong>宏命令</strong>来进行排版和特殊字符显示，宏命令通常以反斜杠\开始，比如根号二就是 <code>\sqrt&#123;2&#125;</code> ，即$\sqrt{2}$</p>
+<p>typora用专门解析latex公式的解析器来显示公式，所以只支持公式排版相关的语法，其他的图文排版不支持。</p>
+<ul>
+<li><strong>行内公式</strong>：使用 <code>$内容$</code> 来显示，效果为 $f = \frac{2 \pi}{T}$</li>
+<li><strong>跨行公式</strong>：你可以新建一个代码块，然后类型选择latex。也可以使用 <code>$$跨行内容$$</code> 来快捷输入，效果如下：</li>
+</ul>
+<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031357279.png" alt="image-20230103135721578"></p>
+<ul>
+<li><p><strong>常见宏命令</strong>，这里推荐一个网站，可以利用latex可视化编辑公式，并可以快速查询想要的宏命令，甚至能图片生成公式<br>网址：<a href="https://www.latexlive.com/">在线Latex公式编辑器</a></p>
+<ul>
+<li><p><strong>0.跨行公式的换行</strong>：用 <code>\\</code> 进行换行</p>
+</li>
+<li><p><strong>1.希腊字母</strong>：用 <code>\单词</code>，比如<code>\alpha</code> $\alpha$，下面是参考表：<br><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031440108.png" alt="image-20230103144004033"></p>
+</li>
+<li><p><strong>2.上下标</strong>：用<code>^</code>跟上标，用<code>_</code> 跟下标，如果上下标为一个式子需要<strong>大括号</strong>包裹<br>举例：<code>2^&#123;1+x&#125;</code> 即 $2^{1+x}$ ；<code>x_&#123;a1&#125;</code> 即 $x_{a1}$ ；<code>y^4</code> 即 $y^4$</p>
+<blockquote>
+<p>tip: 一般来说，字母表示变量才使用斜体，而其它的字母用罗马体(直立体)。</p>
+<p>当i表示变量，取1,2,3,4…的时候，$x_i$</p>
+<p>当i表示一个代号或类型，比如数input，就用直体，$x_{\rm i}$</p>
+<p>默认下标为斜体，可以使用(\rm i)或者(\text i)表示直体的i</p>
+</blockquote>
+</li>
+<li><p><strong>3.分式</strong>：<code>\frac &#123;分子&#125;&#123;分母&#125;</code> 简单的单个数或字母不用大括号，复杂的加大括号<br>举例：<code>\frac &#123;5&#125;&#123;6&#125;</code> $\frac {5}{6}$ ；<code>\frac &#123;x+1&#125;&#123;\varSigma (x+y^2)&#125;</code> $\frac{x+1}{\sum(x+y^2)}$</p>
+</li>
+</ul>
+<blockquote>
+<p>tip：在命令前面加字母d，可以将小的样式放大，<code>\dfrac &#123;\dfrac1x+1&#125;&#123;x+y&#125;</code> $\dfrac {\dfrac1x+1}{x+y}$ </p>
+</blockquote>
+<ul>
+<li><p><strong>4.根号</strong> ：开平方直接<code>\sqrt&#123;被开发数&#125;</code>，开n次方用<code>\sqrt[n]&#123;被开方数&#125;</code>，比如：<code>\sqrtx</code> $\sqrt x$；<code>\sqrt[x+1]&#123;y+\frac1x&#125;</code> $\sqrt[x+1]{y+\frac1x}$</p>
+</li>
+<li><p><strong>5.运算符</strong>：如下图<br><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031517070.png" alt="image-20230103151718022"></p>
+</li>
+<li><p><strong>6.数集</strong>：常见数集直接反斜杠+对应大写字母，如下：<br><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301031559647.png" alt="image-20230103155950610"></p>
+</li>
+<li><p><strong>7.三角函数</strong>：\三角函数符号，<code>\sin</code> $\sin x$；<code>\arctan</code> $\arctan x$</p>
+</li>
+<li><p><strong>8.极限</strong>： <code>\lim_limits&#123;x \to 0&#125; \frac x&#123;\sin x +x&#125;   </code>  $\lim\limits_{x \to 0} \frac x{\sin x +x}$<br><code>\limit</code> 输出$\lim$；<code>\to</code> 输出$\to$；<code>\limits_</code> 将 $x \to 0$ 放到lim下面；</p>
+</li>
+<li><p><strong>9.更多</strong>：这里找到一篇速查文章，感觉比较快，故不在记录其他<br>速查地址：<a href="https://zhuanlan.zhihu.com/p/508559139?utm_medium=social&utm_oi=681187824099921920">latex速查(8页)</a></p>
+</li>
+<li><p><strong>(拓展)中文混排</strong>：使用如下格式的代码，类似html</p>
+<blockquote>
+<p>注意，这里是拓展，typora并不支持这些语法，请下载专门的latex排版工具</p>
+</blockquote>
+<figure class="highlight latex"><table><tr><td class="code"><pre><span class="line"><span class="comment">%单行注释</span></span><br><span class="line"><span class="keyword">\iffalse</span></span><br><span class="line">	多行注释</span><br><span class="line"><span class="keyword">\fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\documentclass</span>[UTF8]&#123;ctexart&#125; <span class="comment">%ctexart支持中文排版</span></span><br><span class="line"><span class="keyword">\title</span>&#123;标题&#125;	<span class="comment">%这里设置标题</span></span><br><span class="line"><span class="keyword">\author</span>&#123;Heithon&#125;	<span class="comment">%这里设置作者</span></span><br><span class="line"><span class="keyword">\date</span>&#123;<span class="keyword">\today</span>&#125;	<span class="comment">%这里设置日期</span></span><br><span class="line"><span class="comment">%以上为前言区，设定一些基本信息</span></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\maketitle</span></span><br><span class="line">你好</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
 <h1 id="Typora-picgo实现截图直接粘贴"><a href="#Typora-picgo实现截图直接粘贴" class="headerlink" title="Typora+picgo实现截图直接粘贴"></a>Typora+picgo实现截图直接粘贴</h1><p>markdown文档中的图片，通常是靠链接进行访问，因为直接把图片源代码嵌入文档中会十分臃肿。</p>
 <p>因此我们需要图床，就是把图片上传到一个服务器上，然后生成一个访问图片的链接，就可用markdown的image语法嵌入链接</p>
 <p>但是如果需要大量截图，每次都得手动上传并生成链接，很是麻烦…..</p>
@@ -2364,8 +2468,8 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
         <category>实用工具</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>实用工具</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2601,9 +2705,9 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
         <category>实用工具</category>
       </categories>
       <tags>
-        <tag>实用工具</tag>
         <tag>git</tag>
         <tag>gitHub</tag>
+        <tag>实用工具</tag>
       </tags>
   </entry>
   <entry>
