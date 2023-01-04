@@ -27,12 +27,6 @@
       </categories>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/uncategorized/test/</url>
-    <content><![CDATA[<span id="more"></span>
-]]></content>
-  </entry>
-  <entry>
     <title>Logseq入门</title>
     <url>/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/Logseq%E5%85%A5%E9%97%A8/</url>
     <content><![CDATA[<p><img src="https://mypic-1309350050.cos.ap-chongqing.myqcloud.com/img/202301022345936.png" alt="image-20230102234536906"></p>
@@ -1002,7 +996,7 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 <p>默认下标为斜体，可以使用(\rm i)或者(\text i)表示直体的i</p>
 </blockquote>
 </li>
-<li><p><strong>3.分式</strong>：<code>\frac &#123;分子&#125;&#123;分母&#125;</code> 简单的单个数或字母不用大括号，复杂的加大括号<br>举例：<code>\frac &#123;5&#125;&#123;6&#125;</code> $\frac {5}{6}$ ；<code>\frac &#123;x+1&#125;&#123;\varSigma (x+y^2)&#125;</code> $\frac{x+1}{\sum(x+y^2)}$</p>
+<li><p><strong>3.分式</strong>：<code>\frac &#123;分子&#125;&#123;分母&#125;</code> 简单的单个数或字母不用大括号，复杂的加大括号<br>举例：<code>\frac &#123;5&#125;&#123;6&#125;</code> $\frac {5}{6}$ ；<code>\frac&#123;x+1&#125;&#123;\sum(x+y^2)&#125;</code> $\frac{x+1}{\sum(x+y^2)}$</p>
 </li>
 </ul>
 <blockquote>
@@ -1696,8 +1690,8 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 <td>分屏查看文件内容（动态展示需要部分，效率高）</td>
 </tr>
 <tr>
-<td>`cat -n 文件名</td>
-<td>more`</td>
+<td><code>cat -n 文件名 | more</code></td>
+<td>管道命令，先用cat打开再用more浏览</td>
 </tr>
 <tr>
 <td><code>echo 环境变量</code></td>
@@ -2055,14 +2049,6 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 </tr>
 </tbody></table>
 <p><strong>特殊符号：</strong></p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>功能</th>
-</tr>
-</thead>
-</table>
 <ul>
 <li>| 表示任何时间<br>， | 连接不连续的时间</li>
 </ul>
@@ -2168,16 +2154,16 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 <td>显示磁盘总用量</td>
 </tr>
 <tr>
-<td>`ls -l</td>
-<td>grep “^-“</td>
+<td><code>ls -l | grep &quot;^-&quot; | wc -l 目录名</code></td>
+<td>统计指定目录下文件的个数</td>
 </tr>
 <tr>
-<td>`ls -l</td>
-<td>grep “^d”</td>
+<td><code>ls -l | grep &quot;^d&quot; | wc -l 目录名</code></td>
+<td>统计指定目录下目录的个数</td>
 </tr>
 <tr>
-<td>`ls -lR</td>
-<td>grep “^-“</td>
+<td><code>ls -lR | grep &quot;^-&quot; | wc -l 目录名</code></td>
+<td>同上，包括子文件夹</td>
 </tr>
 <tr>
 <td><code>tree 目录名</code></td>
@@ -2280,8 +2266,8 @@ border-left:4px #999 solid;">拓展：这种加法器实际上效率很低，因
 <td>该指令管理的服务在/usr/lib/systemd/system</td>
 </tr>
 <tr>
-<td>`service 服务名 start</td>
-<td>stop</td>
+<td><code>service 服务名 start|stop|restart|reload|status</code></td>
+<td>`开始</td>
 </tr>
 <tr>
 <td><code>systemctl get-default</code></td>
